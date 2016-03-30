@@ -279,7 +279,6 @@ PRODUCT_PACKAGES += \
     NubiaLineageSystemUI \
     NubiaSettings \
     NubiaSystemUI \
-    NubiaTelecomm \
     NubiaTelephony
 
 # Partitions
