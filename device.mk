@@ -75,7 +75,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     NubiaBluetooth \
     NubiaFrameworks \
-    NubiaLineageSDK
+    NubiaLineageSDK \
+    NubiaSystemUI
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
