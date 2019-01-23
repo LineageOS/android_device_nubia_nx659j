@@ -12,6 +12,9 @@ genfscon sysfs /devices/platform/soc/994000.i2c/i2c-3/3-006a/leds/aw22xxx_led/tr
 genfscon sysfs /class/light/light u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/virtual/light/light u:object_r:vendor_sysfs_sensors:s0
 
+# Livedisplay
+genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/hbm u:object_r:sysfs_hbm:s0
+
 # Proximity sensor
 genfscon sysfs /class/proximity/proximity u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/virtual/proximity/proximity u:object_r:vendor_sysfs_sensors:s0
