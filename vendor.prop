@@ -173,6 +173,7 @@ vendor.gatekeeper.disable_spu=true
 ro.com.google.clientidbase=android-zte
 
 # Media
+debug.stagefright.c2inputsurface=-1
 vendor.media.omx=0
 
 # NFC
