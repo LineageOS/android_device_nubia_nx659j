@@ -262,7 +262,6 @@ PRODUCT_PACKAGES += \
     init.mdm.sh \
     init.nfc.sku.sh \
     init.qcom.post_boot.sh \
-    init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qti.chg_policy.sh \

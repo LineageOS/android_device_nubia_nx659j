@@ -24,12 +24,6 @@ sh_binary {
 }
 
 sh_binary {
-    name: "init.qcom.sdio.sh",
-    src: "bin/init.qcom.sdio.sh",
-    vendor: true,
-}
-
-sh_binary {
     name: "init.qcom.sensors.sh",
     src: "bin/init.qcom.sensors.sh",
     vendor: true,
