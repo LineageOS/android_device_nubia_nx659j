@@ -118,23 +118,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.protected_contents=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.disable_backpressure=1 \
-    debug.sf.enable_hwc_vds=1 \
-    debug.sf.enable_gl_backpressure=1 \
-    debug.sf.early_phase_offset_ns=500000 \
-    debug.sf.early_app_phase_offset_ns=500000 \
-    debug.sf.early_gl_phase_offset_ns=3000000 \
-    debug.sf.early_gl_app_phase_offset_ns=15000000 \
-    debug.sf.high_fps_early_phase_offset_ns=6100000 \
-    debug.sf.high_fps_early_gl_phase_offset_ns=6500000 \
-    debug.sf.perf_fps_early_gl_phase_offset_ns=9000000 \
-    debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
+    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.demo.hdmirotationlock=false \
     persist.sys.sf.color_saturation=1.0 \
     persist.sys.sf.color_mode=9 \
-    debug.sf.high_fps_late_app_phase_offset_ns=1000000 \
     debug.mdpcomp.logs=0 \
     vendor.gralloc.disable_ubwc=0 \
     vendor.display.disable_scaler=0 \
