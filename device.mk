@@ -38,6 +38,10 @@ PRODUCT_TARGET_VNDK_VERSION := 29
 # A/B
 AB_OTA_UPDATER := false
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    BluetoothQti
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap
