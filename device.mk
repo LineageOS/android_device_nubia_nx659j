@@ -17,6 +17,10 @@
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# fastbootd
+PRODUCT_PACKAGES += \
+    fastbootd
+
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/nubia/NX659J
