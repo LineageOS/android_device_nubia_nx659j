@@ -17,6 +17,9 @@
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 29
+
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 29
 
