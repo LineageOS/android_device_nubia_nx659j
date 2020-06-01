@@ -69,6 +69,7 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
+    NubiaBluetooth \
     NubiaFrameworks \
     NubiaLineageSDK
 
