@@ -26,6 +26,10 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Inherit proprietary libraries
 $(call inherit-product, vendor/nubia/NX659J/NX659J-vendor.mk)
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
 
