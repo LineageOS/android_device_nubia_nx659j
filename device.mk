@@ -64,6 +64,10 @@ PRODUCT_BUILD_PRODUCT_IMAGE := true
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.ims.xml
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.recovery.qcom.rc
+
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
