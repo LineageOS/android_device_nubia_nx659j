@@ -138,6 +138,15 @@ TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_DENSITY := 420
 
+# Sepolicy
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/private \
+    device/qcom/sepolicy/qva/private
+
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+    device/qcom/sepolicy/generic/public \
+    device/qcom/sepolicy/qva/public
+
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
