@@ -67,6 +67,10 @@ PRODUCT_PACKAGES += \
     FrameworksResCommon \
     FrameworksResTarget
 
+# Parts
+PRODUCT_PACKAGES += \
+    NubiaParts
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.ims.xml
