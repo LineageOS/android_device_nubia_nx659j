@@ -68,7 +68,8 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    NubiaFrameworks
+    NubiaFrameworks \
+    NubiaLineageSDK
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
