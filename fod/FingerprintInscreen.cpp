@@ -28,11 +28,12 @@
 #define NOTIFY_FINGER_UP 1537
 #define NOTIFY_UI_READY 1607
 #define NOTIFY_UI_DISAPPER 1608
-// #define NOTIFY_ENABLE_PAY_ENVIRONMENT 1609
-// #define NOTIFY_DISABLE_PAY_ENVIRONMENT 1610
 
-#define BOOST_ENABLE_PATH "/sys/class/meizu/fp/qos_set"
-#define HBM_ENABLE_PATH "/sys/class/meizu/lcm/display/hbm"
+#define FOD_SENSOR_X 445
+#define FOD_SENSOR_Y 2061
+#define FOD_SENSOR_SIZE 190
+
+#define HBM_ENABLE_PATH "/sys/kernel/lcd_enhance/hbm_mode"
 #define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness"
 
 namespace vendor {
@@ -66,15 +67,15 @@ FingerprintInscreen::FingerprintInscreen() {
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
-    return FOD_POS_X;
+    return FOD_SENSOR_X;
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
-    return FOD_POS_Y;
+    return FOD_SENSOR_Y;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return FOD_SIZE;
+    return FOD_SENSOR_SIZE;
 }
 
 Return<void> FingerprintInscreen::onStartEnroll() {
@@ -98,7 +99,6 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    set(BOOST_ENABLE_PATH, 1);
     notifyHal(NOTIFY_UI_READY);
     return Void();
 }

@@ -1,4 +1,4 @@
-service fingerprint-inscreen-1-0 /system/bin/hw/lineage.biometrics.fingerprint.inscreen@1.0-service.meizu_sm8150
+service fingerprint-inscreen-1-0 /system/bin/hw/lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J
     interface vendor.lineage.biometrics.fingerprint.inscreen@1.0::IFingerprintInscreen default
     class hal
     user system

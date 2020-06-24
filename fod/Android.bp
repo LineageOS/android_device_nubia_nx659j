@@ -13,11 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-meizu_sm8150_fod_hal_binary {
+cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "lineage.biometrics.fingerprint.inscreen@1.0-service.meizu_sm8150",
-    init_rc: ["lineage.biometrics.fingerprint.inscreen@1.0-service.meizu_sm8150.rc"],
+    name: "lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J",
+    init_rc: ["lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J.rc"],
     srcs: ["service.cpp", "FingerprintInscreen.cpp"],
     shared_libs: [
         "libbase",
