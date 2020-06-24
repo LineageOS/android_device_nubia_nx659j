@@ -53,6 +53,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     device/nubia/NX659J
 
+# NFC
+PRODUCT_PACKAGES += \
+    NfcNci \
+    Tag \
+    SecureElement
+
 # Overlays
 PRODUCT_PACKAGES += \
     NubiaFrameworks
