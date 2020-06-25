@@ -46,5 +46,27 @@
                 android:value="com.android.settings.category.ia.display" />
         </activity>
 
+        <activity
+            android:name=".NubiaParts"
+            android:label="@string/nubiaparts"
+            android:theme="@style/Theme.Main">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.system" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/nubiaparts_summary" />
+        </activity>
+
+        <activity
+            android:name=".FanSettings"
+            android:label="@string/fan_title"
+            android:theme="@style/Theme.Main">
+        </activity>
+
     </application>
 </manifest>
