@@ -91,6 +91,7 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    init.qcom.rc \
     init.recovery.qcom.rc
 
 # Telephony
