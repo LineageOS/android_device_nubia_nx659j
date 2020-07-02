@@ -79,7 +79,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     NubiaBluetooth \
     NubiaFrameworks \
-    NubiaLineageSDK \
     NubiaSystemUI
 
 # Partitions
