@@ -36,5 +36,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             FileUtils.writeLine(FanSettings.FanSettingsFragment.SPEED_LEVEL, "5");
 
         RefreshRate.RefreshRateFragment.setFPS(SettingsUtils.getInt(context, RefreshRate.RefreshRateFragment.KEY_REFRESH_RATE, 0));
+        RefreshRate.RefreshRateFragment.writeTouchRefresh(SettingsUtils.getInt(context, RefreshRate.RefreshRateFragment.KEY_REFRESH_RATE, 0));
     }
 }

@@ -58,6 +58,22 @@ public class RefreshRate extends PreferenceActivity {
             updateValuesAndSummaries();
         }
 
+        public static void writeTouchRefresh(int fps) {
+            final String GAMEMODE_PATH_1 = "/sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/gamemode";
+            final String GAMEMODE_PATH_2 = "/sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input6/gamemode";
+            final String GAMEMODE_PATH;
+
+            if (FileUtils.fileExists(GAMEMODE_PATH_1))
+                GAMEMODE_PATH = GAMEMODE_PATH_1;
+            else
+                GAMEMODE_PATH = GAMEMODE_PATH_2;
+
+            if (fps == 2 || fps == 3)
+                FileUtils.writeLine(GAMEMODE_PATH, "1");
+            else
+                FileUtils.writeLine(GAMEMODE_PATH, "0");
+        }
+
         private void updateValuesAndSummaries() {
             mPrefRefreshRate.setSummary(mPrefRefreshRate.getValue());
         }
@@ -72,6 +88,7 @@ public class RefreshRate extends PreferenceActivity {
                     if (KEY_REFRESH_RATE.equals(key)) {
                         setFPS(fps);
                         SettingsUtils.putInt(getActivity(), KEY_REFRESH_RATE, fps);
+                        writeTouchRefresh(fps);
                     }
 
                     updateValuesAndSummaries();
