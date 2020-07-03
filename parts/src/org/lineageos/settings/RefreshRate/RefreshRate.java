@@ -75,7 +75,7 @@ public class RefreshRate extends PreferenceActivity {
         }
 
         private void updateValuesAndSummaries() {
-            mPrefRefreshRate.setSummary(mPrefRefreshRate.getValue());
+            mPrefRefreshRate.setSummary(mPrefRefreshRate.getEntry());
         }
 
         private Preference.OnPreferenceChangeListener PrefListener =
