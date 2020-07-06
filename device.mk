@@ -86,11 +86,6 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_BUILD_PRODUCT_IMAGE := true
 
-# Overlays - override vendor ones
-PRODUCT_PACKAGES += \
-    FrameworksResCommon \
-    FrameworksResTarget
-
 # Parts
 PRODUCT_PACKAGES += \
     NubiaParts
