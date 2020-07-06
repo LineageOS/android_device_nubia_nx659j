@@ -22,6 +22,8 @@
 # definition file).
 #
 
+BUILD_BROKEN_DUP_RULES := true
+
 TARGET_BOARD_PLATFORM := kona
 DEVICE_PATH := device/nubia/NX659J
 
