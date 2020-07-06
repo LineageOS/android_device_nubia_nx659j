@@ -50,6 +50,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Snap
 
+# config.fs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
