@@ -80,6 +80,11 @@ endif
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+# Hals
+BOARD_USES_QCOM_HARDWARE := true
+QCOM_BOARD_PLATFORMS += kona
+TARGET_BOARD_PLATFORM := kona
+
 # HIDL
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
