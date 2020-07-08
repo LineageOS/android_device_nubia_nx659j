@@ -1,0 +1,42 @@
+cc_binary {
+    name: "fastbootd",
+    defaults: ["fastboot_defaults"],
+
+    recovery: true,
+
+    srcs: [
+        "commands.cpp",
+        "fastboot_device.cpp",
+        "flashing.cpp",
+        "main.cpp",
+        "usb_client.cpp",
+        "utility.cpp",
+        "variables.cpp",
+    ],
+
+    shared_libs: [
+        "android.hardware.boot@1.0",
+        "android.hardware.fastboot@1.0",
+        "android.hardware.health@2.0",
+        "libadbd",
+        "libasyncio",
+        "libbase",
+        "libbootloader_message",
+        "libcutils",
+        "libext2_uuid",
+        "libext4_utils",
+        "libfs_mgr",
+        "libgsi",
+        "libhidlbase",
+        "libhidltransport",
+        "libhwbinder",
+        "liblog",
+        "liblp",
+        "libsparse",
+        "libutils",
+    ],
+
+    static_libs: [
+        "libhealthhalutils",
+    ],
+}
