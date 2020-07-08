@@ -65,12 +65,20 @@ PRODUCT_PACKAGES += \
     audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
+    libhdmiedid \
+    libhfp \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener \
+    tinymix \
     libtinycompress \
     libtinycompress.vendor
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     BluetoothQti \
+    liba2dpoffload \
     com.qualcomm.qti.bluetooth_audio@1.0.vendor \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.bluetooth_dun@1.0.vendor \
@@ -100,7 +108,17 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl \
+    gralloc.kona \
     libgui_vendor \
+    libdisplayconfig \
+    libdisplayconfig.vendor \
+    libqdMetaData \
+    libqdMetaData.system \
+    libqdutils.vendor \
+    libsdedrm \
+    libsdmcore \
+    libsdmutils \
+    memtrack.kona \
     vendor.display.config@1.0.vendor \
     vendor.display.config@1.1.vendor \
     vendor.display.config@1.2.vendor \
@@ -117,11 +135,14 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.13.vendor \
     vendor.display.config@1.14.vendor \
     vendor.display.config@1.15.vendor \
+    vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.allocator@3.0.vendor \
+    android.hardware.graphics.mapper@3.0-impl-qti-display \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
     vendor.qti.hardware.display.mapper@3.0.vendor \
+    vendor.qti.hardware.display.composer-service \
     vendor.qti.hardware.display.composer@1.0.vendor \
     vendor.qti.hardware.display.composer@2.1.vendor \
     vendor.qti.hardware.display.mapperextensions@1.0.vendor \
@@ -154,15 +175,34 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service
 
+# IPACM
+PRODUCT_PACKAGES += \
+    ipacm \
+    IPACM_cfg.xml \
+    libipanat \
+    liboffloadhal
+
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service
 
-# Media
+# OMX
 PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
     libcodec2_hidl@1.0.vendor \
-    libcodec2_vndk.vendor
+    libcodec2_vndk.vendor \
+    libmm-omxcore \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxG711Enc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libstagefrighthw
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -210,6 +250,10 @@ PRODUCT_PACKAGES += \
     libjson \
     libqti_vndfwk_detect \
     libqti_vndfwk_detect.vendor
+
+# Radio
+PRODUCT_PACKAGES += \
+    librmnetctl
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -266,7 +310,8 @@ PRODUCT_COPY_FILES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service
+    android.hardware.thermal@1.0-service \
+    thermal.kona
 
 # Trustzone
 PRODUCT_PACKAGES += \
