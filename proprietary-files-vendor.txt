@@ -1,8 +1,24 @@
 # Vendor
+vendor/lib/libOmxAacEnc.so
+vendor/lib/libOmxAmrEnc.so
+vendor/lib/libOmxCore.so
+vendor/lib/libOmxEvrcEnc.so
+vendor/lib/libOmxG711Enc.so
+vendor/lib/libOmxQcelp13Enc.so
 vendor/lib/libOmxVdec.so
 vendor/lib/libOmxVenc.so
+vendor/lib/libmm-omxcore.so
+vendor/lib/libc2dcolorconvert.so
+vendor/lib64/libOmxAacEnc.so
+vendor/lib64/libOmxAmrEnc.so
+vendor/lib64/libOmxCore.so
+vendor/lib64/libOmxEvrcEnc.so
+vendor/lib64/libOmxG711Enc.so
+vendor/lib64/libOmxQcelp13Enc.so
 vendor/lib64/libOmxVdec.so
 vendor/lib64/libOmxVenc.so
+vendor/lib64/libmm-omxcore.so
+vendor/lib64/libc2dcolorconvert.so
 -vendor/app/CACertService/CACertService.apk
 -vendor/app/CneApp/CneApp.apk
 -vendor/app/com.qualcomm.qti.gpudrivers.sm8250.api29/com.qualcomm.qti.gpudrivers.sm8250.api29.apk
