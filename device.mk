@@ -26,8 +26,12 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Inherit proprietary libraries
 $(call inherit-product, vendor/nubia/NX659J/NX659J-vendor.mk)
 
+# Inherit display makefiles
+$(call inherit-product, hardware/qcom-caf/sm8250/display/config/display-board.mk)
+
 -include $(LOCAL_PATH)/product_prop.mk
 -include $(LOCAL_PATH)/system_prop.mk
+-include $(LOCAL_PATH)/vendor_prop.mk
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -236,14 +240,6 @@ PRODUCT_COPY_FILES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service-qti
-
-# Props
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.has_wide_color_display=true \
-    ro.surface_flinger.has_HDR_display=true \
-    ro.surface_flinger.use_color_management=true \
-    ro.surface_flinger.wcg_composition_dataspace=143261696 \
-    ro.surface_flinger.protected_contents=true
 
 # QMI
 PRODUCT_PACKAGES += \
