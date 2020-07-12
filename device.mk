@@ -254,18 +254,26 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.class_main.sh \
+    init.mdm.sh \
     init.nfc.sku.sh \
+    init.nubia.post_boot.sh \
     init.qcom.class_core.sh \
+    init.qcom.crashdata.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
+    init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
     init.qcom.usb.sh \
+    init.qti.chg_policy.sh \
     fstab.qcom \
+    init.dmapp.rc \
     init.msm.usb.configfs.rc \
     init.multicolor.led.rc \
+    init.nb.exfat.rc \
     init.nb.nfc.rc \
     init.nb.rc \
+    init.nb.systrace.rc \
     init.nubia.fingerprint.rc \
     init.nubia.haptic.rc \
     init.nubia.Light.rc \
