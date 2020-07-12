@@ -373,6 +373,7 @@ vendor/etc/init/vendor.qti.hardware.wigig.supptunnel@1.0-service.rc
 vendor/etc/init/vendor.qti.qspmhal@1.0-service.rc
 vendor/etc/init/vendor.qti.rmt_storage.rc
 vendor/etc/init/vendor.qti.tftp.rc
+vendor/etc/init/vppservice.rc
 vendor/etc/init/wfdvndservice.rc
 vendor/etc/init/wifi-diag.rc
 vendor/etc/izat.conf
