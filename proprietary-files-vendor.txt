@@ -47,7 +47,6 @@ vendor/bin/garden_app
 vendor/bin/hal_proxy_daemon
 vendor/bin/hdcp1prov
 vendor/bin/hdcp2p2prov
-vendor/bin/hostapd_cli
 vendor/bin/host_manager_11ad
 vendor/bin/hvdcp_opti
 vendor/bin/hw/android.hardware.authsecret@1.0-service-qti
@@ -63,7 +62,6 @@ vendor/bin/hw/android.hardware.power@1.2-service
 vendor/bin/hw/android.hardware.vibrator@1.0-service
 vendor/bin/hw/android.hardware.usb@1.1-service-qti
 vendor/bin/hw/capabilityconfigstoretest
-vendor/bin/hw/hostapd
 vendor/bin/hw/qcrild
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
@@ -82,10 +80,10 @@ vendor/bin/hw/vendor.qti.hardware.soter@1.0-service
 vendor/bin/hw/vendor.qti.hardware.trustedui@1.0-service-qti
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
 vendor/bin/hw/vendor.qti.spu@1.0-service
-vendor/bin/hw/wpa_supplicant
 vendor/bin/imsdatadaemon
 vendor/bin/imsqmidaemon
 vendor/bin/imsrcsd
+vendor/bin/ipacm-diag
 vendor/bin/irsc_util
 vendor/bin/iwlist
 vendor/bin/iwpriv
@@ -169,7 +167,6 @@ vendor/bin/wigighalsvc
 vendor/bin/wigignpt
 vendor/bin/wigig_wiburn
 vendor/bin/wireless_test
-vendor/bin/wpa_cli
 vendor/bin/xtra-daemon
 vendor/bin/xtwifi-client
 vendor/bin/xtwifi-inet-agent
@@ -325,7 +322,6 @@ vendor/etc/init/dataadpl.rc
 vendor/etc/init/dataqti.rc
 vendor/etc/init/dpmQmiMgr.rc
 vendor/etc/init/feature_enabler_client.rc
-vendor/etc/init/hostapd.android.rc
 vendor/etc/init/imsdatadaemon.rc
 vendor/etc/init/imsqmidaemon.rc
 vendor/etc/init/imsrcsd.rc
@@ -339,6 +335,7 @@ vendor/etc/init/init.spdaemon.rc
 vendor/etc/init/init_thermal-engine.rc
 vendor/etc/init/init.time_daemon.rc
 vendor/etc/init/init.vendor.qti.spu@1.0-service.rc
+vendor/etc/init/ipacm-diag.rc
 vendor/etc/init/ipa_fws.rc
 vendor/etc/init/mutualex.rc
 vendor/etc/init/netmgrd.rc
@@ -599,7 +596,6 @@ vendor/etc/wifi/p2p_supplicant_overlay.conf
 vendor/etc/wifi/WCNSS_qcom_cfg.ini
 vendor/etc/wifi/wigig_p2p_supplicant.conf
 vendor/etc/wifi/wigig_supplicant.conf
-vendor/etc/wifi/wpa_supplicant.conf
 vendor/etc/wifi/wpa_supplicant_diag.conf
 vendor/etc/wifi/wpa_supplicant_overlay.conf
 vendor/etc/xtra_root_cert.pem
@@ -679,8 +675,6 @@ vendor/firmware/nubia_tp_jdi_fw.img
 vendor/firmware/sec_s3nrn81_firmware.bin
 vendor/firmware/sec_s3nrn81_rfreg.bin
 vendor/firmware/wigig/wigig.ini
-vendor/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-vendor/firmware/wlan/qca_cld/wlan_mac.bin
 vendor/lib64/libvndfwk_detect_jni.qti.so
 vendor/lib/libvndfwk_detect_jni.qti.so
 vendor/lib/qcrild_librilutils.so
@@ -1191,15 +1185,12 @@ vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/libwapi_cert.so
 vendor/lib64/libwfdhdcpcp.so
-vendor/lib64/libwifi-hal-ctrl.so
-vendor/lib64/libwifi-hal-qcom.so
 vendor/lib64/libwigig_flashaccess.so
 vendor/lib64/libwigig_ftm_flows.so
 vendor/lib64/libwigig_pciaccess.so
 vendor/lib64/libwigigsensing.so
 vendor/lib64/libwigig_utils.so
 vendor/lib64/libwms.so
-vendor/lib64/libwpa_client.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 vendor/lib64/libxtadapter.so
@@ -1850,15 +1841,12 @@ vendor/lib/libwfduibcsinkinterface_proprietary.so
 vendor/lib/libwfduibcsink_proprietary.so
 vendor/lib/libwfduibcsrcinterface_proprietary.so
 vendor/lib/libwfduibcsrc_proprietary.so
-vendor/lib/libwifi-hal-ctrl.so
-vendor/lib/libwifi-hal-qcom.so
 vendor/lib/libwigig_flashaccess.so
 vendor/lib/libwigig_ftm_flows.so
 vendor/lib/libwigig_pciaccess.so
 vendor/lib/libwigigsensing.so
 vendor/lib/libwigig_utils.so
 vendor/lib/libwms.so
-vendor/lib/libwpa_client.so
 vendor/lib/libwqe.so
 vendor/lib/libwvhidl.so
 vendor/lib/libxml.so
