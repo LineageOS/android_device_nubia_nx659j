@@ -166,7 +166,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
-    lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J
+    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J
 
 PRODUCT_COPY_FILES += \
     vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
