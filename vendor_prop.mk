@@ -6,6 +6,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.wcg_composition_dataspace=143261696 \
     ro.surface_flinger.protected_contents=true
 
+# Gatekeeper
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.gatekeeper.disable_spu=true
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.product.hardware.sku=nfc \
