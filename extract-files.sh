@@ -59,6 +59,16 @@ if [ -z "${SRC}" ]; then
     SRC="adb"
 fi
 
+function blob_fixup() {
+    case "${1}" in
+
+    # Change soname for fingerprint.default.so
+    vendor/lib/hw/fingerprint.kona.so | vendor/lib64/hw/fingerprint.kona.so)
+        patchelf --set-soname "fingerprint.kona.so" "${2}"
+        ;;
+    esac
+}
+
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
 

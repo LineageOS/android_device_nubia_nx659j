@@ -847,6 +847,7 @@ vendor/lib64/hw/audio.primary.kona.so
 vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib64/hw/fingerprint.default.so:vendor/lib64/hw/fingerprint.kona.so
 vendor/lib64/hw/sensors.sdm845.so
 vendor/lib64/hw/sound_trigger.primary.kona.so
 vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
@@ -1491,6 +1492,7 @@ vendor/lib/hw/awinic.haptic.effect.so
 vendor/lib/hw/camera.qcom.so
 vendor/lib/hw/com.qti.chi.override.so
 vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so
+vendor/lib/hw/fingerprint.default.so:vendor/lib/hw/fingerprint.kona.so
 vendor/lib/hw/sensors.sdm845.so
 vendor/lib/hw/sound_trigger.primary.kona.so
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
