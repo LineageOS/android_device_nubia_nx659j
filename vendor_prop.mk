@@ -6,6 +6,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.wcg_composition_dataspace=143261696 \
     ro.surface_flinger.protected_contents=true
 
+# NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.boot.product.hardware.sku=nfc \
+    persist.vendor.factory.nfc=true
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.primarycard=true \
