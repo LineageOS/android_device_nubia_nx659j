@@ -12,7 +12,6 @@ import /vendor/etc/init/hw/init.nb.nfc.rc
 import /vendor/etc/init/hw/init.nubia.sensors.rc
 import /vendor/etc/init/hw/init.multicolor.led.rc
 import /vendor/etc/init/hw/init.nubia.Light.rc
-import /vendor/etc/init/hw/init.dmapp.rc
 import /vendor/etc/init/hw/init.nubia.fingerprint.rc
 import /vendor/etc/init/hw/init.nubia.smartfan.rc
 import /vendor/etc/init/hw/init.nubia.perf.rc

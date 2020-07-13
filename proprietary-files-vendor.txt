@@ -30,7 +30,6 @@ vendor/bin/diag_socket_log
 vendor/bin/diag_StartWifi
 vendor/bin/diag_TinyServer
 vendor/bin/diag_uart_log
-vendor/bin/dmapp
 vendor/bin/dpmQmiMgr
 vendor/bin/e_loop
 vendor/bin/embmsslServer

@@ -273,7 +273,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qti.chg_policy.sh \
     fstab.qcom \
-    init.dmapp.rc \
     init.msm.usb.configfs.rc \
     init.multicolor.led.rc \
     init.nb.exfat.rc \
