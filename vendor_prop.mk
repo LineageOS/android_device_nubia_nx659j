@@ -11,6 +11,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.product.hardware.sku=nfc \
     persist.vendor.factory.nfc=true
 
+# OEM unlocking
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.primarycard=true \
