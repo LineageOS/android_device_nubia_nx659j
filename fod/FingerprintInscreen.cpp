@@ -21,6 +21,7 @@
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 #include <cmath>
+#include <thread>
 
 #define FINGERPRINT_ACQUIRED_VENDOR 6
 
@@ -88,7 +89,10 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     set(HBM_ENABLE_PATH, 1);
-    notifyHal(NOTIFY_FINGER_DOWN);
+    std::thread([this]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        notifyHal(NOTIFY_FINGER_DOWN);
+    }).detach();
     return Void();
 }
 
