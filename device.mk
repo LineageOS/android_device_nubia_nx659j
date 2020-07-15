@@ -41,7 +41,8 @@ PRODUCT_TARGET_VNDK_VERSION := 29
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-lineage \
+    $(LOCAL_PATH)/overlay-system
 
 # A/B
 AB_OTA_UPDATER := false
@@ -66,6 +67,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     android.hardware.soundtrigger@2.1-impl \
     android.hardware.soundtrigger@2.2-impl \
+    audio.a2dp.default \
     audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -82,11 +84,12 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     BluetoothQti \
-    liba2dpoffload \
     com.qualcomm.qti.bluetooth_audio@1.0.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.bluetooth_dun@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor
+    liba2dpoffload \
+    libbluetooth_qti \
+    libbthost_if \
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor
 
 # Camera
 PRODUCT_PACKAGES += \
