@@ -67,9 +67,6 @@ ifeq ($(BOARD_AVB_ENABLE), true)
    BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 endif
 
-# Bluetooth
-BOARD_HAVE_BLUETOOTH_QCOM := true
-
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := kona
