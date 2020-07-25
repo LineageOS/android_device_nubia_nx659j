@@ -29,8 +29,7 @@ import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.target.rc
-#import /vendor/etc/init/hw/init.qcom.factory.rc
-import /vendor/etc/init/hw/init.nubia.mmi.rc
+import /vendor/etc/init/hw/init.qcom.factory.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -76,7 +75,6 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
-    write /sys/kernel/debug/bootkpi/kpi_values "M - Start adsp"
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/devices/virtual/npu/msm_npu/boot 1
@@ -164,9 +162,6 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
-    #enable camera read sensors data
-    setprop persist.camera.gyro.disable 0
-
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
@@ -218,13 +213,6 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
-    # change ownership and premission for awinic haptic shock with music
-    chown system audio /dev/aw8695_haptic
-    chmod 0660 /dev/aw8695_haptic
-    chown system audio /sys/class/leds/vibrator_aw8695/haptic_audio
-    chmod 0660 /sys/class/leds/vibrator_aw8695/haptic_audio
-    mkdir /data/awinic 0770 system audio
-    
     # Allow access to UFS device attributes on sysfs
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
@@ -268,17 +256,8 @@ on post-fs-data
     mkdir /data/vendor/qtee 0770 system system
 
     #Create folder of camera
-    mkdir /data/vendor/camera 0775 camera camera
+    mkdir /data/vendor/camera 0770 camera camera
 
-    #ZTEMT:kangxiong modify for camera
-    chown cameraserver cameraserver /sys/kernel/camera/file_dump
-    chown cameraserver cameraserver /sys/kernel/camera/torch_switch
-    chown cameraserver cameraserver /sys/kernel/camera/ois_switch
-    chown cameraserver cameraserver /sys/kernel/camera/eeprom_calibration
-    chmod 0666 /sys/kernel/camera/file_dump
-    chmod 0666 /sys/kernel/camera/torch_switch
-    chmod 0666 /sys/kernel/camera/ois_switch
-    chmod 0666 /sys/kernel/camera/eeprom_calibration
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -334,10 +313,6 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
     #Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
@@ -529,9 +504,6 @@ on property:vendor.bluetooth.dun.status=running
 on property:vendor.bluetooth.dun.status=stopped
     stop vendor.bt-dun
 
-on property:ro.bluetooth.ftm_enabled=true
-    start ftmd
-
 on property:vendor.bluetooth.startbtlogger=true
     start vendor.bt_logger
 
@@ -583,13 +555,6 @@ service vendor.bt_logger /system/bin/bt_logger
    class late_start
    disabled
    oneshot
-
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
-    class late_start
-    user root
-    group bluetooth net_bt_admin misc diag net_bt
-    disabled
-    oneshot
 
 service qmiproxy /system/bin/qmiproxy
     class main
@@ -772,10 +737,6 @@ service loc_launcher /system/vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-
-on property:crypto.driver.load=1
-     insmod /system/lib/modules/qce.ko
-     insmod /system/lib/modules/qcedev.ko
 
 service drmdiag /system/vendor/bin/drmdiagapp
     class late_start
@@ -1069,12 +1030,12 @@ service vendor.hbtp /vendor/bin/hbtp_daemon
      capabilities SYS_NICE
      disabled
 
-#service chre /vendor/bin/chre
-#    class late_start
-#    user system
-#    group system
-#    socket chre seqpacket 0660 root system
-#    shutdown critical
+service chre /vendor/bin/chre
+    class late_start
+    user system
+    group system
+    socket chre seqpacket 0660 root system
+    shutdown critical
 
 on property:vendor.chre.enabled=0
    stop chre
@@ -1083,6 +1044,7 @@ service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.andro
     class main
     disabled
     oneshot
+    keycodes 114 115 116
 
 #Set GPU Opengles version
 on property:vendor.opengles.version=*
@@ -1098,7 +1060,7 @@ service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
     group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock
-    capabilities BLOCK_SUSPEND
+    capabilities BLOCK_SUSPEND SYS_NICE
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     # audioflinger restarts itself when it loses connection with the hal

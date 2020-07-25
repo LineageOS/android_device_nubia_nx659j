@@ -25,7 +25,3 @@ on post-fs-data
     #mkdir /data/vendor/goodix/gf_data 0777 system system
     #mkdir /data/vendor/goodix/gf_data/encrypted_data 0777 system system
     setprop persist.vendor.goodix.dump_data 1
-
-    # add for bind big core
-    chmod 0666 /dev/cpuset/bigcluster/cgroup.procs
-    chmod 0666 /dev/cpuset/cgroup.procs

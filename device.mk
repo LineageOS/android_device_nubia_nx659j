@@ -265,7 +265,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.mdm.sh \
     init.nfc.sku.sh \
-    init.nubia.post_boot.sh \
     init.qcom.class_core.sh \
     init.qcom.crashdata.sh \
     init.qcom.early_boot.sh \
@@ -281,13 +280,10 @@ PRODUCT_PACKAGES += \
     init.nb.exfat.rc \
     init.nb.nfc.rc \
     init.nb.rc \
-    init.nb.systrace.rc \
     init.nubia.fingerprint.rc \
     init.nubia.haptic.rc \
-    init.nubia.Light.rc \
+    init.nubia.light.rc \
     init.nubia.mmi.rc \
-    init.nubia.perf.rc \
-    init.nubia.platform.rc \
     init.nubia.sensors.rc \
     init.nubia.smartfan.rc \
     init.nubia.touch.lcd.rc \
