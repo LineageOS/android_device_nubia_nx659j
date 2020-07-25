@@ -22,6 +22,40 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.wcg_composition_dataspace=143261696 \
     ro.surface_flinger.protected_contents=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_gl_backpressure=1 \
+    debug.sf.early_phase_offset_ns=500000 \
+    debug.sf.early_app_phase_offset_ns=500000 \
+    debug.sf.early_gl_phase_offset_ns=3000000 \
+    debug.sf.early_gl_app_phase_offset_ns=15000000 \
+    debug.sf.high_fps_early_phase_offset_ns=6100000 \
+    debug.sf.high_fps_early_gl_phase_offset_ns=6500000 \
+    debug.sf.perf_fps_early_gl_phase_offset_ns=9000000 \
+    debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.demo.hdmirotationlock=false \
+    persist.sys.sf.color_saturation=1.0 \
+    persist.sys.sf.color_mode=9 \
+    debug.sf.hw=0 \
+    debug.egl.hw=0 \
+    debug.sf.latch_unsignaled=1 \
+    debug.sf.high_fps_late_app_phase_offset_ns=1000000 \
+    debug.mdpcomp.logs=0 \
+    vendor.gralloc.disable_ubwc=0 \
+    vendor.display.disable_scaler=0 \
+    vendor.display.disable_excl_rect=0 \
+    vendor.display.disable_excl_rect_partial_fb=1 \
+    vendor.display.comp_mask=0 \
+    vendor.display.enable_posted_start_dyn=1 \
+    vendor.display.enable_optimize_refresh=1 \
+    vendor.display.use_smooth_motion=1 \
+    vendor.display.disable_rotator_ubwc=1 \
+    vendor.display.normal_noc_efficiency_factor=0.85 \
+    vendor.display.camera_noc_efficiency_factor=0.70 \
+    vendor.display.disable_layer_stitch=0 \
+    vendor.display.enable_async_powermode=0
+
 # Gatekeeper
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu=true
