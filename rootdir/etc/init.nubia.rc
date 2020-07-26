@@ -157,6 +157,7 @@ on post-fs-data
 	# Fan
 	chown system system /sys/kernel/fan/fan_current
 	chown system system /sys/kernel/fan/fan_enable
+	chown system system /sys/kernel/fan/fan_smart
 	chown system system /sys/kernel/fan/fan_speed_count
 	chown system system /sys/kernel/fan/fan_speed_level
 	chown system system /sys/kernel/fan/fan_temp
@@ -164,6 +165,7 @@ on post-fs-data
 
 	chmod 664 /sys/kernel/fan/fan_current
 	chmod 664 /sys/kernel/fan/fan_enable
+	chmod 664 /sys/kernel/fan/fan_smart
 	chmod 664 /sys/kernel/fan/fan_speed_count
 	chmod 664 /sys/kernel/fan/fan_speed_level
 	chmod 664 /sys/kernel/fan/fan_temp
