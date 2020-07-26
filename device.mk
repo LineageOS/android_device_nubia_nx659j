@@ -276,18 +276,7 @@ PRODUCT_PACKAGES += \
     init.qti.chg_policy.sh \
     fstab.qcom \
     init.msm.usb.configfs.rc \
-    init.multicolor.led.rc \
-    init.nb.exfat.rc \
-    init.nb.nfc.rc \
-    init.nb.rc \
-    init.nubia.fingerprint.rc \
-    init.nubia.haptic.rc \
-    init.nubia.light.rc \
-    init.nubia.mmi.rc \
-    init.nubia.sensors.rc \
-    init.nubia.smartfan.rc \
-    init.nubia.touch.lcd.rc \
-    init.project.rc \
+    init.nubia.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
