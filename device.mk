@@ -315,6 +315,10 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     vendor.qti.hardware.systemhelper@1.0.vendor
 
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.1-service-qti
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.NX659J
