@@ -59,7 +59,6 @@ vendor/bin/hw/android.hardware.keymaster@4.0-strongbox-service-qti
 vendor/bin/hw/android.hardware.neuralnetworks@1.2-service-qti
 vendor/bin/hw/android.hardware.nfc@1.2-service.sec
 vendor/bin/hw/android.hardware.power@1.2-service
-vendor/bin/hw/android.hardware.vibrator@1.0-service
 vendor/bin/hw/android.hardware.usb@1.1-service-qti
 vendor/bin/hw/capabilityconfigstoretest
 vendor/bin/hw/qcrild
@@ -316,7 +315,6 @@ vendor/etc/init/android.hardware.neuralnetworks@1.2-service-qti.rc
 vendor/etc/init/android.hardware.nfc@1.2-service.sec.rc
 vendor/etc/init/android.hardware.power@1.2-service.rc
 vendor/etc/init/android.hardware.usb@1.1-service-qti.rc
-vendor/etc/init/android.hardware.vibrator@1.0-service.rc
 vendor/etc/init/bluetooth_ext_vnd.rc
 vendor/etc/init/cnd.rc
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
@@ -683,8 +681,6 @@ vendor/lib/qcrild_librilutils.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/vendor.qti.hardware.systemhelper@1.0.so
 vendor/lib/vendor.qti.hardware.systemhelper@1.0.so
-vendor/lib/hw/vibrator.default.so
-vendor/lib64/hw/vibrator.default.so
 vendor/lib64/android.hidl.base@1.0.so
 vendor/lib64/btaudio_offload_if.so
 vendor/lib64/camera/components/com.arcsoft.node.capturebokeh.so
