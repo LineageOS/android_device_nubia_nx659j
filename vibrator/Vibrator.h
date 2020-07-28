@@ -41,7 +41,7 @@ class Vibrator : public IVibrator {
     Return<bool> supportsAmplitudeControl() override;
     Return<Status> setAmplitude(uint8_t amplitude) override;
 
-    Return<void> perform(Effect, EffectStrength, perform_cb _hidl_cb) override;
+    Return<void> perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 };
 
 }  // namespace implementation

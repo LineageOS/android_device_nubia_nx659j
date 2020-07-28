@@ -31,6 +31,7 @@
 // kernel documentation on the detail usages for ABIs below
 static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator_aw8695/activate";
 static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator_aw8695/duration";
+static constexpr char GAIN_PATH[] = "/sys/class/leds/vibrator_aw8695/gain";
 static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator_aw8695/state";
 
 namespace android {
@@ -70,15 +71,38 @@ Return<Status> Vibrator::off()  {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl()  {
-    return false;
+    return true;
 }
 
-Return<Status> Vibrator::setAmplitude(uint8_t) {
-    return Status::UNSUPPORTED_OPERATION;
+Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
+    long strength_level = std::lround(amplitude / 2);
+    set(GAIN_PATH, strength_level);
+    return Status::OK;
 }
 
-Return<void> Vibrator::perform(Effect, EffectStrength, perform_cb _hidl_cb) {
-    _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+    if (effect == Effect::CLICK) {
+        uint8_t amplitude;
+        switch (strength) {
+        case EffectStrength::LIGHT:
+            amplitude = 64;
+            break;
+        case EffectStrength::MEDIUM:
+            amplitude = 128;
+            break;
+        case EffectStrength::STRONG:
+            amplitude = 255;
+            break;
+        default:
+            _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+            return Void();
+        }
+        on(10);
+        setAmplitude(amplitude);
+        _hidl_cb(Status::OK, 10);
+    } else
+        _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
+
     return Void();
 }
 
