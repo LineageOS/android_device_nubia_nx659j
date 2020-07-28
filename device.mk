@@ -231,6 +231,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     NubiaBluetooth \
     NubiaFrameworks \
+    NubiaSettings \
     NubiaSystemUI
 
 # Partitions
