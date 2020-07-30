@@ -97,9 +97,9 @@ Return<void> Vibrator::perform(Effect effect, EffectStrength strength, perform_c
             _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
             return Void();
         }
-        on(10);
+        on(15);
         setAmplitude(amplitude);
-        _hidl_cb(Status::OK, 10);
+        _hidl_cb(Status::OK, 15);
     } else
         _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
 
