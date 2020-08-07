@@ -68,5 +68,7 @@
             android:theme="@style/Theme.Main">
         </activity>
 
+        <activity android:name=".KeyHandler" />
+
     </application>
 </manifest>
