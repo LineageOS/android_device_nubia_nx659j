@@ -164,6 +164,9 @@ TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_DENSITY := 420
 
+# Security patch level
+VENDOR_SECURITY_PATCH := 2020-06-05
+
 # Sepolicy
 -include device/qcom/sepolicy/sepolicy.mk
 SELINUX_IGNORE_NEVERALLOWS := true
