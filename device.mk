@@ -29,9 +29,7 @@ $(call inherit-product, vendor/nubia/NX659J/NX659J-vendor.mk)
 # Inherit display makefiles
 $(call inherit-product, hardware/qcom-caf/sm8250/display/config/display-board.mk)
 
--include $(LOCAL_PATH)/product_prop.mk
--include $(LOCAL_PATH)/system_prop.mk
--include $(LOCAL_PATH)/vendor_prop.mk
+-include $(LOCAL_PATH)/properties.mk
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
