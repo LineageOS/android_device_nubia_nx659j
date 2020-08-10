@@ -139,6 +139,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.disable_layer_stitch=0 \
     vendor.display.enable_async_powermode=0
 
+# fwk-detect
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
+
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1
+
 # Gatekeeper
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu=true
