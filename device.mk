@@ -281,9 +281,13 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_PACKAGES += \
     NubiaBluetooth \
+    NubiaCarrierConfig \
+    NubiaCellBroadcastReceiver \
     NubiaFrameworks \
     NubiaSettings \
-    NubiaSystemUI
+    NubiaSystemUI \
+    NubiaTelecomm \
+    NubiaTelephony
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
