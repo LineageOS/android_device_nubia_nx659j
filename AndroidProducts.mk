@@ -17,6 +17,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_NX659J.mk
 
 COMMON_LUNCH_CHOICES := \
+    lineage_NX659J-eng \
     lineage_NX659J-user \
-    lineage_NX659J-userdebug \
-    lineage_NX659J-eng
+    lineage_NX659J-userdebug
