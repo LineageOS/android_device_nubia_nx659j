@@ -471,8 +471,6 @@ vendor/firmware/nubia_tp_jdi_fw.img
 vendor/firmware/sec_s3nrn81_firmware.bin
 vendor/firmware/sec_s3nrn81_rfreg.bin
 vendor/firmware/wigig/wigig.ini
-vendor/lib64/libvndfwk_detect_jni.qti.so
-vendor/lib/libvndfwk_detect_jni.qti.so
 vendor/lib/qcrild_librilutils.so
 vendor/lib64/qcrild_librilutils.so
 vendor/lib64/btaudio_offload_if.so
