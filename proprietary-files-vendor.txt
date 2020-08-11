@@ -1,4 +1,8 @@
 # Vendor
+vendor/lib/libOmxVdec.so
+vendor/lib/libOmxVenc.so
+vendor/lib64/libOmxVdec.so
+vendor/lib64/libOmxVenc.so
 -vendor/app/CACertService/CACertService.apk
 -vendor/app/CneApp/CneApp.apk
 -vendor/app/com.qualcomm.qti.gpudrivers.sm8250.api29/com.qualcomm.qti.gpudrivers.sm8250.api29.apk
