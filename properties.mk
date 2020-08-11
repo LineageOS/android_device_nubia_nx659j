@@ -160,6 +160,10 @@ PRODUCT_ODM_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu=true
 
+# GMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-zte
+
 # Netmgr
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.data.iwlan.enable=true \
