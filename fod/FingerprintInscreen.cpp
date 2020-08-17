@@ -23,12 +23,8 @@
 #include <cmath>
 #include <thread>
 
-#define FINGERPRINT_ACQUIRED_VENDOR 6
-
 #define NOTIFY_FINGER_DOWN 1536
 #define NOTIFY_FINGER_UP 1537
-#define NOTIFY_UI_READY 1607
-#define NOTIFY_UI_DISAPPER 1608
 
 #define FOD_SENSOR_X 445
 #define FOD_SENSOR_Y 2061
@@ -105,14 +101,10 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    this->mGoodixFpDaemon->sendCommand(NOTIFY_UI_READY, {},
-                [](int, const hidl_vec<signed char>&) {});
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-    this->mGoodixFpDaemon->sendCommand(NOTIFY_UI_DISAPPER, {},
-                [](int, const hidl_vec<signed char>&) {});
     return Void();
 }
 
