@@ -56,8 +56,6 @@ class FingerprintInscreen : public IFingerprintInscreen {
 
   private:
     sp<IGoodixFingerprintDaemon> mGoodixFpDaemon;
-
-    void notifyHal(int32_t cmd);
 };
 
 }  // namespace implementation

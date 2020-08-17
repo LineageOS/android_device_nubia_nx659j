@@ -91,24 +91,28 @@ Return<void> FingerprintInscreen::onPress() {
     set(HBM_ENABLE_PATH, 1);
     std::thread([this]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
-        notifyHal(NOTIFY_FINGER_DOWN);
+        this->mGoodixFpDaemon->sendCommand(NOTIFY_FINGER_DOWN, {},
+                [](int, const hidl_vec<signed char>&) {});
     }).detach();
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
     set(HBM_ENABLE_PATH, 0);
-    notifyHal(NOTIFY_FINGER_UP);
+    this->mGoodixFpDaemon->sendCommand(NOTIFY_FINGER_UP, {},
+                [](int, const hidl_vec<signed char>&) {});
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    notifyHal(NOTIFY_UI_READY);
+    this->mGoodixFpDaemon->sendCommand(NOTIFY_UI_READY, {},
+                [](int, const hidl_vec<signed char>&) {});
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-    notifyHal(NOTIFY_UI_DISAPPER);
+    this->mGoodixFpDaemon->sendCommand(NOTIFY_UI_DISAPPER, {},
+                [](int, const hidl_vec<signed char>&) {});
     return Void();
 }
 
@@ -136,15 +140,6 @@ Return<bool> FingerprintInscreen::shouldBoostBrightness() {
 
 Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>&) {
     return Void();
-}
-
-void FingerprintInscreen::notifyHal(int32_t cmd) {
-    hidl_vec<int8_t> data;
-    Return<void> ret = this->mGoodixFpDaemon->sendCommand(cmd, data, [&](int32_t, const hidl_vec<int8_t>&) {
-    });
-    if (!ret.isOk()) {
-        LOG(ERROR) << "notifyHal(" << cmd << ") error: " << ret.description();
-    }
 }
 
 }  // namespace implementation
