@@ -85,11 +85,8 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     set(HBM_ENABLE_PATH, 1);
-    std::thread([this]() {
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
-        this->mGoodixFpDaemon->sendCommand(NOTIFY_FINGER_DOWN, {},
+    this->mGoodixFpDaemon->sendCommand(NOTIFY_FINGER_DOWN, {},
                 [](int, const hidl_vec<signed char>&) {});
-    }).detach();
     return Void();
 }
 
