@@ -9,8 +9,6 @@ vendor/lib64/libOmxVenc.so
 -vendor/app/IWlanService/IWlanService.apk
 -vendor/app/TimeService/TimeService.apk
 -vendor/app/TrustZoneAccessService/TrustZoneAccessService.apk
-vendor/lib/libsdmcore.so
-vendor/lib64/libsdmcore.so
 vendor/bin/adpl
 vendor/bin/adsprpcd
 vendor/bin/ATFWD-daemon
