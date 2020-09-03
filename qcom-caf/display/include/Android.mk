@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 # Legacy header copy. This is deprecated.
 # Modules using these headers should shift to using
-# LOCAL_HEADER_LIBRARIES := display_headers
+# LOCAL_HEADER_LIBRARIES := display_device_headers
 LOCAL_VENDOR_MODULE           := true
 LOCAL_COPY_HEADERS_TO         := $(common_header_export_path)
 LOCAL_COPY_HEADERS            := display_color_processing.h \

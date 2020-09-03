@@ -8,7 +8,7 @@ LOCAL_MODULE              := libsdedrm
 LOCAL_SANITIZE            := integer_overflow
 LOCAL_MODULE_TAGS         := optional
 LOCAL_SHARED_LIBRARIES    := libdrm libdrmutils libdisplaydebug
-LOCAL_HEADER_LIBRARIES    := display_headers
+LOCAL_HEADER_LIBRARIES    := display_device_headers
 LOCAL_C_INCLUDES          := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/ \
                              -isystem external/libdrm
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr

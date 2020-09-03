@@ -18,7 +18,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := libhistogram
 LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_TAGS := optional
-LOCAL_HEADER_LIBRARIES := display_headers
+LOCAL_HEADER_LIBRARIES := display_device_headers
 LOCAL_SHARED_LIBRARIES := libdrm liblog libcutils libutils libbase
 LOCAL_C_INCLUDES          := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/ \
                              -isystem external/libdrm
@@ -33,7 +33,7 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_HEADER_LIBRARIES := display_headers
+LOCAL_HEADER_LIBRARIES := display_device_headers
 LOCAL_MODULE := color_sampling_tool
 LOCAL_SRC_FILES := color_sampling_tool.cpp
 LOCAL_SHARED_LIBRARIES := libhistogram libdrm liblog libcutils libutils libbase
@@ -50,7 +50,7 @@ include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
 
-LOCAL_HEADER_LIBRARIES := display_headers
+LOCAL_HEADER_LIBRARIES := display_device_headers
 LOCAL_MODULE := color_sampling_test
 LOCAL_SRC_FILES := ringbuffer_test.cpp
 LOCAL_STATIC_LIBRARIES := libgtest libgmock

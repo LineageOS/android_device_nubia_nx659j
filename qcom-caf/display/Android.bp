@@ -1,22 +1,5 @@
-cc_defaults {
-    name: "display_defaults",
-    cflags: [
-        "-Wno-missing-field-initializers",
-        "-Wconversion",
-        "-Wall",
-        "-Werror",
-    ],
-    shared_libs: [
-        "liblog",
-        "libcutils",
-        "libutils",
-    ],
-    header_libs: ["display_headers"],
-    clang: true,
-}
-
 cc_library_headers {
-    name: "debug_headers",
+    name: "debug_device_headers",
     vendor: true,
     export_include_dirs: [
         "libdebug",
@@ -24,7 +7,7 @@ cc_library_headers {
 }
 
 cc_library_headers {
-    name: "display_headers",
+    name: "display_device_headers",
     vendor: true,
     export_include_dirs: [
         "include",
@@ -37,11 +20,7 @@ cc_library_headers {
         "gralloc",
         "libhistogram",
     ],
-    header_libs: ["libhardware_headers", "display_intf_headers", "debug_headers"],
-    export_header_lib_headers: ["libhardware_headers", "display_intf_headers", "debug_headers"],
-}
+    header_libs: ["libhardware_headers", "display_device_intf_headers", "debug_device_headers"],
+    export_header_lib_headers: ["libhardware_headers", "display_device_intf_headers", "debug_device_headers"],
 
-subdirs = [
-    "libqservice",
-    "libqdutils",
-]
+}
