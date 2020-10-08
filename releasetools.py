@@ -30,9 +30,34 @@ def AddImage(info, basename, dest):
   common.ZipWriteStr(info.output_zip, name, data)
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
 
+def AddImageRadio(info, basename, dest):
+    name = basename
+    data = info.input_zip.read("RADIO/" + basename)
+    common.ZipWriteStr(info.output_zip, name, data)
+    info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
+    info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+
 def OTA_InstallEnd(info):
   info.script.Print("Patching dtbo...")
   AddImage(info, "dtbo.img", "/dev/block/bootdevice/by-name/dtbo")
   info.script.Print("Patching vbmeta...")
   AddImage(info, "vbmeta.img", "/dev/block/bootdevice/by-name/vbmeta")
+
+  AddImageRadio(info, "aop.mbn", "/dev/block/bootdevice/by-name/aop");
+  AddImageRadio(info, "BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth");
+  AddImageRadio(info, "cmnlib64.mbn", "/dev/block/bootdevice/by-name/cmnlib64");
+  AddImageRadio(info, "cmnlib.mbn", "/dev/block/bootdevice/by-name/cmnlib");
+  AddImageRadio(info, "devcfg.mbn", "/dev/block/bootdevice/by-name/devcfg");
+  AddImageRadio(info, "dspso.bin", "/dev/block/bootdevice/by-name/dsp");
+  AddImageRadio(info, "hyp.mbn", "/dev/block/bootdevice/by-name/hyp");
+  AddImageRadio(info, "imagefv.elf", "/dev/block/bootdevice/by-name/ImageFv");
+  AddImageRadio(info, "multi_image.mbn", "/dev/block/bootdevice/by-name/multiimgoem");
+  AddImageRadio(info, "NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem");
+  AddImageRadio(info, "parameter.img", "/dev/block/bootdevice/by-name/parameter");
+  AddImageRadio(info, "qupv3fw.elf", "/dev/block/bootdevice/by-name/qupfw");
+  AddImageRadio(info, "splash.img", "/dev/block/bootdevice/by-name/splash");
+  AddImageRadio(info, "tz.mbn", "/dev/block/bootdevice/by-name/tz");
+  AddImageRadio(info, "uefi_sec.mbn", "/dev/block/bootdevice/by-name/uefisecapp");
+  AddImageRadio(info, "xbl_config.elf", "/dev/block/bootdevice/by-name/xbl_config");
+  AddImageRadio(info, "xbl.elf", "/dev/block/bootdevice/by-name/xbl");
   return
