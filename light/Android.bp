@@ -19,10 +19,12 @@ cc_binary {
     init_rc: ["android.hardware.light@2.0-service.NX659J.rc"],
     srcs: ["service.cpp", "Light.cpp"],
     shared_libs: [
-        "libbase",
         "libhidlbase",
-        "libutils",
         "android.hardware.light@2.0",
+    ],
+    static_libs: [
+        "libbase",
+        "libutils",
     ],
     relative_install_path : "hw",
     vendor: true,
