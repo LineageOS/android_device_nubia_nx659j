@@ -209,3 +209,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.mobiledata=true \
     ro.com.android.dataroaming=false \
     vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
+
+# Zygote
+PRODUCT_PROPERTY_OVERRIDES += \
+    zygote.critical_window.minute=10
