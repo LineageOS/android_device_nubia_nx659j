@@ -58,10 +58,6 @@ on fs
     restorecon_recursive /mnt/vendor/persist
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/data 0700 system system
-
-on post-fs
-    write /dev/ipa 1
-
 on late-fs
     mount_all /vendor/etc/fstab.qcom --late
 
