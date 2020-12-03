@@ -102,7 +102,7 @@ PRODUCT_PACKAGES += \
 
 # ConfigStore
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.capabilityconfigstore@1.0.vendor
+    disable_configstore
 
 # Display
 PRODUCT_PACKAGES += \
