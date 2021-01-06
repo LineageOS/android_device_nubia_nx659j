@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020 The LineageOS Project
+     Copyright (C) 2020-2023 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -24,8 +24,10 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/device_settings_app_name"
-        android:persistent="true">
+        android:persistent="true"
+        android:theme="@style/Theme.Main">
 
         <receiver android:name=".BootCompletedReceiver">
             <intent-filter>
@@ -36,8 +38,7 @@
 
         <activity
             android:name=".NubiaParts"
-            android:label="@string/nubiaparts"
-            android:theme="@style/Theme.Main">
+            android:label="@string/nubiaparts">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
@@ -52,8 +53,7 @@
 
         <activity
             android:name=".FanSettings"
-            android:label="@string/fan_title"
-            android:theme="@style/Theme.Main">
+            android:label="@string/fan_title">
         </activity>
 
         <activity android:name=".KeyHandler" />
