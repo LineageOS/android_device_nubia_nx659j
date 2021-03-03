@@ -124,6 +124,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.privapp.list=org.codeaurora.snapcam,org.lineageos.aperture \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,org.lineageos.aperture
 
+# Chipset
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.soc.manufacturer=QTI \
+    ro.soc.model=SM8250
+
 # CNE
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.cne.feature=1
