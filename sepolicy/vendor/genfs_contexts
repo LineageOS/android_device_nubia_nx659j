@@ -1,0 +1,15 @@
+# Battery data
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:neo,battery/power_supply u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/soc/884000.i2c/i2c-6/6-0057/power_supply u:object_r:sysfs_batteryinfo:s0
+
+# Fan node
+genfscon sysfs /kernel/fan u:object_r:sysfs_fan:s0
+
+# FOD
+genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui u:object_r:sysfs_fod:s0
+
+# GameMode node
+genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-5/5-0020/input u:object_r:sysfs_tp:s0
+
+# Vibrator
+genfscon sysfs /devices/platform/soc/888000.i2c/i2c-7/7-005a/leds/vibrator_aw8695 u:object_r:sysfs_leds:s0

@@ -1,0 +1,5 @@
+type sysfs_tp, sysfs_type, fs_type;
+type sysfs_fan, sysfs_type, fs_type;
+type sysfs_fod, sysfs_type, fs_type;
+type sysfs_prox_cal, sysfs_type, fs_type;
+type sysfs_rgb_cal, sysfs_type, fs_type;

@@ -1,0 +1,6 @@
+# Audio
+persist.audio.fluence         u:object_r:vendor_default_prop:s0
+persist.demo.hdmirotationlock           u:object_r:vendor_default_prop:s0
+
+# Fingerprint
+fingerprint.disable.study     u:object_r:vendor_default_prop:s0
