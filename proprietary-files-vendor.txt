@@ -339,7 +339,6 @@ vendor/etc/init/wfdvndservice.rc
 vendor/etc/init/wifi-diag.rc
 vendor/etc/izat.conf
 vendor/etc/keybox.xml
-vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-sec-vendor.conf
 vendor/etc/lowi.conf
 vendor/etc/perf/commonresourceconfigs.xml
