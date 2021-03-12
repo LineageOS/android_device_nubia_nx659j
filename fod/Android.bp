@@ -16,8 +16,8 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J",
-    init_rc: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.nubia_NX659J.rc"],
+    name: "vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.NX659J",
+    init_rc: ["vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.NX659J.rc"],
     srcs: ["service.cpp", "FingerprintInscreen.cpp"],
     vendor: true,
     shared_libs: [
