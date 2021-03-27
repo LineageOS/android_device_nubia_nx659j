@@ -1799,7 +1799,7 @@ vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 # WiFi Display
 bin/wfdservice
 etc/init/wfdservice.rc
-vendor/etc/wfdconfig.xml
+etc/permissions/privapp-permissions-com.qualcomm.wfd.service.xml
 etc/wfdconfigsink.xml
 -framework/WfdCommon.jar
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
@@ -1842,6 +1842,7 @@ vendor/bin/wfdhdcphalservice
 vendor/bin/wifidisplayhalservice
 vendor/etc/init/android.hardware.drm@1.1-service.wfdhdcp.rc
 vendor/etc/init/com.qualcomm.qti.wifidisplayhal@1.0-service.rc
+vendor/etc/wfdconfig.xml
 vendor/lib/libFileMux_proprietary.so
 vendor/lib/libmmrtpdecoder_proprietary.so
 vendor/lib/libmmrtpencoder_proprietary.so
