@@ -1152,7 +1152,6 @@ vendor/lib/libmmrtpencoder_proprietary.so
 vendor/lib/libMpeg4SwEncoder.so
 vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
-vendor/lib/libOmxVenc.so
 vendor/lib/libfastcrc.so
 vendor/lib/libstreamparser.so
 vendor/lib/libvideoutils.so
@@ -1160,30 +1159,7 @@ vendor/lib/libswvdec.so
 vendor/lib64/libMpeg4SwEncoder.so
 vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
-vendor/lib64/libOmxVenc.so
 vendor/lib64/libswvdec.so
-
-# Media - not OSS yet
-vendor/lib/libOmxAacEnc.so
-vendor/lib/libOmxAmrEnc.so
-vendor/lib/libOmxCore.so
-vendor/lib/libOmxEvrcEnc.so
-vendor/lib/libOmxG711Enc.so
-vendor/lib/libOmxQcelp13Enc.so
-vendor/lib/libOmxVdec.so
-vendor/lib/libOmxVenc.so
-vendor/lib/libmm-omxcore.so
-vendor/lib/libc2dcolorconvert.so
-vendor/lib64/libOmxAacEnc.so
-vendor/lib64/libOmxAmrEnc.so
-vendor/lib64/libOmxCore.so
-vendor/lib64/libOmxEvrcEnc.so
-vendor/lib64/libOmxG711Enc.so
-vendor/lib64/libOmxQcelp13Enc.so
-vendor/lib64/libOmxVdec.so
-vendor/lib64/libOmxVenc.so
-vendor/lib64/libmm-omxcore.so
-vendor/lib64/libc2dcolorconvert.so
 
 # NFC
 vendor/bin/hw/android.hardware.nfc@1.2-service.sec
