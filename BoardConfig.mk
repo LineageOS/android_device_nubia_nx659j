@@ -109,7 +109,6 @@ BOARD_USES_METADATA_PARTITION := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
-    earlycon=msm_geni_serial,0xa90000 \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     lpm_levels.sleep_disabled=1 \
