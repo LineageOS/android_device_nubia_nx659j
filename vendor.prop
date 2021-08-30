@@ -174,6 +174,7 @@ ro.com.google.clientidbase=android-zte
 
 # Media
 debug.stagefright.c2inputsurface=-1
+ro.odm.build.media_performance_class=30
 vendor.media.omx=0
 
 # NFC
