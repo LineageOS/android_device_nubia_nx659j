@@ -20,18 +20,20 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.preference.PreferenceActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-public class FanSettings extends PreferenceActivity {
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
+
+public class FanSettings extends CollapsingToolbarBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
-        .replace(android.R.id.content, new FanSettingsFragment())
+        .replace(R.id.content_frame, new FanSettingsFragment())
         .commit();
     }
 
