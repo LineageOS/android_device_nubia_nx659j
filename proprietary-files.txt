@@ -522,7 +522,6 @@ vendor/lib/libsynx.so
 vendor/lib/libthreadutils.so
 vendor/lib/libbitmlengine.so
 vendor/lib/libvidhance.so
-vendor/lib/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 vendor/lib64/camera/components/com.arcsoft.node.capturebokeh.so
 vendor/lib64/camera/components/com.arcsoft.node.realtimebokeh.so
 vendor/lib64/camera/components/com.arcsoft.node.superlowlightraw.so
@@ -691,7 +690,7 @@ vendor/lib64/libsynx.so
 vendor/lib64/libthreadutils.so
 vendor/lib64/libbitmlengine.so
 vendor/lib64/libvidhance.so
-vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
+vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so|9b44bb94ba467961a4b35b79eb3ac927ae27f6ea|0732d10c97e13624b2e52f61411d81c5178d6e5e
 
 # Capability Config Store
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
