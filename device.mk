@@ -261,7 +261,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mdm.sh \
     init.nfc.sku.sh \
-    init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.sdio.sh \
     init.qcom.sensors.sh \
