@@ -44,6 +44,8 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    ('system_ext/lib64/lib-imsvideocodec.so'): blob_fixup()
+        .add_needed('libgui_shim.so'),
     ('vendor/etc/sensors/hals.conf'): blob_fixup()
         .regex_replace('ffbm.sensors.oem.so\n', ''),
     ('vendor/lib/hw/fingerprint.goodix_fod.default.so', 
