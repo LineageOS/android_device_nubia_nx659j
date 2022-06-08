@@ -995,13 +995,11 @@ vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # QMI
-vendor/bin/irsc_util
 vendor/bin/qmipriod
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
 vendor/bin/qrtr-ns
 vendor/etc/init/qmipriod.rc
-vendor/etc/sec_config
 vendor/lib/libidl.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libqcci_legacy.so
