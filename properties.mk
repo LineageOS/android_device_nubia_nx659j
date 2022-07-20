@@ -92,7 +92,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.wsa.enable=false \
 
 # Bluetooth
-PRODUCT_PRODUCT_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hardware.power.operating_voltage_mv=3300 \
     bluetooth.profile.a2dp.source.enabled=true \
     bluetooth.profile.avrcp.target.enabled=true \
