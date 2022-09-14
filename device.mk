@@ -138,7 +138,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3.vendor \
     android.hardware.drm@1.4.vendor \
-    android.hardware.drm@1.3-service.clearkey
+    android.hardware.drm-service.clearkey
 
 # fastbootd
 PRODUCT_PACKAGES += \
