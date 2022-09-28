@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "UdfpsHander.nubia"
+#define LOG_TAG "UdfpsHandler.nubia"
 
 #include "UdfpsHandler.h"
 
@@ -43,7 +43,7 @@ static bool readBool(int fd) {
     return c != '0';
 }
 
-class NubiadfpsHander : public UdfpsHandler {
+class NubiadfpsHandler : public UdfpsHandler {
   public:
     void init(fingerprint_device_t *device) {
         mDevice = device;
@@ -98,7 +98,7 @@ class NubiadfpsHander : public UdfpsHandler {
 };
 
 static UdfpsHandler* create() {
-    return new NubiadfpsHander();
+    return new NubiadfpsHandler();
 }
 
 static void destroy(UdfpsHandler* handler) {
