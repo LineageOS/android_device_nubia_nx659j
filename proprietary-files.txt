@@ -710,7 +710,6 @@ vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
 vendor/lib64/libdpmqmihal.so
 
 # Data
-vendor/bin/ATFWD-daemon
 vendor/bin/adpl
 vendor/bin/ipacm-diag
 vendor/bin/netmgrd
@@ -760,7 +759,6 @@ vendor/lib64/libqcmaputils.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
-vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so
 
 # Display - from nio - 12-S1RTS32.41-20-16-1-5
 vendor/lib/libdisp-aba.so|738e42d8d8eb0de5ac03df750e1f3e17e30365fa
@@ -1271,7 +1269,6 @@ vendor/bin/hw/qcrild
 vendor/etc/init/init-qcril-data.rc
 vendor/etc/init/qcrild.rc
 vendor/etc/init/ssgtzd.rc
-vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/lib/liblqe.so
 vendor/lib/libpdmapper.so
 vendor/lib/libpdnotifier.so
