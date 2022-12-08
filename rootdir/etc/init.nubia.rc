@@ -293,6 +293,13 @@ on post-fs-data
 	chown system system /persist/sensors/rgbc_cfg
 	chmod 0666 /persist/sensors/rgbc_cfg
 
+on property:vendor.post_boot.parsed=1
+    # IRQ Tuning
+    # IRQ 300: msm_drm
+    # IRQ 338: kgsl_3d0_irq
+    write /proc/irq/300/smp_affinity_list 2
+    write /proc/irq/338/smp_affinity_list 1
+
 service vendor.camera-provider-2-4 /vendor/bin/hw/android.hardware.camera.provider@2.4-service_64
 	override
 	interface android.hardware.camera.provider@2.4::ICameraProvider legacy/0
