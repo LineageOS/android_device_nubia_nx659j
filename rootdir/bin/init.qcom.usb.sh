@@ -1,5 +1,5 @@
 #!/vendor/bin/sh
-# Copyright (c) 2012-2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2018, 2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -42,24 +42,18 @@ soc_id=`cat /sys/devices/soc0/soc_id 2> /dev/null`
 esoc_name=`cat /sys/bus/esoc/devices/esoc0/esoc_name 2> /dev/null`
 
 target=`getprop ro.board.platform`
-product=`getprop ro.product.name`
-product=${product:(-4)}
 
 if [ -f /sys/class/android_usb/f_mass_storage/lun/nofua ]; then
 	echo 1  > /sys/class/android_usb/f_mass_storage/lun/nofua
 fi
-
 #
 # Override USB default composition
 #
-
 #
 # ZTEMT: Allow USB enumeration with or without debug port
 #
-
 chown -R root:system /mnt/vendor/persist/property
 chmod -R 770 /mnt/vendor/persist/property
-
 isfactory=`cat /mnt/vendor/persist/property/persist.vendor.usb.factory`
 case "$isfactory" in
 	"0" | "1")
@@ -74,18 +68,21 @@ case "$isfactory" in
 		setprop persist.vendor.usb.factory 1
 	;;
 esac
-
-if [ -e /dev/sec-nfc ]; then
-	setprop persist.vendor.sys.nfchw 1
-else
-    setprop persist.vendor.sys.nfchw 0
+if [ "$(getprop persist.vendor.resetboot)" == "1" ]; then
+    echo 0 > /mnt/vendor/persist/property/persist.vendor.usb.factory
+    echo 0 > /mnt/vendor/persist/property/persist.vendor.usb.adb
+    echo 0 > /mnt/vendor/persist/property/persist.vendor.usb.fixedserialno
+    setprop persist.vendor.usb.factory 0
+    setprop persist.vendor.usb.adb 0
+    setprop persist.vendor.usb.fixedserialno 0
+    setprop persist.vendor.resetboot 0
 fi
 if [ "$(getprop init.svc.vendor.usb-gadget-hal-1-0)" != "running" ]; then
 isadb=`cat /mnt/vendor/persist/property/persist.vendor.usb.adb`
 case "$isadb" in
     "0")
         if [ "$(getprop ro.bootmode)" == "ffbm-01" ]; then
-            setprop persist.adb.secure 0
+            setprop persist.odm.adb.secure 0
             setprop persist.vendor.usb.factory 1
             setprop persist.vendor.usb.config nubia,adb
         else
@@ -101,7 +98,7 @@ case "$isadb" in
     ;;
     "1")
         if [ "$(getprop ro.bootmode)" == "ffbm-01" ]; then
-            setprop persist.adb.secure 0
+            setprop persist.odm.adb.secure 0
             setprop persist.vendor.usb.factory 1
         fi
         setprop persist.vendor.usb.config nubia,adb
@@ -111,7 +108,7 @@ case "$isadb" in
         chown -R root:system /mnt/vendor/persist/property
         chmod -R 770 /mnt/vendor/persist/property
         if [ "$(getprop ro.bootmode)" == "ffbm-01" ]; then
-            setprop persist.adb.secure 0
+            setprop persist.odm.adb.secure 0
             setprop persist.vendor.usb.factory 1
             setprop persist.vendor.usb.config nubia,adb
         else  
@@ -135,9 +132,8 @@ case "$isadb" in
      ;;
 esac
 fi
-
 # If USB persist config not set, set default configuration
-if [ "$(getprop persist.vendor.usb.config)" == "" -a \
+if [ "$(getprop persist.vendor.usb.config)" == "" -a "$(getprop ro.build.type)" != "user" -a \
 	"$(getprop init.svc.vendor.usb-gadget-hal-1-0)" != "running" ]; then
     if [ "$esoc_name" != "" ]; then
 	  setprop persist.vendor.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
@@ -154,11 +150,7 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
                   *)
 		  case "$soc_machine" in
 		    "SA")
-			if [ "$product" == "gvmq" ]; then
-				setprop persist.vendor.usb.config adb
-			else
-				setprop persist.vendor.usb.config diag,adb
-			fi
+	              setprop persist.vendor.usb.config diag,adb
 		    ;;
 		    *)
 	            case "$target" in
@@ -195,7 +187,7 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 	              "sdm845" | "sdm710")
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
 		      ;;
-	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal")
+	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal" | "lahaina" | "holi")
 			  setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
 		      ;;
 	              *)
@@ -209,6 +201,12 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 	      ;;
 	  esac
       fi
+fi
+
+# This check is needed for GKI 1.0 targets where QDSS is not available
+if [ "$(getprop persist.vendor.usb.config)" == "diag,serial_cdev,rmnet,dpl,qdss,adb" -a \
+     ! -d /config/usb_gadget/g1/functions/qdss.qdss ]; then
+      setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
 fi
 
 # Start peripheral mode on primary USB controllers for Automotive platforms
@@ -225,19 +223,6 @@ case "$soc_machine" in
     ;;
 esac
 
-# set rndis transport to BAM2BAM_IPA for 8920 and 8940
-if [ "$target" == "msm8937" ]; then
-	if [ ! -d /config/usb_gadget ]; then
-	   case "$soc_id" in
-		"313" | "320")
-		   echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
-		;;
-		*)
-		;;
-	   esac
-	fi
-fi
-
 enabledock=`getprop persist.vendor.usb.enabledock`
 case "$enabledock" in
 	"0" | "1")
@@ -253,8 +238,7 @@ if [ -d /config/usb_gadget ]; then
 	msm_serial=`cat /sys/devices/soc0/serial_number`;
 	msm_serial_hex=`printf %08X $msm_serial`
 	machine_type=`cat /sys/devices/soc0/machine`
-	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
-	echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
+	setprop vendor.usb.product_string "$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
 
         # Use fixed serialno if in ffbm mode or /persist/property/persist.vendor.usb.fixedserialno is set
         serialnomode=`cat /persist/property/persist.vendor.usb.fixedserialno`
@@ -264,7 +248,6 @@ if [ -d /config/usb_gadget ]; then
         else
                 setprop persist.vendor.usb.fixedserialno 0
         fi
-
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy
 	serialnumber=`cat /config/usb_gadget/g1/strings/0x409/serialnumber 2> /dev/null`
 	if [ "$serialnumber" == "" ]; then
