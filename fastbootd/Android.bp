@@ -4,23 +4,34 @@ cc_binary {
 
     recovery: true,
 
+    product_variables: {
+        debuggable: {
+            cppflags: ["-DFB_ENABLE_FETCH"],
+        },
+    },
+
     srcs: [
         "commands.cpp",
         "fastboot_device.cpp",
         "flashing.cpp",
         "main.cpp",
+        "usb.cpp",
         "usb_client.cpp",
+        "tcp_client.cpp",
         "utility.cpp",
         "variables.cpp",
+        "socket.cpp",
     ],
 
     shared_libs: [
         "android.hardware.boot@1.0",
-        "android.hardware.fastboot@1.0",
+        "android.hardware.boot@1.1",
+        "android.hardware.fastboot@1.1",
         "android.hardware.health@2.0",
-        "libadbd",
+        "android.hardware.health-V1-ndk",
         "libasyncio",
         "libbase",
+        "libbinder_ndk",
         "libbootloader_message",
         "libcutils",
         "libext2_uuid",
@@ -28,15 +39,27 @@ cc_binary {
         "libfs_mgr",
         "libgsi",
         "libhidlbase",
-        "libhidltransport",
-        "libhwbinder",
         "liblog",
         "liblp",
+        "libprotobuf-cpp-lite",
         "libsparse",
         "libutils",
     ],
 
     static_libs: [
+        "android.hardware.health-translate-ndk",
+        "libc++fs",
         "libhealthhalutils",
+        "libhealthshim",
+        "libsnapshot_cow",
+        "libsnapshot_nobinder",
+        "update_metadata-protos",
+    ],
+
+    header_libs: [
+        "avb_headers",
+        "libgtest_prod_headers",
+        "libsnapshot_headers",
+        "libstorage_literals_headers",
     ],
 }

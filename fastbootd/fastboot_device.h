@@ -22,9 +22,10 @@
 #include <utility>
 #include <vector>
 
+#include <aidl/android/hardware/health/IHealth.h>
 #include <android/hardware/boot/1.0/IBootControl.h>
-#include <android/hardware/fastboot/1.0/IFastboot.h>
-#include <android/hardware/health/2.0/IHealth.h>
+#include <android/hardware/boot/1.1/IBootControl.h>
+#include <android/hardware/fastboot/1.1/IFastboot.h>
 
 #include "commands.h"
 #include "transport.h"
@@ -39,6 +40,7 @@ class FastbootDevice {
     void ExecuteCommands();
     bool WriteStatus(FastbootResult result, const std::string& message);
     bool HandleData(bool read, std::vector<char>* data);
+    bool HandleData(bool read, char* data, uint64_t size);
     std::string GetCurrentSlot();
 
     // Shortcuts for writing status results.
@@ -51,10 +53,11 @@ class FastbootDevice {
     android::sp<android::hardware::boot::V1_0::IBootControl> boot_control_hal() {
         return boot_control_hal_;
     }
-    android::sp<android::hardware::fastboot::V1_0::IFastboot> fastboot_hal() {
+    android::sp<android::hardware::boot::V1_1::IBootControl> boot1_1() { return boot1_1_; }
+    android::sp<android::hardware::fastboot::V1_1::IFastboot> fastboot_hal() {
         return fastboot_hal_;
     }
-    android::sp<android::hardware::health::V2_0::IHealth> health_hal() { return health_hal_; }
+    std::shared_ptr<aidl::android::hardware::health::IHealth> health_hal() { return health_hal_; }
 
     void set_active_slot(const std::string& active_slot) { active_slot_ = active_slot; }
 
@@ -63,8 +66,9 @@ class FastbootDevice {
 
     std::unique_ptr<Transport> transport_;
     android::sp<android::hardware::boot::V1_0::IBootControl> boot_control_hal_;
-    android::sp<android::hardware::health::V2_0::IHealth> health_hal_;
-    android::sp<android::hardware::fastboot::V1_0::IFastboot> fastboot_hal_;
+    android::sp<android::hardware::boot::V1_1::IBootControl> boot1_1_;
+    std::shared_ptr<aidl::android::hardware::health::IHealth> health_hal_;
+    android::sp<android::hardware::fastboot::V1_1::IFastboot> fastboot_hal_;
     std::vector<char> download_data_;
     std::string active_slot_;
 };

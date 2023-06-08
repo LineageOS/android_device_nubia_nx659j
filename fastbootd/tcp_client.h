@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@
 
 #include <memory>
 
-#include "usb.h"
-
+#include "socket.h"
 #include "transport.h"
 
-class ClientUsbTransport : public Transport {
+class ClientTcpTransport : public Transport {
   public:
-    ClientUsbTransport();
-    ~ClientUsbTransport() override = default;
+    ClientTcpTransport();
+    ~ClientTcpTransport() override = default;
 
     ssize_t Read(void* data, size_t len) override;
     ssize_t Write(const void* data, size_t len) override;
@@ -32,7 +31,12 @@ class ClientUsbTransport : public Transport {
     int Reset() override;
 
   private:
-    std::unique_ptr<usb_handle> handle_;
+    void ListenFastbootSocket();
 
-    DISALLOW_COPY_AND_ASSIGN(ClientUsbTransport);
+    std::unique_ptr<Socket> service_;
+    std::unique_ptr<Socket> socket_;
+    uint64_t message_bytes_left_ = 0;
+    bool downloading_ = false;
+
+    DISALLOW_COPY_AND_ASSIGN(ClientTcpTransport);
 };

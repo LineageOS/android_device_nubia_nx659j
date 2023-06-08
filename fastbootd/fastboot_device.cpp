@@ -16,25 +16,53 @@
 
 #include "fastboot_device.h"
 
-#include <android-base/logging.h>
-#include <android-base/strings.h>
-#include <android/hardware/boot/1.0/IBootControl.h>
-#include <android/hardware/fastboot/1.0/IFastboot.h>
-#include <healthhalutils/HealthHalUtils.h>
-
 #include <algorithm>
+
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+#include <android-base/strings.h>
+#include <android/binder_manager.h>
+#include <android/hardware/boot/1.0/IBootControl.h>
+#include <android/hardware/fastboot/1.1/IFastboot.h>
+#include <fs_mgr.h>
+#include <fs_mgr/roots.h>
+#include <health-shim/shim.h>
+#include <healthhalutils/HealthHalUtils.h>
 
 #include "constants.h"
 #include "flashing.h"
+#include "tcp_client.h"
 #include "usb_client.h"
 
+using std::string_literals::operator""s;
+using android::fs_mgr::EnsurePathUnmounted;
+using android::fs_mgr::Fstab;
 using ::android::hardware::hidl_string;
 using ::android::hardware::boot::V1_0::IBootControl;
 using ::android::hardware::boot::V1_0::Slot;
-using ::android::hardware::fastboot::V1_0::IFastboot;
-using ::android::hardware::health::V2_0::get_health_service;
+using ::android::hardware::fastboot::V1_1::IFastboot;
 
 namespace sph = std::placeholders;
+
+std::shared_ptr<aidl::android::hardware::health::IHealth> get_health_service() {
+    using aidl::android::hardware::health::IHealth;
+    using HidlHealth = android::hardware::health::V2_0::IHealth;
+    using aidl::android::hardware::health::HealthShim;
+    auto service_name = IHealth::descriptor + "/default"s;
+    if (AServiceManager_isDeclared(service_name.c_str())) {
+        ndk::SpAIBinder binder(AServiceManager_waitForService(service_name.c_str()));
+        std::shared_ptr<IHealth> health = IHealth::fromBinder(binder);
+        if (health != nullptr) return health;
+        LOG(WARNING) << "AIDL health service is declared, but it cannot be retrieved.";
+    }
+    LOG(INFO) << "Unable to get AIDL health service, trying HIDL...";
+    android::sp<HidlHealth> hidl_health = android::hardware::health::V2_0::get_health_service();
+    if (hidl_health != nullptr) {
+        return ndk::SharedRefBase::make<HealthShim>(hidl_health);
+    }
+    LOG(WARNING) << "No health implementation is found.";
+    return nullptr;
+}
 
 FastbootDevice::FastbootDevice()
     : kCommandMap({
@@ -54,12 +82,30 @@ FastbootDevice::FastbootDevice()
               {FB_CMD_UPDATE_SUPER, UpdateSuperHandler},
               {FB_CMD_OEM, OemCmdHandler},
               {FB_CMD_GSI, GsiHandler},
+              {FB_CMD_SNAPSHOT_UPDATE, SnapshotUpdateHandler},
+              {FB_CMD_FETCH, FetchHandler},
       }),
-      transport_(std::make_unique<ClientUsbTransport>()),
       boot_control_hal_(IBootControl::getService()),
       health_hal_(get_health_service()),
       fastboot_hal_(IFastboot::getService()),
-      active_slot_("") {}
+      active_slot_("") {
+    if (android::base::GetProperty("fastbootd.protocol", "usb") == "tcp") {
+        transport_ = std::make_unique<ClientTcpTransport>();
+    } else {
+        transport_ = std::make_unique<ClientUsbTransport>();
+    }
+
+    if (boot_control_hal_) {
+        boot1_1_ = android::hardware::boot::V1_1::IBootControl::castFrom(boot_control_hal_);
+    }
+
+    // Make sure cache is unmounted, since recovery will have mounted it for
+    // logging.
+    Fstab fstab;
+    if (ReadDefaultFstab(&fstab)) {
+        EnsurePathUnmounted(&fstab, "/cache");
+    }
+}
 
 FastbootDevice::~FastbootDevice() {
     CloseDevice();
@@ -114,9 +160,19 @@ bool FastbootDevice::WriteStatus(FastbootResult result, const std::string& messa
 }
 
 bool FastbootDevice::HandleData(bool read, std::vector<char>* data) {
-    auto read_write_data_size = read ? this->get_transport()->Read(data->data(), data->size())
-                                     : this->get_transport()->Write(data->data(), data->size());
-    if (read_write_data_size == -1 || static_cast<size_t>(read_write_data_size) != data->size()) {
+    return HandleData(read, data->data(), data->size());
+}
+
+bool FastbootDevice::HandleData(bool read, char* data, uint64_t size) {
+    auto read_write_data_size = read ? this->get_transport()->Read(data, size)
+                                     : this->get_transport()->Write(data, size);
+    if (read_write_data_size == -1) {
+        LOG(ERROR) << (read ? "read from" : "write to") << " transport failed";
+        return false;
+    }
+    if (static_cast<size_t>(read_write_data_size) != size) {
+        LOG(ERROR) << (read ? "read" : "write") << " expected " << size << " bytes, got "
+                   << read_write_data_size;
         return false;
     }
     return true;
@@ -129,6 +185,11 @@ void FastbootDevice::ExecuteCommands() {
         if (bytes_read == -1) {
             PLOG(ERROR) << "Couldn't read command";
             return;
+        }
+        if (std::count_if(command, command + bytes_read, iscntrl) != 0) {
+            WriteStatus(FastbootResult::FAIL,
+                        "Command contains control character");
+            continue;
         }
         command[bytes_read] = '\0';
 

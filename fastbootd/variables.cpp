@@ -23,20 +23,28 @@
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
+#include <android/hardware/boot/1.1/IBootControl.h>
 #include <ext4_utils/ext4_utils.h>
 #include <fs_mgr.h>
-#include <healthhalutils/HealthHalUtils.h>
 #include <liblp/liblp.h>
 
 #include "fastboot_device.h"
 #include "flashing.h"
 #include "utility.h"
 
+#ifdef FB_ENABLE_FETCH
+static constexpr bool kEnableFetch = true;
+#else
+static constexpr bool kEnableFetch = false;
+#endif
+
 using ::android::hardware::boot::V1_0::BoolResult;
 using ::android::hardware::boot::V1_0::Slot;
+using ::android::hardware::boot::V1_1::MergeStatus;
 using ::android::hardware::fastboot::V1_0::FileSystemType;
 using ::android::hardware::fastboot::V1_0::Result;
 using ::android::hardware::fastboot::V1_0::Status;
+using IBootControl1_1 = ::android::hardware::boot::V1_1::IBootControl;
 using namespace android::fs_mgr;
 
 constexpr char kFastbootProtocolVersion[] = "0.4";
@@ -56,6 +64,18 @@ bool GetBootloaderVersion(FastbootDevice* /* device */, const std::vector<std::s
 bool GetBasebandVersion(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
                         std::string* message) {
     *message = android::base::GetProperty("ro.build.expect.baseband", "");
+    return true;
+}
+
+bool GetOsVersion(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                  std::string* message) {
+    *message = android::base::GetProperty("ro.build.version.release", "");
+    return true;
+}
+
+bool GetVndkVersion(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                    std::string* message) {
+    *message = android::base::GetProperty("ro.vndk.version", "");
     return true;
 }
 
@@ -99,23 +119,17 @@ bool GetVariant(FastbootDevice* device, const std::vector<std::string>& /* args 
 }
 
 bool GetBatteryVoltageHelper(FastbootDevice* device, int32_t* battery_voltage) {
-    using android::hardware::health::V2_0::HealthInfo;
-    using android::hardware::health::V2_0::Result;
+    using aidl::android::hardware::health::HealthInfo;
 
     auto health_hal = device->health_hal();
     if (!health_hal) {
         return false;
     }
 
-    Result ret;
-    auto ret_val = health_hal->getHealthInfo([&](Result result, HealthInfo info) {
-        *battery_voltage = info.legacy.batteryVoltage;
-        ret = result;
-    });
-    if (!ret_val.isOk() || (ret != Result::SUCCESS)) {
-        return false;
-    }
-
+    HealthInfo health_info;
+    auto res = health_hal->getHealthInfo(&health_info);
+    if (!res.isOk()) return false;
+    *battery_voltage = health_info.batteryVoltageMillivolts;
     return true;
 }
 
@@ -318,8 +332,8 @@ bool GetPartitionType(FastbootDevice* device, const std::vector<std::string>& ar
 
     auto fastboot_hal = device->fastboot_hal();
     if (!fastboot_hal) {
-        *message = "Fastboot HAL not found";
-        return false;
+        *message = "raw";
+        return true;
     }
 
     FileSystemType type;
@@ -414,7 +428,10 @@ std::vector<std::vector<std::string>> GetAllPartitionArgsNoSlot(FastbootDevice* 
 
 bool GetHardwareRevision(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
                          std::string* message) {
-    *message = android::base::GetProperty("ro.revision", "");
+    *message = android::base::GetProperty("ro.boot.hardware.revision", "");
+    if (message->empty()) {
+        *message = android::base::GetProperty("ro.revision", "");
+    }
     return true;
 }
 
@@ -422,5 +439,85 @@ bool GetSuperPartitionName(FastbootDevice* device, const std::vector<std::string
                            std::string* message) {
     uint32_t slot_number = SlotNumberForSlotSuffix(device->GetCurrentSlot());
     *message = fs_mgr_get_super_partition_name(slot_number);
+    return true;
+}
+
+bool GetSnapshotUpdateStatus(FastbootDevice* device, const std::vector<std::string>& /* args */,
+                             std::string* message) {
+    // Note that we use the HAL rather than mounting /metadata, since we want
+    // our results to match the bootloader.
+    auto hal = device->boot1_1();
+    if (!hal) {
+        *message = "not supported";
+        return false;
+    }
+
+    MergeStatus status = hal->getSnapshotMergeStatus();
+    switch (status) {
+        case MergeStatus::SNAPSHOTTED:
+            *message = "snapshotted";
+            break;
+        case MergeStatus::MERGING:
+            *message = "merging";
+            break;
+        default:
+            *message = "none";
+            break;
+    }
+    return true;
+}
+
+bool GetCpuAbi(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+               std::string* message) {
+    *message = android::base::GetProperty("ro.product.cpu.abi", "");
+    return true;
+}
+
+bool GetSystemFingerprint(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                          std::string* message) {
+    *message = android::base::GetProperty("ro.system.build.fingerprint", "");
+    if (message->empty()) {
+        *message = android::base::GetProperty("ro.build.fingerprint", "");
+    }
+    return true;
+}
+
+bool GetVendorFingerprint(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                          std::string* message) {
+    *message = android::base::GetProperty("ro.vendor.build.fingerprint", "");
+    return true;
+}
+
+bool GetDynamicPartition(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                         std::string* message) {
+    *message = android::base::GetProperty("ro.boot.dynamic_partitions", "");
+    return true;
+}
+
+bool GetFirstApiLevel(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                      std::string* message) {
+    *message = android::base::GetProperty("ro.product.first_api_level", "");
+    return true;
+}
+
+bool GetSecurityPatchLevel(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                           std::string* message) {
+    *message = android::base::GetProperty("ro.build.version.security_patch", "");
+    return true;
+}
+
+bool GetTrebleEnabled(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                      std::string* message) {
+    *message = android::base::GetProperty("ro.treble.enabled", "");
+    return true;
+}
+
+bool GetMaxFetchSize(FastbootDevice* /* device */, const std::vector<std::string>& /* args */,
+                     std::string* message) {
+    if (!kEnableFetch) {
+        *message = "fetch not supported on user builds";
+        return false;
+    }
+    *message = android::base::StringPrintf("0x%X", kMaxFetchSizeDefault);
     return true;
 }

@@ -53,16 +53,6 @@ struct SsFuncDesc {
     struct usb_ss_ep_comp_descriptor sink_comp;
 } __attribute__((packed));
 
-struct DescV1 {
-    struct usb_functionfs_descs_head_v1 {
-        __le32 magic;
-        __le32 length;
-        __le32 fs_count;
-        __le32 hs_count;
-    } __attribute__((packed)) header;
-    struct FuncDesc fs_descs, hs_descs;
-} __attribute__((packed));
-
 struct DescV2 {
     struct usb_functionfs_descs_head_v2 header;
     // The rest of the structure depends on the flags in the header.
@@ -156,47 +146,7 @@ static struct SsFuncDesc ss_descriptors = {
                 },
 };
 
-static struct FuncDesc fs_descriptors_v1 = {
-        .intf = fastboot_interface,
-        .source =
-                {
-                        .bLength = sizeof(fs_descriptors_v1.source),
-                        .bDescriptorType = USB_DT_ENDPOINT,
-                        .bEndpointAddress = 1 | USB_DIR_OUT,
-                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
-                        .wMaxPacketSize = kMaxPacketSizeFs,
-                },
-        .sink =
-                {
-                        .bLength = sizeof(fs_descriptors_v1.sink),
-                        .bDescriptorType = USB_DT_ENDPOINT,
-                        .bEndpointAddress = 2 | USB_DIR_IN,
-                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
-                        .wMaxPacketSize = kMaxPacketSizeFs,
-                },
-};
-
-static struct FuncDesc hs_descriptors_v1 = {
-        .intf = fastboot_interface,
-        .source =
-                {
-                        .bLength = sizeof(hs_descriptors_v1.source),
-                        .bDescriptorType = USB_DT_ENDPOINT,
-                        .bEndpointAddress = 1 | USB_DIR_OUT,
-                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
-                        .wMaxPacketSize = kMaxPacketSizeHs,
-                },
-        .sink =
-                {
-                        .bLength = sizeof(hs_descriptors_v1.sink),
-                        .bDescriptorType = USB_DT_ENDPOINT,
-                        .bEndpointAddress = 2 | USB_DIR_IN,
-                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
-                        .wMaxPacketSize = kMaxPacketSizeHs,
-                },
-};
-
-#define STR_INTERFACE_ "fastboot"
+#define STR_INTERFACE_ "fastbootd"
 
 static const struct {
     struct usb_functionfs_strings_head header;
@@ -217,17 +167,6 @@ static const struct {
                         htole16(0x0409), /* en-us */
                         STR_INTERFACE_,
                 },
-};
-
-static struct DescV1 v1_descriptor = {
-        .header = {
-            .magic = htole32(FUNCTIONFS_DESCRIPTORS_MAGIC),
-            .length = htole32(sizeof(v1_descriptor)),
-            .fs_count = 3,
-            .hs_count = 3,
-        },
-        .fs_descs = fs_descriptors_v1,
-        .hs_descs = hs_descriptors_v1,
 };
 
 static struct DescV2 v2_descriptor = {
@@ -266,12 +205,8 @@ static bool InitFunctionFs(usb_handle* h) {
 
         auto ret = write(h->control.get(), &v2_descriptor, sizeof(v2_descriptor));
         if (ret < 0) {
-            // fallback to v1 descriptor, with different endpoint addresses for source and sink
-            ret = write(h->control.get(), &v1_descriptor, sizeof(v1_descriptor));
-            if (ret < 0) {
-                PLOG(ERROR) << "cannot write descriptors " << kUsbFfsFastbootEp0;
-                goto err;
-            }
+            PLOG(ERROR) << "cannot write descriptors " << kUsbFfsFastbootEp0;
+            goto err;
         }
 
         ret = write(h->control.get(), &strings, sizeof(strings));
@@ -313,7 +248,12 @@ ClientUsbTransport::ClientUsbTransport()
 }
 
 ssize_t ClientUsbTransport::Read(void* data, size_t len) {
-    if (handle_ == nullptr || len > SSIZE_MAX) {
+    if (handle_ == nullptr) {
+        LOG(ERROR) << "ClientUsbTransport: no handle";
+        return -1;
+    }
+    if (len > SSIZE_MAX) {
+        LOG(ERROR) << "ClientUsbTransport: maximum length exceeds bounds";
         return -1;
     }
     char* char_data = static_cast<char*>(data);
@@ -323,7 +263,8 @@ ssize_t ClientUsbTransport::Read(void* data, size_t len) {
         auto bytes_read_now =
                 handle_->read(handle_.get(), char_data, bytes_to_read, true /* allow_partial */);
         if (bytes_read_now < 0) {
-            return bytes_read_total;
+            PLOG(ERROR) << "ClientUsbTransport: read failed";
+            return bytes_read_total == 0 ? -1 : bytes_read_total;
         }
         bytes_read_total += bytes_read_now;
         char_data += bytes_read_now;
@@ -342,9 +283,9 @@ ssize_t ClientUsbTransport::Write(const void* data, size_t len) {
     size_t bytes_written_total = 0;
     while (bytes_written_total < len) {
         auto bytes_to_write = std::min(len - bytes_written_total, kFbFfsNumBufs * kFbFfsBufSize);
-        auto bytes_written_now = handle_->write(handle_.get(), data, bytes_to_write);
+        auto bytes_written_now = handle_->write(handle_.get(), char_data, bytes_to_write);
         if (bytes_written_now < 0) {
-            return bytes_written_total;
+            return bytes_written_total == 0 ? -1 : bytes_written_total;
         }
         bytes_written_total += bytes_written_now;
         char_data += bytes_written_now;
@@ -360,5 +301,9 @@ int ClientUsbTransport::Close() {
         return -1;
     }
     CloseFunctionFs(handle_.get());
+    return 0;
+}
+
+int ClientUsbTransport::Reset() {
     return 0;
 }

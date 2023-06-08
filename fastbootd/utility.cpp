@@ -26,6 +26,7 @@
 #include <android-base/properties.h>
 #include <android-base/strings.h>
 #include <fs_mgr.h>
+#include <fs_mgr/roots.h>
 #include <fs_mgr_dm_linear.h>
 #include <liblp/builder.h>
 #include <liblp/liblp.h>
@@ -56,19 +57,28 @@ bool OpenLogicalPartition(FastbootDevice* device, const std::string& partition_n
     if (!path) {
         return false;
     }
+
+    CreateLogicalPartitionParams params = {
+            .block_device = *path,
+            .metadata_slot = slot_number,
+            .partition_name = partition_name,
+            .force_writable = true,
+            .timeout_ms = 5s,
+    };
     std::string dm_path;
-    if (!CreateLogicalPartition(path->c_str(), slot_number, partition_name, true, 5s, &dm_path)) {
+    if (!CreateLogicalPartition(params, &dm_path)) {
         LOG(ERROR) << "Could not map partition: " << partition_name;
         return false;
     }
-    auto closer = [partition_name]() -> void { DestroyLogicalPartition(partition_name, 5s); };
+    auto closer = [partition_name]() -> void { DestroyLogicalPartition(partition_name); };
     *handle = PartitionHandle(dm_path, std::move(closer));
     return true;
 }
 
 }  // namespace
 
-bool OpenPartition(FastbootDevice* device, const std::string& name, PartitionHandle* handle) {
+bool OpenPartition(FastbootDevice* device, const std::string& name, PartitionHandle* handle,
+                   int flags) {
     // We prioritize logical partitions over physical ones, and do this
     // consistently for other partition operations (like getvar:partition-size).
     if (LogicalPartitionExists(device, name)) {
@@ -80,13 +90,7 @@ bool OpenPartition(FastbootDevice* device, const std::string& name, PartitionHan
         return false;
     }
 
-    unique_fd fd(TEMP_FAILURE_RETRY(open(handle->path().c_str(), O_WRONLY | O_EXCL)));
-    if (fd < 0) {
-        PLOG(ERROR) << "Failed to open block device: " << handle->path();
-        return false;
-    }
-    handle->set_fd(std::move(fd));
-    return true;
+    return handle->Open(flags);
 }
 
 std::optional<std::string> FindPhysicalPartition(const std::string& name) {
@@ -192,12 +196,7 @@ std::vector<std::string> ListPartitions(FastbootDevice* device) {
 }
 
 bool GetDeviceLockStatus() {
-    std::string cmdline;
-    // Return lock status true if unable to read kernel command line.
-    if (!android::base::ReadFileToString("/proc/cmdline", &cmdline)) {
-        return true;
-    }
-    //return cmdline.find("androidboot.verifiedbootstate=green") != std::string::npos;
+    //return android::base::GetProperty("ro.boot.verifiedbootstate", "") != "orange";
     return 0;
 }
 
@@ -232,4 +231,30 @@ std::string GetSuperSlotSuffix(FastbootDevice* device, const std::string& partit
         return slot_suffix;
     }
     return current_slot_suffix;
+}
+
+AutoMountMetadata::AutoMountMetadata() {
+    android::fs_mgr::Fstab proc_mounts;
+    if (!ReadFstabFromFile("/proc/mounts", &proc_mounts)) {
+        LOG(ERROR) << "Could not read /proc/mounts";
+        return;
+    }
+
+    if (GetEntryForMountPoint(&proc_mounts, "/metadata")) {
+        mounted_ = true;
+        return;
+    }
+
+    if (!ReadDefaultFstab(&fstab_)) {
+        LOG(ERROR) << "Could not read default fstab";
+        return;
+    }
+    mounted_ = EnsurePathMounted(&fstab_, "/metadata");
+    should_unmount_ = true;
+}
+
+AutoMountMetadata::~AutoMountMetadata() {
+    if (mounted_ && should_unmount_) {
+        EnsurePathUnmounted(&fstab_, "/metadata");
+    }
 }
