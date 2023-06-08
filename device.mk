@@ -34,9 +34,6 @@ $(call inherit-product, hardware/qcom-caf/sm8250/display/config/display-board.mk
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
 
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 29
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage \
