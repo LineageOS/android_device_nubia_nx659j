@@ -804,46 +804,53 @@ vendor/lib64/libqdp.so
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so
 
-# Display
--system_ext/lib/libsdm-disp-apis.qti.so
--system_ext/lib64/libsdm-disp-apis.qti.so
-vendor/bin/qdcmss
-vendor/etc/init/qdcmss.rc
-vendor/lib/libdisplayqos.so
-vendor/lib/libhdcp1prov.so
-vendor/lib/libhdcp2p2prov.so
-vendor/lib/libsdm-colormgr-algo.so
--vendor/lib/libsdm-disp-vndapis.so
-vendor/lib/libsdmextension.so
-vendor/lib/unnhal-acc-hta.so
-vendor/lib64/libdisplayqos.so
-vendor/lib64/libhdcp1prov.so
-vendor/lib64/libhdcp2p2prov.so
-vendor/lib64/libsdm-colormgr-algo.so
--vendor/lib64/libsdm-disp-vndapis.so
-vendor/lib64/libsdmextension.so
-vendor/lib64/unnhal-acc-adreno.so
-vendor/lib64/unnhal-acc-common.so
-vendor/lib64/unnhal-acc-hta.so
-vendor/lib64/unnhal-acc-hvx.so
+# Display - from nio - 12-S1RTS32.41-20-16-1-5
+vendor/lib/libdisp-aba.so|738e42d8d8eb0de5ac03df750e1f3e17e30365fa
+vendor/lib/libdisplayqos.so|2a9af766b1a82f4a5a685f5dae090ad57850a913
+vendor/lib/libdisplayskuutils.so|c83f1d1ba4c111ea32e4b82d9c5b674d2d68509a
+vendor/lib/libdpps.so|6bca63623a3123e6ea0122c281f92db7fd2fdd91
+vendor/lib/libhdr_tm.so|dae56d348e81aff13c279dff827dd62850ad79d4
+vendor/lib/libqseed3.so|027a017e4f242055bfd6abfa429e907a4586b23b
+vendor/lib/libsdm-color.so|aeb2d19168403b5d539ae2c7381c32fb68f82a36
+vendor/lib/libsdm-colormgr-algo.so|97a1335ad13b340cbb5d3779c436e8f452c362af
+vendor/lib/libsdm-diag.so|1bb5633fd7ddf55c74a56356c4cb8399e231f7c8
+vendor/lib/libsdm-disp-vndapis.so|b532ae7e3881e29ff91926ad2df04c9c28fb8e85
+vendor/lib/libsdmextension.so|a9aa5fbab786516d329809c05046df762e70a7e8
+vendor/lib/libtinyxml2_1.so|2e4ee5ab72b1e135cb53d3b1b2af137535ff0ea4
+vendor/lib64/libdisp-aba.so|902839da31464e54bd4756747db2dd7ad867484f
+vendor/lib64/libdisplayqos.so|15701f18257c43be5657bbd867a8acf1f469e373
+vendor/lib64/libdisplayskuutils.so|3ddb2ffe55aa9aef686cf3be00ae5e0d1d8f9d93
+vendor/lib64/libdpps.so|aed0ddf27cae0c0d6fed1e27a7b19b1ffeb22002
+vendor/lib64/libhdr_tm.so|4be3cfff1ef40cbc6ad329b79c60881263aa6723
+vendor/lib64/libhdrdynamic.so|917095388aaa80685fadcf10e414ff1261350aef
+vendor/lib64/libhdrdynamicootf.so|4bd09dd4a48176b18a64cfa14faacbe22a43366f
+vendor/lib64/libqseed3.so|c9fb729cf48278d0c87d27c0af17ae3a8ccb1bf7
+vendor/lib64/libsdm-color.so|29cbc16f6fa573d21f48e2be2ff0d51de3357378
+vendor/lib64/libsdm-colormgr-algo.so|1fb7f3cb11557bbf677afb5d6eda0e4e9fd3ac58
+vendor/lib64/libsdm-diag.so|57e8b57e52b98a0a151434414756fcf91147a511
+vendor/lib64/libsdm-disp-vndapis.so|fd0b0beac164c92bfa012dbc059cb50cdde2dec6
+vendor/lib64/libsdmextension.so|99377ab065105f0cbd17bbe5907cdbb8027a9f17
+vendor/lib64/libtinyxml2_1.so|fb0a2b16e5cfd28515268edc5c2345190d1ef4e5
 
-# Display postprocessing
-system_ext/lib64/vendor.display.color@1.0.so
-system_ext/lib64/vendor.display.color@1.1.so
-system_ext/lib64/vendor.display.color@1.2.so
-system_ext/lib64/vendor.display.color@1.3.so
-vendor/bin/hw/vendor.display.color@1.0-service
-vendor/etc/init/vendor.display.color@1.0-service.rc
-vendor/lib64/libdisp-aba.so
-vendor/lib64/libmm-hdcpmgr.so
-vendor/lib64/vendor.display.color@1.0.so
-vendor/lib64/vendor.display.color@1.1.so
-vendor/lib64/vendor.display.color@1.2.so
-vendor/lib64/vendor.display.color@1.3.so
-vendor/lib64/vendor.display.color@1.4.so
-vendor/lib64/vendor.display.color@1.5.so
-vendor/lib64/vendor.display.postproc@1.0.so
-vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+# Display postprocessing - from nio - 12-S1RTS32.41-20-16-1-5
+vendor/bin/hw/vendor.display.color@1.0-service|9c77c3655befc1c53f842e1b9605b83e3dc64259
+vendor/bin/qdcmss|536c34abfbf7833df440bfcd264bacdc88318067
+vendor/etc/init/qdcmss.rc|53d78d686678c4f923a9ec4ace7d4d3575b13788
+vendor/etc/init/vendor.display.color@1.0-service.rc|5ad673f879b3685a0e79b5633437e5499cb94f48
+vendor/lib/vendor.display.color@1.0.so|450d640961a2785ef3f78964e54b91b959c50926
+vendor/lib/vendor.display.color@1.1.so|c500dbee96e624ddae53ef1a2feb593f90eb0922
+vendor/lib/vendor.display.color@1.2.so|8d9f77acde9c85a3a4a22478fa250b88c816d74b
+vendor/lib/vendor.display.color@1.3.so|55cbacbf00f417994b584161214c1f4a97491a11
+vendor/lib/vendor.display.color@1.4.so|ec260a4386d9ecd1214ec7b6f57b968825b73428
+vendor/lib/vendor.display.color@1.5.so|dd0df9e1b70de667db385cb835097cc124211ca8
+vendor/lib/vendor.display.postproc@1.0.so|cc0bf588a516e6027c418e00dd29ecf974e0b1ba
+vendor/lib64/vendor.display.color@1.0.so|276f34f778d27b81d63345bc19c42f0327d21046
+vendor/lib64/vendor.display.color@1.1.so|12aff2fe85a61e7c11d0ae4cb3df7082941630c3
+vendor/lib64/vendor.display.color@1.2.so|d5403de920778a3f69f739217207cbfa7a309a0a
+vendor/lib64/vendor.display.color@1.3.so|a19542adeb2e39b76e499f1d3906918a586ef46a
+vendor/lib64/vendor.display.color@1.4.so|caa75a7dc5f47ae1128936bdd9906c34d6e88c66
+vendor/lib64/vendor.display.color@1.5.so|2816ad7ee01408a8a91f14307a8b29e1c370ab4e
+vendor/lib64/vendor.display.postproc@1.0.so|b3c3811c5f07773ef156701c31c448b85ad60c64
 
 # DSP service
 vendor/bin/dspservice
