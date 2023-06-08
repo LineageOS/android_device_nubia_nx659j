@@ -5,9 +5,6 @@ genfscon sysfs /devices/platform/soc/884000.i2c/i2c-6/6-0057/power_supply u:obje
 # Fan node
 genfscon sysfs /kernel/fan u:object_r:sysfs_fan:s0
 
-# FOD
-genfscon sysfs /devices/platform/soc/soc:qcom,dsi-display-primary/fod_ui u:object_r:sysfs_fod:s0
-
 # GameMode node
 genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-5/5-0020/input u:object_r:sysfs_tp:s0
 
