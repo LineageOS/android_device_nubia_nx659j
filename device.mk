@@ -110,8 +110,8 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl \
     gralloc.kona \
-    libdisplayconfig \
-    libdisplayconfig.vendor \
+    libdisplayconfig.qti \
+    libdisplayconfig.system.qti \
     libqdMetaData \
     libqdMetaData.system \
     libqdutils.vendor \
