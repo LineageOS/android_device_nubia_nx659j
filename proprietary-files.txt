@@ -705,15 +705,6 @@ vendor/lib/libmm-color-convertor.so
 vendor/lib64/libI420colorconvert.so
 vendor/lib64/libmm-color-convertor.so
 
-# ConfigStore
-system_ext/framework/vendor.qti.hardware.capabilityconfigstore-V1.0-java.jar
-vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
-vendor/etc/init/vendor.qti.hardware.capabilityconfigstore@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib/libplatformconfig.so
-vendor/lib64/hw/vendor.qti.hardware.capabilityconfigstore@1.0-impl.so
--vendor/lib64/libplatformconfig.so
-
 # Connection Security
 vendor/bin/ssgtzd
 vendor/lib/libminksocket.so
@@ -1146,6 +1137,7 @@ vendor/lib64/vendor.qti.hardware.factory@1.1.so
 vendor/lib/libmmrtpdecoder_proprietary.so
 vendor/lib/libmmrtpencoder_proprietary.so
 vendor/lib/libMpeg4SwEncoder.so
+-vendor/lib/libplatformconfig.so
 vendor/lib/libOmxSwVdec.so
 vendor/lib/libOmxSwVencMpeg4.so
 vendor/lib/libfastcrc.so
@@ -1153,6 +1145,7 @@ vendor/lib/libstreamparser.so
 vendor/lib/libvideoutils.so
 vendor/lib/libswvdec.so
 vendor/lib64/libMpeg4SwEncoder.so
+-vendor/lib64/libplatformconfig.so
 vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libswvdec.so
