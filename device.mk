@@ -216,6 +216,7 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libOmxVidcCommon \
+    libplatformconfig \
     libstagefrighthw
 
 # Namespaces
