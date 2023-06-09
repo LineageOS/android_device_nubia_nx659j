@@ -855,10 +855,10 @@ vendor/lib64/vendor.qti.hardware.embmssl@1.0.so
 
 # FastCV
 vendor/lib/libfastcvdsp_stub.so
-vendor/lib/libfastcvopt.so
+-vendor/lib/libfastcvopt.so
 vendor/lib/libopenvx.so
 vendor/lib64/libfastcvdsp_stub.so
-vendor/lib64/libfastcvopt.so
+-vendor/lib64/libfastcvopt.so
 vendor/lib64/libopenvx.so
 
 # Fingerprint
