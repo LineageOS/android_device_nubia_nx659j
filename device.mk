@@ -432,6 +432,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.fstman@1.0.vendor \
     vendor.qti.hardware.wifi.hostapd@1.1.vendor \
     vendor.qti.hardware.wifi.supplicant@2.1.vendor \
+    WifiResCommon \
     wpa_supplicant \
     wpa_supplicant.conf
 
