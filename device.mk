@@ -33,8 +33,7 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage \
-    $(LOCAL_PATH)/overlay-system
+    $(LOCAL_PATH)/overlay-lineage
 
 # ANT+
 PRODUCT_PACKAGES += \
