@@ -1261,7 +1261,6 @@ vendor/lib/vendor.qti.hardware.perf@2.1.so
 vendor/lib/vendor.qti.hardware.perf@2.2.so
 vendor/lib64/libadaptlaunch.so
 vendor/lib64/libappclassifier.so
-vendor/lib64/libgameoptfeature.so
 vendor/lib64/liblearningmodule.so
 vendor/lib64/libmeters-ns.so
 vendor/lib64/libmeters.so
@@ -1451,14 +1450,6 @@ vendor/lib/vendor.qti.hardware.qseecom@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
-
-# QSPM HAL
-vendor/bin/vendor.qti.qspmhal@1.0-service
-vendor/etc/init/vendor.qti.qspmhal@1.0-service.rc
-vendor/lib/vendor.qti.qspmhal@1.0-impl.so
-vendor/lib/vendor.qti.qspmhal@1.0.so
-vendor/lib64/vendor.qti.qspmhal@1.0-impl.so
-vendor/lib64/vendor.qti.qspmhal@1.0.so
 
 # QTEE
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
