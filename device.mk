@@ -252,7 +252,8 @@ PRODUCT_PACKAGES += \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    device/nubia/NX659J
+    device/nubia/NX659J \
+    vendor/qcom/opensource/usb/etc
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -365,11 +366,9 @@ PRODUCT_PACKAGES += \
     init.qcom.sdio.sh \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.sh \
     init.qti.chg_policy.sh \
     init.nubia.rc \
     init.qcom.rc \
-    init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -409,6 +408,10 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service-qti
+
+PRODUCT_PACKAGES += \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh
 
 # Vendor service manager
 PRODUCT_PACKAGES += \
