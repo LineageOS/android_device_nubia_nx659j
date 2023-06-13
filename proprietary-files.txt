@@ -253,10 +253,6 @@ vendor/etc/dts/voice_accessory44
 vendor/etc/dts/voice_accessory48
 vendor/etc/dts/voice_speaker48
 
-# Authsecret
-vendor/bin/hw/android.hardware.authsecret@1.0-service-qti
-vendor/etc/init/android.hardware.authsecret@1.0-service-qti.rc
-
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/bin/ftmdaemon
