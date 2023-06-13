@@ -1664,18 +1664,8 @@ vendor/lib64/libtime_genoff.so
 vendor/firmware/nubia_tp_jdi_fw.img
 
 # Trusted User Interface
-vendor/bin/hw/vendor.qti.hardware.trustedui@1.0-service-qti
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
-vendor/etc/init/vendor.qti.hardware.trustedui@1.0-service-qti.rc
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
-vendor/lib/libTrustedInput.so
-vendor/lib/libtrustedapploader.so
-vendor/lib/vendor.qti.hardware.trustedui@1.0.so
-vendor/lib/vendor.qti.hardware.tui_comm@1.0.so
-vendor/lib64/libTrustedInput.so
-vendor/lib64/libTrustedUI.so
-vendor/lib64/libtrustedapploader.so
-vendor/lib64/vendor.qti.hardware.trustedui@1.0.so
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 
 # VPP
