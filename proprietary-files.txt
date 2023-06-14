@@ -971,12 +971,6 @@ vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 
 # Graphics
-vendor/lib/libEGL_adreno.so
-vendor/lib/libGLESv2_adreno.so
-vendor/lib/libq3dtools_adreno.so
-vendor/lib64/libEGL_adreno.so
-vendor/lib64/libGLESv2_adreno.so
-vendor/lib64/libq3dtools_adreno.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
