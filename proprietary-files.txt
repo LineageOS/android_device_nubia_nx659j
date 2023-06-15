@@ -65,7 +65,6 @@ vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 vendor/etc/acdbdata/MTP/workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
 vendor/lib/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
-vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libdtsaudio.so
 vendor/lib/soundfx/libhaptic_effect.so
@@ -73,7 +72,6 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libshoebox.so
-vendor/lib/btaudio_offload_if.so
 vendor/lib/libAlacSwDec.so
 vendor/lib/libApeSwDec.so
 vendor/lib/libdts-eagle-shared.so
@@ -106,7 +104,6 @@ vendor/lib/libaudio_log_utils.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libaudioconfigstore.so
 vendor/lib/libaudioparsers.so
-vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/libcapiv2svacnn.so
 vendor/lib/libcapiv2svarnn.so
 vendor/lib/libcapiv2vop.so
@@ -126,7 +123,6 @@ vendor/lib/libsurround_3mic_proc.so
 vendor/lib/vendor.qti.hardware.audiohalext@1.0.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
-vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libdtsaudio.so
 vendor/lib64/soundfx/libhaptic_effect.so
@@ -134,7 +130,6 @@ vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib64/btaudio_offload_if.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libdts-eagle-shared.so
@@ -163,7 +158,6 @@ vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioconfigstore.so
 vendor/lib64/libaudioparsers.so
-vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libcapiv2svacnn.so
 vendor/lib64/libcapiv2svarnn.so
 vendor/lib64/libcapiv2vop.so
@@ -252,20 +246,29 @@ vendor/lib/hw/sound_trigger.primary.kona.so|403e680775325b145774a63051ec099cafb7
 vendor/lib64/hw/sound_trigger.primary.kona.so|321aa030068ec2fff5f1df5899640ebd93151a48
 
 # Bluetooth
+system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
-vendor/bin/ftmdaemon
-vendor/bin/mm-audio-ftm
 vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
 vendor/lib/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
+vendor/lib/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
+vendor/lib/btaudio_offload_if.so
+vendor/lib/libbluetooth_audio_session_qti.so
 vendor/lib/libbt-hidlclient.so
 vendor/lib/libbtnv.so
+vendor/lib/libsoc_helper.so
 vendor/lib/vendor.qti.hardware.bluetooth_sar@1.0.so
+vendor/lib/vendor.qti.hardware.bluetooth_sar@1.1.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
+vendor/lib64/hw/vendor.qti.hardware.bluetooth_sar@1.1-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
-system_ext/lib64/com.qualcomm.qti.ant@1.0.so
+vendor/lib64/btaudio_offload_if.so
+vendor/lib64/libbluetooth_audio_session_qti.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
+vendor/lib64/libsoc_helper.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.1.so
 
