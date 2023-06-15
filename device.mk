@@ -259,6 +259,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2-service.samsung \
     NfcNci \
     Tag \
     SecureElement
