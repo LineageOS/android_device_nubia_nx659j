@@ -247,6 +247,10 @@ vendor/etc/dts/voice_accessory44
 vendor/etc/dts/voice_accessory48
 vendor/etc/dts/voice_speaker48
 
+# Audio (Sound Trigger) - from NX659J 20220308.023005
+vendor/lib/hw/sound_trigger.primary.kona.so|403e680775325b145774a63051ec099cafb7e5ac
+vendor/lib64/hw/sound_trigger.primary.kona.so|321aa030068ec2fff5f1df5899640ebd93151a48
+
 # Bluetooth
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
 vendor/bin/ftmdaemon
