@@ -64,7 +64,6 @@ vendor/etc/acdbdata/MTP/MTP_Headset_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 vendor/etc/acdbdata/MTP/workspaceFile.qwsp
 vendor/etc/acdbdata/adsp_avs_config.acdb
-vendor/lib/hw/audio.primary.kona.so
 vendor/lib/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
 vendor/lib/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib/soundfx/libasphere.so
@@ -121,13 +120,11 @@ vendor/lib/libhdmipassthru.so
 vendor/lib/liblistensoundmodel2.so
 vendor/lib/libmulawdec.so
 vendor/lib/libqtigef.so
-vendor/lib/libssrec.so
 vendor/lib/libstagefright_soft_dtsdec.so
 vendor/lib/libstagefright_soft_qtiflacdec.so
 vendor/lib/libsurround_3mic_proc.so
 vendor/lib/vendor.qti.hardware.audiohalext@1.0.so
 vendor/lib/vendor.qti.voiceprint@1.0.so
-vendor/lib64/hw/audio.primary.kona.so
 vendor/lib64/hw/vendor.qti.hardware.audiohalext@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.bluetooth_audio@2.0-impl.so
 vendor/lib64/soundfx/libasphere.so
@@ -178,7 +175,6 @@ vendor/lib64/libhdmipassthru.so
 vendor/lib64/liblistensoundmodel2.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libqtigef.so
-vendor/lib64/libssrec.so
 vendor/lib64/libstagefright_soft_dtsdec.so
 vendor/lib64/libstagefright_soft_qtiflacdec.so
 vendor/lib64/vendor.qti.hardware.audiohalext@1.0.so
