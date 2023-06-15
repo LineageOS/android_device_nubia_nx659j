@@ -41,25 +41,28 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-service \
     android.hardware.audio@6.0-impl \
-    android.hardware.audio.common@2.0-util \
-    android.hardware.audio.common@5.0-util \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.bluetooth.audio@2.0-impl \
-    android.hardware.soundtrigger@2.2-impl \
+    android.hardware.audio.service \
+    android.hardware.bluetooth.audio-impl \
+    android.hardware.soundtrigger@2.3-impl \
     audio.bluetooth.default \
-    audio.primary.default \
+    audio.primary.kona \
     audio.r_submix.default \
     audio.usb.default \
+    liba2dpoffload \
+    libbatterylistener \
+    libcomprcapture \
+    libexthwplugin \
     libhdmiedid \
     libhfp \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libvolumelistener \
-    tinymix \
-    libtinycompress
+    libsndmonitor \
+    libspkrprot \
+    libssrec \
+    libvolumelistener
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
