@@ -1144,13 +1144,6 @@ vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libswvdec.so
 
-# NFC
-vendor/bin/hw/android.hardware.nfc@1.2-service.sec
-vendor/etc/init/android.hardware.nfc@1.2-service.sec.rc
-vendor/etc/libnfc-sec-vendor.conf
-vendor/lib/nfc_nci_sec.so
-vendor/lib64/nfc_nci_sec.so
-
 # NFC firmware
 vendor/firmware/sec_s3nrn81_firmware.bin
 vendor/firmware/sec_s3nrn81_rfreg.bin
