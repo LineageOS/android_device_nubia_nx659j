@@ -116,6 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.a2dp_offload.supported=true \
     ro.vendor.bluetooth.emb_wp_mode=false \
     ro.vendor.bluetooth.wipower=false \
+    persist.vendor.qcom.bluetooth.soc=hastings \
     vendor.qcom.bluetooth.soc=hastings
 
 # CNE
