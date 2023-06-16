@@ -1144,6 +1144,18 @@ vendor/lib64/libOmxSwVdec.so
 vendor/lib64/libOmxSwVencMpeg4.so
 vendor/lib64/libswvdec.so
 
+# Media configs
+odm/etc/media_profiles_V1_0.xml
+vendor/etc/media_codecs.xml
+vendor/etc/media_codecs_c2.xml
+vendor/etc/media_codecs_kona.xml
+vendor/etc/media_codecs_performance_c2.xml
+vendor/etc/media_codecs_performance_kona.xml
+vendor/etc/media_profiles.xml
+vendor/etc/media_profiles_kona.xml
+vendor/etc/media_profiles_vendor.xml
+vendor/etc/system_properties.xml
+
 # NFC firmware
 vendor/firmware/sec_s3nrn81_firmware.bin
 vendor/firmware/sec_s3nrn81_rfreg.bin
