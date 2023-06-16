@@ -62,6 +62,10 @@ fi
 function blob_fixup() {
     case "${1}" in
 
+    vendor/etc/sensors/hals.conf)
+        sed -i "/ffbm.sensors.oem.so/d" "${2}"
+        ;;
+
     # Change soname for fingerprint.default.so
     vendor/lib/hw/fingerprint.kona.so | vendor/lib64/hw/fingerprint.kona.so)
         patchelf --set-soname "fingerprint.kona.so" "${2}"
