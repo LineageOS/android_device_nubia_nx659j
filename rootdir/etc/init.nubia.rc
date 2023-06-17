@@ -187,41 +187,41 @@ on post-fs-data
 	mkdir /data/vendor/goodix 0777 system system
 
 	# Haptics
-	chown system system /sys/class/leds/vibrator_aw8695/state
-	chown system system /sys/class/leds/vibrator_aw8695/duration
-	chown system system /sys/class/leds/vibrator_aw8695/activate
-	chown system system /sys/class/leds/vibrator_aw8695/activate_mode
-	chown system system /sys/class/leds/vibrator_aw8695/brightness
-	chown system system /sys/class/leds/vibrator_aw8695/cali
-	chown system system /sys/class/leds/vibrator_aw8695/cont
-	chown system system /sys/class/leds/vibrator_aw8695/cont_drv
-	chown system system /sys/class/leds/vibrator_aw8695/cont_num_brk
-	chown system system /sys/class/leds/vibrator_aw8695/cont_td
-	chown system system /sys/class/leds/vibrator_aw8695/cont_zc_thr
-	chown system system /sys/class/leds/vibrator_aw8695/f0
-	chown system system /sys/class/leds/vibrator_aw8695/gain
-	chown system system /sys/class/leds/vibrator_aw8695/haptic_audio
-	chown system system /sys/class/leds/vibrator_aw8695/haptic_audio_time
-	chown system system /sys/class/leds/vibrator_aw8695/index
-	chown system system /sys/class/leds/vibrator_aw8695/loop
-	chown system system /sys/class/leds/vibrator_aw8695/rtp
-	chown system system /sys/class/leds/vibrator_aw8695/seq
-	chown system system /sys/class/leds/vibrator_aw8695/vmax
-	chown system system /sys/class/leds/vibrator_aw8695/touch
-	chown system system /sys/class/leds/vibrator_aw8695/touch_enable
+	chown system system /sys/class/leds/vibrator/state
+	chown system system /sys/class/leds/vibrator/duration
+	chown system system /sys/class/leds/vibrator/activate
+	chown system system /sys/class/leds/vibrator/activate_mode
+	chown system system /sys/class/leds/vibrator/brightness
+	chown system system /sys/class/leds/vibrator/cali
+	chown system system /sys/class/leds/vibrator/cont
+	chown system system /sys/class/leds/vibrator/cont_drv
+	chown system system /sys/class/leds/vibrator/cont_num_brk
+	chown system system /sys/class/leds/vibrator/cont_td
+	chown system system /sys/class/leds/vibrator/cont_zc_thr
+	chown system system /sys/class/leds/vibrator/f0
+	chown system system /sys/class/leds/vibrator/gain
+	chown system system /sys/class/leds/vibrator/haptic_audio
+	chown system system /sys/class/leds/vibrator/haptic_audio_time
+	chown system system /sys/class/leds/vibrator/index
+	chown system system /sys/class/leds/vibrator/loop
+	chown system system /sys/class/leds/vibrator/rtp
+	chown system system /sys/class/leds/vibrator/seq
+	chown system system /sys/class/leds/vibrator/vmax
+	chown system system /sys/class/leds/vibrator/touch
+	chown system system /sys/class/leds/vibrator/touch_enable
 	
-	chmod 664 /sys/class/leds/vibrator_aw8695/state
-	chmod 664 /sys/class/leds/vibrator_aw8695/activate
-	chmod 664 /sys/class/leds/vibrator_aw8695/activate_mode
-	chmod 664 /sys/class/leds/vibrator_aw8695/duration
-	chmod 664 /sys/class/leds/vibrator_aw8695/index
-	chmod 664 /sys/class/leds/vibrator_aw8695/seq
-	chmod 664 /sys/class/leds/vibrator_aw8695/vmax
-	chmod 664 /sys/class/leds/vibrator_aw8695/touch
-	chmod 664 /sys/class/leds/vibrator_aw8695/touch_enable
-	chmod 664 /sys/class/leds/vibrator_aw8695/brightness
-	chmod 664 /sys/class/leds/vibrator_aw8695/haptic_audio
-	chmod 664 /sys/class/leds/vibrator_aw8695/haptic_audio_time
+	chmod 664 /sys/class/leds/vibrator/state
+	chmod 664 /sys/class/leds/vibrator/activate
+	chmod 664 /sys/class/leds/vibrator/activate_mode
+	chmod 664 /sys/class/leds/vibrator/duration
+	chmod 664 /sys/class/leds/vibrator/index
+	chmod 664 /sys/class/leds/vibrator/seq
+	chmod 664 /sys/class/leds/vibrator/vmax
+	chmod 664 /sys/class/leds/vibrator/touch
+	chmod 664 /sys/class/leds/vibrator/touch_enable
+	chmod 664 /sys/class/leds/vibrator/brightness
+	chmod 664 /sys/class/leds/vibrator/haptic_audio
+	chmod 664 /sys/class/leds/vibrator/haptic_audio_time
 
 	# Light
 	chown system system /sys/class/leds/red/breath_feature

@@ -203,8 +203,8 @@ on boot
     # change ownership and premission for awinic haptic shock with music
     chown system audio /dev/aw8695_haptic
     chmod 0660 /dev/aw8695_haptic
-    chown system audio /sys/class/leds/vibrator_aw8695/haptic_audio
-    chmod 0660 /sys/class/leds/vibrator_aw8695/haptic_audio
+    chown system audio /sys/class/leds/vibrator/haptic_audio
+    chmod 0660 /sys/class/leds/vibrator/haptic_audio
 
     # Create directory used for display
     # for backward compatibility
