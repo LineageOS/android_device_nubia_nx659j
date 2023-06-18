@@ -92,18 +92,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.wsa.enable=false \
 
 # Bluetooth
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.bluetooth.library_name=libbluetooth_qti.so
-
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.bluetooth.a2dp_offload.disabled=false \
     persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxadaptive-aptxhd-ldac \
-    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
-    persist.vendor.qcom.bluetooth.a2dp_mcast_test.enabled=false \
-    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aac-ldac \
     persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true \
-    persist.vendor.qcom.bluetooth.enable.splita2dp=true \
-    persist.vendor.qcom.bluetooth.twsp_state.enabled=false \
     persist.vendor.service.bdroid.fwsnoop=true \
     ro.bluetooth.a2dp_offload.supported=true \
     ro.vendor.bluetooth.emb_wp_mode=false \
