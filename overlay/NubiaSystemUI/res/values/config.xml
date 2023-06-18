@@ -24,7 +24,7 @@
     <bool name="doze_display_state_supported">true</bool>
 
     <!-- FOD Color -->
-    <color name="config_fodColor">#ffffff</color>
+    <color name="config_udfpsColor">#ffffff</color>
 
     <!-- The radius of the enrollment progress bar, in dp -->
     <integer name="config_udfpsEnrollProgressBar" translatable="false">70</integer>
