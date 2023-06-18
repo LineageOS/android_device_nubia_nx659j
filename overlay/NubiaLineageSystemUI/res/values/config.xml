@@ -6,6 +6,6 @@
 <resources>
 
     <!-- FOD Color -->
-    <color name="config_udfpsColor">#ffffff</color>
+    <color name="config_udfpsColor">#00ffffff</color>
 
 </resources>
