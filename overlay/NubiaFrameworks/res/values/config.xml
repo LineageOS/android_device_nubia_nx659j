@@ -109,6 +109,13 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </array>
 
+    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
+    <integer-array name="config_udfps_sensor_props" translatable="false" >
+        <item>540</item> <!-- sensorLocationX -->
+        <item>2156</item> <!-- sensorLocationY -->
+        <item>95</item> <!-- sensorRadius -->
+    </integer-array>
+
     <!-- Boolean indicating whether the HWC setColorTransform function can be performed efficiently in hardware. -->
      <bool name="config_setColorTransformAccelerated">true</bool>
 
