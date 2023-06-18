@@ -273,6 +273,7 @@ PRODUCT_PACKAGES += \
     NubiaLineageAperture \
     NubiaLineageSDK \
     NubiaLineageSettings \
+    NubiaLineageSystemUI \
     NubiaSettings \
     NubiaSystemUI \
     NubiaTelecomm \
