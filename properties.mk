@@ -119,6 +119,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcom.bluetooth.soc=hastings \
     vendor.qcom.bluetooth.soc=hastings
 
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,org.lineageos.aperture
+
 # CNE
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.cne.feature=1
