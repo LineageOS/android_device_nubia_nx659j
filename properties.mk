@@ -121,7 +121,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,org.lineageos.aperture
+    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,org.lineageos.aperture \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,org.lineageos.aperture
 
 # CNE
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
