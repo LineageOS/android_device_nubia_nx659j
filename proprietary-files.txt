@@ -365,6 +365,12 @@ vendor/lib64/vendor.qti.hardware.cvp@1.0.so
 
 # Camera
 vendor/firmware/CAMERA_ICP.elf
+vendor/etc/camera/camxoverridesettings.txt
+vendor/etc/camera/VfbTuningInterface.xml
+vendor/etc/camera/SceneParamFile-320
+vendor/etc/camera/SceneParamFile
+vendor/etc/camera/vidhance_calibration
+vendor/etc/camera/SceneParamFile-430
 vendor/lib/camera/components/com.arcsoft.node.capturebokeh.so
 vendor/lib/camera/components/com.arcsoft.node.realtimebokeh.so
 vendor/lib/camera/components/com.nubia.node.beauty.so
