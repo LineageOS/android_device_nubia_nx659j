@@ -387,3 +387,12 @@ service vendor.camera-provider-2-4 /vendor/bin/hw/android.hardware.camera.provid
 	ioprio rt 4
 	capabilities SYS_NICE
 	task_profiles ProcessCapacityHigh HighPerformance
+
+service vendor.sensors-hal-2-0-multihal /vendor/bin/hw/android.hardware.sensors@2.0-service.multihal
+	override
+	class hal
+	user system
+	group system wakelock context_hub input
+	task_profiles ServiceCapacityLow
+	capabilities BLOCK_SUSPEND
+	rlimit rtprio 10 10
