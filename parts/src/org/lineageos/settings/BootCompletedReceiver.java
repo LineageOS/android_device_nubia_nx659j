@@ -22,6 +22,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import org.lineageos.settings.fan.FanFragment;
+import org.lineageos.settings.utils.FileUtils;
+import org.lineageos.settings.utils.SettingsUtils;
+
 public class BootCompletedReceiver extends BroadcastReceiver {
 
     private static final boolean DEBUG = false;
@@ -30,9 +34,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
-        if (SettingsUtils.getEnabled(context, FanSettings.FanSettingsFragment.KEY_FAN_SMART))
-            FileUtils.writeLine(FanSettings.FanSettingsFragment.SMART_FAN, "1");
-        else if (SettingsUtils.getEnabled(context, FanSettings.FanSettingsFragment.KEY_FAN_MAX))
-            FileUtils.writeLine(FanSettings.FanSettingsFragment.SPEED_LEVEL, "5");
+        if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_SMART))
+            FileUtils.writeLine(FanFragment.SMART_FAN, "1");
+        else if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_MAX))
+            FileUtils.writeLine(FanFragment.SPEED_LEVEL, "5");
     }
 }

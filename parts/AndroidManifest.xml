@@ -56,7 +56,7 @@
         </activity>
 
         <activity
-            android:name=".FanSettings"
+            android:name=".fan.FanActivity"
             android:label="@string/fan_title">
         </activity>
 

@@ -30,9 +30,9 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.collapsingtoolbar.R;
+import com.android.settingslib.widget.R;
 
-import org.lineageos.settings.FanSettings;
+import org.lineageos.settings.fan.FanActivity;
 
 public class NubiaParts extends CollapsingToolbarBaseActivity {
     @Override
@@ -59,7 +59,7 @@ public class NubiaParts extends CollapsingToolbarBaseActivity {
             mFanPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getContext(), FanSettings.class);
+                    Intent intent = new Intent(getContext(), FanActivity.class);
                     startActivity(intent);
                     return true;
                 }
