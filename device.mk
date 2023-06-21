@@ -273,6 +273,7 @@ PRODUCT_PACKAGES += \
     NubiaCarrierConfig \
     NubiaCellBroadcastReceiver \
     NubiaFrameworks \
+    NubiaLineageAperture \
     NubiaLineageSettings \
     NubiaSettings \
     NubiaSystemUI \
