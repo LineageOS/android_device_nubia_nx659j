@@ -17,9 +17,6 @@
     <string name="nubiaparts">NubiaParts</string>
     <string name="nubiaparts_summary">Additional Tweaks</string>
 
-    <string name="refresh_rate_settings_title">Refresh rate configuration</string>
-    <string name="device_refresh_rate">Refresh Rate</string>
-
     <!-- Fan -->
     <string name="fan_title">Fan</string>
     <string name="fan_settings_title">Fan Control</string>

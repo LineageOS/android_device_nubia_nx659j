@@ -35,18 +35,6 @@
         </receiver>
 
         <activity
-            android:name=".RefreshRate"
-            android:label="@string/refresh_rate_settings_title"
-            android:theme="@style/Theme.Main">
-            <intent-filter>
-                <action android:name="com.android.settings.action.IA_SETTINGS" />
-            </intent-filter>
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.display" />
-        </activity>
-
-        <activity
             android:name=".NubiaParts"
             android:label="@string/nubiaparts"
             android:theme="@style/Theme.Main">
