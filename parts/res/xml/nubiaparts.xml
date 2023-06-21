@@ -21,6 +21,7 @@
     <PreferenceScreen
         android:key="fan"
         android:fragment="org.lineageos.settings.fan.FanActivity"
+        android:icon="@drawable/fan"
         android:summary="@string/fan_settings_summary"
         android:title="@string/fan_settings_title" />
 

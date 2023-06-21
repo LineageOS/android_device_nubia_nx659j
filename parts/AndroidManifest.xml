@@ -44,12 +44,18 @@
             android:name=".NubiaParts"
             android:label="@string/nubiaparts">
             <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
             <meta-data
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.ia.system" />
+            <meta-data
+                android:name="com.android.settings.icon_tintable"
+                android:value="true" />
+            <meta-data
+                android:name="com.android.settings.icon"
+                android:resource="@drawable/nubiaparts"/>
             <meta-data
                 android:name="com.android.settings.summary"
                 android:resource="@string/nubiaparts_summary" />
