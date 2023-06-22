@@ -14,16 +14,15 @@
 -->
 <resources>
 
-    <string name="nubiaparts">NubiaParts</string>
-    <string name="nubiaparts_summary">Additional Tweaks</string>
+    <string name="nubiaparts_title">Nubia settings</string>
+    <string name="nubiaparts_summary">Additional device specific tweaks</string>
 
     <!-- Fan -->
-    <string name="fan_title">Fan</string>
-    <string name="fan_settings_title">Fan Control</string>
-    <string name="fan_settings_summary">Control devices fan speed and mode</string>
-    <string name="smart_fan_switch_title">Smart Fan</string>
-    <string name="smart_fan_switch_summary">Handle fan automatically according to temperatures</string>
-    <string name="max_fan_switch_title">Fan Max</string>
-    <string name="max_fan_switch_summary">Set fan at max unconditionally</string>
+    <string name="fan_control_title">Fan control</string>
+    <string name="fan_control_summary">Control devices fan speed and mode</string>
+    <string name="fan_control_auto_title">Automatic fan</string>
+    <string name="fan_control_auto_summary">Automatically handle fan according to temperatures</string>
+    <string name="fan_control_max_title">Max fan</string>
+    <string name="fan_control_max_summary">Set fan at max unconditionally</string>
 
 </resources>

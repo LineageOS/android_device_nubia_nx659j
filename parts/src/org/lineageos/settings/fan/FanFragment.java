@@ -31,27 +31,27 @@ import org.lineageos.settings.utils.SettingsUtils;
 
 public class FanFragment extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
-    public static final String KEY_FAN_SMART = "smart_fan_switch";
-    public static final String KEY_FAN_MAX = "fan_speed_max";
+    public static final String KEY_FAN_AUTO = "fan_control_auto_switch";
+    public static final String KEY_FAN_MAX = "fan_control_max_switch";
 
     public static final String SMART_FAN = "/sys/kernel/fan/fan_smart";
     public static final String SPEED_LEVEL = "/sys/kernel/fan/fan_speed_level";
 
-    private SwitchPreference mPrefFanSmart;
+    private SwitchPreference mPrefFanAuto;
     private SwitchPreference mPrefFanMax;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.fan);
-        mPrefFanSmart = (SwitchPreference) findPreference(KEY_FAN_SMART);
-        mPrefFanSmart.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_SMART));
-        mPrefFanSmart.setOnPreferenceChangeListener(this);
+        mPrefFanAuto = (SwitchPreference) findPreference(KEY_FAN_AUTO);
+        mPrefFanAuto.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO));
+        mPrefFanAuto.setOnPreferenceChangeListener(this);
 
         mPrefFanMax = (SwitchPreference) findPreference(KEY_FAN_MAX);
         mPrefFanMax.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_MAX));
         mPrefFanMax.setOnPreferenceChangeListener(this);
 
-        if (SettingsUtils.getEnabled(getActivity(), KEY_FAN_SMART))
+        if (SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO))
             mPrefFanMax.setEnabled(false);
     }
 
@@ -65,9 +65,9 @@ public class FanFragment extends PreferenceFragment implements
         final String key = preference.getKey();
         boolean enabled = (boolean) value;
 
-        if (KEY_FAN_SMART.equals(key)) {
+        if (KEY_FAN_AUTO.equals(key)) {
             FileUtils.writeLine(SMART_FAN, enabled ? "1" : "0");
-            SettingsUtils.setEnabled(getActivity(), KEY_FAN_SMART, enabled);
+            SettingsUtils.setEnabled(getActivity(), KEY_FAN_AUTO, enabled);
             if (enabled)
                 FileUtils.writeLine(SPEED_LEVEL, "0");
             mPrefFanMax.setEnabled(!enabled);

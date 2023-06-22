@@ -20,17 +20,17 @@
     android:title="@string/fan_settings_title">
 
     <SwitchPreference
-        android:key="smart_fan_switch"
+        android:key="fan_control_auto_switch"
         android:disableDependentsState="true"
-        android:title="@string/smart_fan_switch_title"
-        android:summary="@string/smart_fan_switch_summary"
+        android:title="@string/fan_control_auto_title"
+        android:summary="@string/fan_control_auto_summary"
         android:persistent="false" />
 
     <SwitchPreference
-        android:key="fan_speed_max"
+        android:key="fan_control_max_switch"
         android:disableDependentsState="true"
-        android:title="@string/max_fan_switch_title"
-        android:summary="@string/max_fan_switch_summary"
+        android:title="@string/fan_control_max_title"
+        android:summary="@string/fan_control_max_summary"
         android:persistent="false" />
 
 </PreferenceScreen>

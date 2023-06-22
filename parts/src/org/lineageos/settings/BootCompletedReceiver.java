@@ -34,7 +34,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
-        if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_SMART))
+        if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_AUTO))
             FileUtils.writeLine(FanFragment.SMART_FAN, "1");
         else if (SettingsUtils.getEnabled(context, FanFragment.KEY_FAN_MAX))
             FileUtils.writeLine(FanFragment.SPEED_LEVEL, "5");
