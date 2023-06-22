@@ -19,6 +19,7 @@
 
     <!-- Fan -->
     <string name="fan_control_title">Fan control</string>
+    <string name="fan_control_enable_title">Enable fan control</string>
     <string name="fan_control_summary">Control devices fan speed and mode</string>
     <string name="fan_control_auto_title">Automatic fan</string>
     <string name="fan_control_auto_summary">Automatically handle fan according to temperatures</string>

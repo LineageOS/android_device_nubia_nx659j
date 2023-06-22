@@ -20,9 +20,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.provider.Settings;
+import android.widget.Switch;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
+
+import com.android.settingslib.widget.MainSwitchPreference;
+import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
 import org.lineageos.settings.R;
 
@@ -30,12 +34,15 @@ import org.lineageos.settings.utils.FileUtils;
 import org.lineageos.settings.utils.SettingsUtils;
 
 public class FanFragment extends PreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener {
+    public static final String KEY_FAN_ENABLE = "fan_control_enable";
     public static final String KEY_FAN_AUTO = "fan_control_auto_switch";
     public static final String KEY_FAN_MAX = "fan_control_max_switch";
 
     public static final String SMART_FAN = "/sys/kernel/fan/fan_smart";
     public static final String SPEED_LEVEL = "/sys/kernel/fan/fan_speed_level";
+
+    private MainSwitchPreference mSwitchBar;
 
     private SwitchPreference mPrefFanAuto;
     private SwitchPreference mPrefFanMax;
@@ -43,6 +50,11 @@ public class FanFragment extends PreferenceFragment implements
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.fan);
+
+        mSwitchBar = (MainSwitchPreference) findPreference(KEY_FAN_ENABLE);
+        mSwitchBar.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_ENABLE));
+        mSwitchBar.addOnSwitchChangeListener(this);
+
         mPrefFanAuto = (SwitchPreference) findPreference(KEY_FAN_AUTO);
         mPrefFanAuto.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO));
         mPrefFanAuto.setOnPreferenceChangeListener(this);
@@ -58,6 +70,21 @@ public class FanFragment extends PreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean value) {
+        boolean enabled = (boolean) value;
+
+        SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
+
+        if (enabled) {
+            FileUtils.writeLine(SMART_FAN, SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO) ? "1" : "0");
+            FileUtils.writeLine(SPEED_LEVEL, SettingsUtils.getEnabled(getActivity(), KEY_FAN_MAX) ? "5" : "0");
+        } else {
+            FileUtils.writeLine(SMART_FAN, "0");
+            FileUtils.writeLine(SPEED_LEVEL, "0");
+        }
     }
 
     @Override

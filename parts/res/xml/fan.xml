@@ -17,20 +17,27 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/fan_settings_title">
+    android:title="@string/fan_control_title">
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:defaultValue="false"
+        android:key="fan_control_enable"
+        android:title="@string/fan_control_enable_title" />
 
     <SwitchPreference
         android:key="fan_control_auto_switch"
         android:disableDependentsState="true"
         android:title="@string/fan_control_auto_title"
         android:summary="@string/fan_control_auto_summary"
-        android:persistent="false" />
+        android:persistent="false"
+        android:dependency="fan_control_enable" />
 
     <SwitchPreference
         android:key="fan_control_max_switch"
         android:disableDependentsState="true"
         android:title="@string/fan_control_max_title"
         android:summary="@string/fan_control_max_summary"
-        android:persistent="false" />
+        android:persistent="false"
+        android:dependency="fan_control_enable" />
 
 </PreferenceScreen>
