@@ -16,6 +16,7 @@
 
 package org.lineageos.settings.fan;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.RemoteException;
@@ -24,6 +25,8 @@ import android.widget.Switch;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
+import androidx.preference.SeekBarPreference;
+import androidx.preference.DropDownPreference;
 
 import com.android.settingslib.widget.MainSwitchPreference;
 import com.android.settingslib.widget.OnMainSwitchChangeListener;
@@ -36,35 +39,51 @@ import org.lineageos.settings.utils.SettingsUtils;
 public class FanFragment extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener {
     public static final String KEY_FAN_ENABLE = "fan_control_enable";
-    public static final String KEY_FAN_AUTO = "fan_control_auto_switch";
-    public static final String KEY_FAN_MAX = "fan_control_max_switch";
+    public static final String KEY_FAN_MODE = "fan_control_mode";
+    public static final String KEY_FAN_MANUAL = "fan_control_manual_slider";
 
     public static final String SMART_FAN = "/sys/kernel/fan/fan_smart";
     public static final String SPEED_LEVEL = "/sys/kernel/fan/fan_speed_level";
 
-    private MainSwitchPreference mSwitchBar;
+    public static final int FAN_AUTO_VALUE = 1;
+    public static final int FAN_MANUAL_VALUE = 2;
+    private static final int FAN_MIN_VALUE = 1;
+    private static final int FAN_MAX_VALUE = 5;
 
-    private SwitchPreference mPrefFanAuto;
-    private SwitchPreference mPrefFanMax;
+    private MainSwitchPreference mSwitchBar;
+    private DropDownPreference mFanControlMode;
+    private SeekBarPreference mFanManualBar;
+
+    private String summary = null;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        int fanModeValue;
         addPreferencesFromResource(R.xml.fan);
 
         mSwitchBar = (MainSwitchPreference) findPreference(KEY_FAN_ENABLE);
         mSwitchBar.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_ENABLE));
         mSwitchBar.addOnSwitchChangeListener(this);
 
-        mPrefFanAuto = (SwitchPreference) findPreference(KEY_FAN_AUTO);
-        mPrefFanAuto.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO));
-        mPrefFanAuto.setOnPreferenceChangeListener(this);
+        mFanControlMode = (DropDownPreference) findPreference(KEY_FAN_MODE);
+        mFanControlMode.setOnPreferenceChangeListener(this);
 
-        mPrefFanMax = (SwitchPreference) findPreference(KEY_FAN_MAX);
-        mPrefFanMax.setChecked(SettingsUtils.getEnabled(getActivity(), KEY_FAN_MAX));
-        mPrefFanMax.setOnPreferenceChangeListener(this);
+        mFanManualBar = (SeekBarPreference) findPreference(KEY_FAN_MANUAL);
+        mFanManualBar.setValue(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
+        mFanManualBar.setOnPreferenceChangeListener(this);
+        mFanManualBar.setMin(FAN_MIN_VALUE);
+        mFanManualBar.setMax(FAN_MAX_VALUE);
 
-        if (SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO))
-            mPrefFanMax.setEnabled(false);
+        fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
+        if (fanModeValue == FAN_AUTO_VALUE) {
+            summary = getResources().getString(R.string.fan_control_auto_summary);
+            mFanManualBar.setVisible(false);
+        } else {
+            summary = getResources().getString(R.string.fan_control_manual_summary);
+            mFanManualBar.setVisible(true);
+        }
+
+        mFanControlMode.setSummary(summary);
     }
 
     @Override
@@ -73,35 +92,59 @@ public class FanFragment extends PreferenceFragment implements
     }
 
     @Override
-    public void onSwitchChanged(Switch switchView, boolean value) {
-        boolean enabled = (boolean) value;
-
+    public void onSwitchChanged(Switch switchView, boolean enabled) {
         SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
+        int fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
+        String manualFanValue;
 
         if (enabled) {
-            FileUtils.writeLine(SMART_FAN, SettingsUtils.getEnabled(getActivity(), KEY_FAN_AUTO) ? "1" : "0");
-            FileUtils.writeLine(SPEED_LEVEL, SettingsUtils.getEnabled(getActivity(), KEY_FAN_MAX) ? "5" : "0");
+            SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
+            if (fanModeValue == FAN_AUTO_VALUE) {
+                FileUtils.writeLine(SPEED_LEVEL, "0");
+                FileUtils.writeLine(SMART_FAN, "1");
+            } else if (fanModeValue == FAN_MANUAL_VALUE) {
+                manualFanValue = String.valueOf(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
+                FileUtils.writeLine(SMART_FAN, "0");
+                FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
+            }
         } else {
-            FileUtils.writeLine(SMART_FAN, "0");
             FileUtils.writeLine(SPEED_LEVEL, "0");
+            FileUtils.writeLine(SMART_FAN, "0");
         }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         final String key = preference.getKey();
-        boolean enabled = (boolean) value;
+        String intValueStr;
+        int intValue;
 
-        if (KEY_FAN_AUTO.equals(key)) {
-            FileUtils.writeLine(SMART_FAN, enabled ? "1" : "0");
-            SettingsUtils.setEnabled(getActivity(), KEY_FAN_AUTO, enabled);
-            if (enabled)
+        if (KEY_FAN_MODE.equals(key)) {
+            intValueStr = (String) value;
+            intValue = Integer.parseInt(intValueStr);
+            mFanControlMode.setValue(intValueStr);
+
+            if (intValue == FAN_AUTO_VALUE) {
+                summary = getResources().getString(R.string.fan_control_auto_summary);
+                mFanManualBar.setVisible(false);
                 FileUtils.writeLine(SPEED_LEVEL, "0");
-            mPrefFanMax.setEnabled(!enabled);
-        } else if (KEY_FAN_MAX.equals(key)) {
-            FileUtils.writeLine(SPEED_LEVEL, enabled ? "5" : "0");
-            SettingsUtils.setEnabled(getActivity(), KEY_FAN_MAX, enabled);
+                FileUtils.writeLine(SMART_FAN, "1");
+            } else if (intValue == FAN_MANUAL_VALUE) {
+                String manualFanValue = String.valueOf(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
+                summary = getResources().getString(R.string.fan_control_manual_summary);
+                mFanManualBar.setVisible(true);
+                FileUtils.writeLine(SMART_FAN, "0");
+                FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
+            }
+            mFanControlMode.setSummary(summary);
+        } else if (KEY_FAN_MANUAL.equals(key)) {
+            intValue = (Integer) value;
+            intValueStr = String.valueOf(intValue);
+            mFanManualBar.setValue(intValue);
+            SettingsUtils.putInt(getActivity(), KEY_FAN_MANUAL, intValue);
+            FileUtils.writeLine(SPEED_LEVEL, intValueStr);
         }
+
         return true;
     }
 }
