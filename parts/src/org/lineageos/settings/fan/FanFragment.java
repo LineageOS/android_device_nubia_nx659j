@@ -17,9 +17,11 @@
 package org.lineageos.settings.fan;
 
 import android.content.res.Resources;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.RemoteException;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.widget.Switch;
 import androidx.preference.Preference;
@@ -37,7 +39,8 @@ import org.lineageos.settings.utils.FileUtils;
 import org.lineageos.settings.utils.SettingsUtils;
 
 public class FanFragment extends PreferenceFragment implements
-        Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener {
+        Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener,
+        SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_FAN_ENABLE = "fan_control_enable";
     public static final String KEY_FAN_MODE = "fan_control_mode";
     public static final String KEY_FAN_MANUAL = "fan_control_manual_slider";
@@ -66,7 +69,6 @@ public class FanFragment extends PreferenceFragment implements
         mSwitchBar.addOnSwitchChangeListener(this);
 
         mFanControlMode = (DropDownPreference) findPreference(KEY_FAN_MODE);
-        mFanControlMode.setOnPreferenceChangeListener(this);
 
         mFanManualBar = (SeekBarPreference) findPreference(KEY_FAN_MANUAL);
         mFanManualBar.setValue(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
@@ -87,8 +89,17 @@ public class FanFragment extends PreferenceFragment implements
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -119,25 +130,7 @@ public class FanFragment extends PreferenceFragment implements
         String intValueStr;
         int intValue;
 
-        if (KEY_FAN_MODE.equals(key)) {
-            intValueStr = (String) value;
-            intValue = Integer.parseInt(intValueStr);
-            mFanControlMode.setValue(intValueStr);
-
-            if (intValue == FAN_AUTO_VALUE) {
-                summary = getResources().getString(R.string.fan_control_auto_summary);
-                mFanManualBar.setVisible(false);
-                FileUtils.writeLine(SPEED_LEVEL, "0");
-                FileUtils.writeLine(SMART_FAN, "1");
-            } else if (intValue == FAN_MANUAL_VALUE) {
-                String manualFanValue = String.valueOf(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
-                summary = getResources().getString(R.string.fan_control_manual_summary);
-                mFanManualBar.setVisible(true);
-                FileUtils.writeLine(SMART_FAN, "0");
-                FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
-            }
-            mFanControlMode.setSummary(summary);
-        } else if (KEY_FAN_MANUAL.equals(key)) {
+        if (KEY_FAN_MANUAL.equals(key)) {
             intValue = (Integer) value;
             intValueStr = String.valueOf(intValue);
             mFanManualBar.setValue(intValue);
@@ -146,5 +139,26 @@ public class FanFragment extends PreferenceFragment implements
         }
 
         return true;
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (KEY_FAN_MODE.equals(key)) {
+            int intValue = Integer.parseInt(sharedPreferences.getString(key, String.valueOf(FAN_AUTO_VALUE)));
+            mFanControlMode.setValue(String.valueOf(intValue));
+            if (intValue == FAN_AUTO_VALUE) {
+                summary = getResources().getString(R.string.fan_control_auto_summary);
+                mFanManualBar.setVisible(false);
+                FileUtils.writeLine(SPEED_LEVEL, "0");
+                FileUtils.writeLine(SMART_FAN, "1");
+            } else if (intValue == FAN_MANUAL_VALUE) {
+                String manualFanValue = String.valueOf(SettingsUtils.getInt(getContext(), KEY_FAN_MANUAL, 1));
+                summary = getResources().getString(R.string.fan_control_manual_summary);
+                mFanManualBar.setVisible(true);
+                FileUtils.writeLine(SMART_FAN, "0");
+                FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
+            }
+            mFanControlMode.setSummary(summary);
+        }
     }
 }
