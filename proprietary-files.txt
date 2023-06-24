@@ -1236,11 +1236,6 @@ vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
 vendor/bin/msm_irqbalance
 vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc
 vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc
-vendor/etc/perf/commonresourceconfigs.xml
-vendor/etc/perf/perfboostsconfig.xml
-vendor/etc/perf/perfconfigstore.xml
-vendor/etc/perf/targetconfig.xml
-vendor/etc/perf/targetresourceconfigs.xml
 vendor/lib/libperfconfig.so
 vendor/lib/libperfgluelayer.so
 vendor/lib/libqti-iopd-client.so
@@ -1269,6 +1264,13 @@ vendor/lib64/libreffeature.so
 vendor/lib64/libskewknob.so
 vendor/lib64/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@2.0.so
+
+# Perf (configs) - from pdx206 58.2.A.10.126
+vendor/etc/perf/commonresourceconfigs.xml|c03bd36054bb5d327ad12dc711b58b3f658d261c
+vendor/etc/perf/perfboostsconfig.xml|7e0fbdee99aeb7db3126c636585a6aa3660df970
+vendor/etc/perf/perfconfigstore.xml|cb7dc88156dca524812238165eed2365eabf5b3e
+vendor/etc/perf/targetconfig.xml|e257a9782c8548d371c79bf224bcecdd8074eb9e
+vendor/etc/perf/targetresourceconfigs.xml|7be09ffdc8b1108b6df6673fcf5004ec7366ec88
 
 # Peripheral Manager
 vendor/bin/pm-proxy
