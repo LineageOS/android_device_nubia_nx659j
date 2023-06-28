@@ -175,7 +175,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_DENSITY := 420
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2020-06-05
+VENDOR_SECURITY_PATCH := 2022-08-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
