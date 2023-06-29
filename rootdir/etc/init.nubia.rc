@@ -27,6 +27,17 @@
 #
 
 on boot
+	# Camera
+	setprop persist.camera.gyro.disable 0
+	chown cameraserver cameraserver /sys/kernel/camera/file_dump
+	chown cameraserver cameraserver /sys/kernel/camera/torch_switch
+	chown cameraserver cameraserver /sys/kernel/camera/ois_switch
+	chown cameraserver cameraserver /sys/kernel/camera/eeprom_calibration
+	chmod 0666 /sys/kernel/camera/file_dump
+	chmod 0666 /sys/kernel/camera/torch_switch
+	chmod 0666 /sys/kernel/camera/ois_switch
+	chmod 0666 /sys/kernel/camera/eeprom_calibration
+
 	# Tuxera exFAT kernel module
 	insmod /vendor/lib/modules/texfat.ko
 
@@ -149,6 +160,12 @@ on boot
 	rm /data/vendor/tp2/ic_ver
 	rm /data/vendor/tp2/palm
 	rm /data/vendor/tp2/gesture_enable
+
+	# Vibrator
+	chown system audio /dev/aw8695_haptic
+	chmod 0660 /dev/aw8695_haptic
+	chown system audio /sys/class/leds/vibrator/haptic_audio
+	chmod 0660 /sys/class/leds/vibrator/haptic_audio
 
 on post-fs-data
 	# Fan
