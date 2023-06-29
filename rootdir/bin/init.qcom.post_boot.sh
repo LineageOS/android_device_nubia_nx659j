@@ -26,6 +26,10 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+# Changes from Qualcomm Innovation Center are provided under the following license:
+# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+#
 
 function 8953_sched_dcvs_eas()
 {
@@ -4286,7 +4290,7 @@ case "$target" in
 
         #power/perf tunings for khaje
         case "$soc_id" in
-                 "518" | "561")
+                 "518" | "561" | "585" | "586" )
 
             # Core control parameters on big
             echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
@@ -5260,7 +5264,7 @@ case "$target" in
     "msmnile")
 	# cpuset parameters
 	target_varient=`getprop ro.build.product`
-        if [ "$target_varient" == "msmnile_gvmq" ]; then
+        if [ "$target_varient" == "msmnile_gvmq" ] || [ "$target_varient" == "msmnile_gvmgh" ]; then
 		echo 4-7 > /dev/cpuset/background/cpus
 		echo 4-7 > /dev/cpuset/system-background/cpus
 
