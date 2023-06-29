@@ -75,6 +75,9 @@ on boot
 	chmod 664 /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/tptest
 	chown system system /sys/kernel/tp_node/fp_mode
 
+	chown system system /sys/kernel/tp_node/wake_gesture
+	chmod 0664 /sys/kernel/tp_node/wake_gesture
+
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/ic_ver /data/vendor/tp/ic_ver
 	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/autotest
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/tptest /data/vendor/tp/ic_detect
@@ -86,8 +89,6 @@ on boot
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/delta /data/vendor/tp/delta
 	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/palm_sleep
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/palm_sleep /data/vendor/tp/easy_sleep_palm
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/wake_gesture
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/wake_gesture /data/vendor/tp/easy_wakeup_gesture
 	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/start_update 1
 
 	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54
@@ -106,8 +107,6 @@ on boot
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/delta /data/vendor/tp/delta1
 	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/palm_sleep
 	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/palm_sleep /data/vendor/tp/easy_sleep_palm1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/wake_gesture
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/wake_gesture /data/vendor/tp/easy_wakeup_gesture1
 	write /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/start_update 1
 
 	chown system system /sys/devices/platform/goodix_ts.0/chip_info
