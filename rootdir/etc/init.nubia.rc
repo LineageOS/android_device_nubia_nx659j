@@ -28,7 +28,6 @@
 
 on boot
 	# Camera
-	setprop persist.camera.gyro.disable 0
 	chown cameraserver cameraserver /sys/kernel/camera/file_dump
 	chown cameraserver cameraserver /sys/kernel/camera/torch_switch
 	chown cameraserver cameraserver /sys/kernel/camera/ois_switch
