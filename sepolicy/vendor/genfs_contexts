@@ -5,8 +5,19 @@ genfscon sysfs /devices/platform/soc/884000.i2c/i2c-6/6-0057/power_supply u:obje
 # Fan node
 genfscon sysfs /kernel/fan u:object_r:sysfs_fan:s0
 
-# GameMode node
-genfscon sysfs /devices/platform/soc/a94000.i2c/i2c-5/5-0020/input u:object_r:sysfs_tp:s0
+# Leds
+genfscon sysfs /devices/platform/soc/994000.i2c/i2c-3/3-006a/leds/aw22xxx_led/trigger u:object_r:sysfs_leds:s0
+
+# Light sensor
+genfscon sysfs /class/light/light u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/light/light u:object_r:vendor_sysfs_sensors:s0
+
+# Proximity sensor
+genfscon sysfs /class/proximity/proximity u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/proximity/proximity u:object_r:vendor_sysfs_sensors:s0
+
+# Touchscreen
+genfscon sysfs /kernel/tp_node u:object_r:sysfs_tp:s0
 
 # Vibrator
-genfscon sysfs /devices/platform/soc/888000.i2c/i2c-7/7-005a/leds/vibrator_aw8695 u:object_r:sysfs_leds:s0
+genfscon sysfs /devices/platform/soc/888000.i2c/i2c-7/7-005a/leds/vibrator u:object_r:sysfs_leds:s0
