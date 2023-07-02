@@ -76,13 +76,16 @@ public class FanFragment extends PreferenceFragment implements
         mFanManualBar.setMin(FAN_MIN_VALUE);
         mFanManualBar.setMax(FAN_MAX_VALUE);
 
-        fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
-        if (fanModeValue == FAN_AUTO_VALUE) {
-            summary = getResources().getString(R.string.fan_control_auto_summary);
-            mFanManualBar.setVisible(false);
-        } else {
-            summary = getResources().getString(R.string.fan_control_manual_summary);
-            mFanManualBar.setVisible(true);
+        if (mFanControlMode.getValue() != null) {
+            fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
+
+            if (fanModeValue == FAN_AUTO_VALUE) {
+                summary = getResources().getString(R.string.fan_control_auto_summary);
+                mFanManualBar.setVisible(false);
+            } else {
+                summary = getResources().getString(R.string.fan_control_manual_summary);
+                mFanManualBar.setVisible(true);
+            }
         }
 
         mFanControlMode.setSummary(summary);
