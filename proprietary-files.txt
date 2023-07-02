@@ -1236,6 +1236,9 @@ vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
 vendor/bin/msm_irqbalance
 vendor/etc/init/vendor.qti.hardware.iop@2.0-service.rc
 vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc
+vendor/etc/lm/AdaptLaunchFeature.xml
+vendor/etc/lm/AppClassifierFeature.xml
+vendor/etc/lm/GameOptimizationFeature.xml
 vendor/lib/libperfconfig.so
 vendor/lib/libperfgluelayer.so
 vendor/lib/libqti-iopd-client.so
