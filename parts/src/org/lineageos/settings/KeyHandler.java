@@ -28,8 +28,8 @@ import com.android.internal.os.DeviceKeyHandler;
 public class KeyHandler implements DeviceKeyHandler {
     private static final String TAG = KeyHandler.class.getSimpleName();
 
-    private static final int KEY_GAMESWITCH_ON = 250;
-    private static final int KEY_GAMESWITCH_OFF = 251;
+    private static final int KEY_GAMESWITCH_OFF = 250;
+    private static final int KEY_GAMESWITCH_ON = 251;
 
     private final Context mContext;
     private final AudioManager mAudioManager;
