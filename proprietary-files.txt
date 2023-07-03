@@ -318,6 +318,7 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile3.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile4.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml
+vendor/etc/default-permissions/com.qualcomm.qti.cne.xml
 vendor/etc/init/cnd.rc
 vendor/lib/libcne.so
 vendor/lib/libcneapiclient.so
@@ -1283,10 +1284,13 @@ vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # QMI
+vendor/bin/qmipriod
 vendor/bin/qrtr-cfg
 vendor/bin/qrtr-lookup
 vendor/bin/qrtr-ns
 vendor/bin/irsc_util
+vendor/etc/init/qmipriod.rc
+vendor/etc/sec_config
 vendor/lib/libidl.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libqcci_legacy.so
@@ -1330,11 +1334,13 @@ vendor/app/IWlanService/IWlanService.apk
 vendor/bin/hw/qcrild
 vendor/etc/init/init-qcril-data.rc
 vendor/etc/init/qcrild.rc
+vendor/etc/init/ssgtzd.rc
 vendor/etc/seccomp_policy/atfwd@2.0.policy
 vendor/lib/liblqe.so
 vendor/lib/libpdmapper.so
 vendor/lib/libpdnotifier.so
 vendor/lib/libqcrilFramework.so
+vendor/lib/libqcrildatactl.so
 vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqsap_sdk.so
 vendor/lib/libril-qc-hal-qmi.so
@@ -1381,6 +1387,7 @@ vendor/lib64/liblqe.so
 vendor/lib64/libpdmapper.so
 vendor/lib64/libpdnotifier.so
 vendor/lib64/libqcrilFramework.so
+vendor/lib64/libqcrildatactl.so
 vendor/lib64/libqdma_file_agent.so
 vendor/lib64/libqmi_csvt_srvc.so
 vendor/lib64/libqsap_sdk.so
