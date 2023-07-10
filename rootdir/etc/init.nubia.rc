@@ -40,19 +40,6 @@ on boot
 	# Tuxera exFAT kernel module
 	insmod /vendor/lib/modules/texfat.ko
 
-	# LCD
-	chown system system /sys/kernel/lcd_enhance/cabc
-	chown system system /sys/kernel/lcd_enhance/aod_mode
-	chown system system /sys/kernel/lcd_enhance/hbm_mode
-	chown system system /sys/kernel/lcd_enhance/dfps
-	chown system system /sys/kernel/lcd_enhance/fps_change
-	chown system system /sys/kernel/lcd_enhance/panel_type
-	chown system system /sys/kernel/lcd_enhance/edid_modes
-	chown system system /sys/kernel/lcd_enhance/hpd
-	chmod 0666 /sys/kernel/lcd_enhance/edid_modes 
-	chmod 0666 /sys/kernel/lcd_enhance/hpd
-	chmod 0666 /sys/kernel/lcd_enhance/fps_change
-
 	# Multicolor led
 	chown system system /sys/class/leds/aw22xxx_led/reg
 	chown system system /sys/class/leds/aw22xxx_led/hwen
@@ -78,87 +65,9 @@ on boot
 	chmod 0666 /sys/devices/platform/soc/990000.i2c/i2c-2/2-0010/R_sensitivity
 
 	# Touchscreen
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/ic_ver
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/fpswitch
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/tptest
-	chmod 664 /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/tptest
 	chown system system /sys/kernel/tp_node/fp_mode
-
 	chown system system /sys/kernel/tp_node/wake_gesture
 	chmod 0664 /sys/kernel/tp_node/wake_gesture
-
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/ic_ver /data/vendor/tp/ic_ver
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/autotest
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/tptest /data/vendor/tp/ic_detect
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/start_update
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/start_update /data/vendor/tp/start_update
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/rawdata
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/rawdata /data/vendor/tp/rawdata
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/delta
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/f54/delta /data/vendor/tp/delta
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/palm_sleep
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/palm_sleep /data/vendor/tp/easy_sleep_palm
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/start_update 1
-
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/ic_ver
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/tptest
-	chmod 664 /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/tptest
-	
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/ic_ver /data/vendor/tp/ic_ver1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/autotest
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/tptest /data/vendor/tp/ic_detect1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/start_update
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/start_update /data/vendor/tp/start_update1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/rawdata
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/rawdata /data/vendor/tp/rawdata1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/delta
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/f54/delta /data/vendor/tp/delta1
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/palm_sleep
-	symlink /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/palm_sleep /data/vendor/tp/easy_sleep_palm1
-	write /sys/devices/platform/soc/a94000.i2c/i2c-4/4-0020/input/input6/start_update 1
-
-	chown system system /sys/devices/platform/goodix_ts.0/chip_info
-	symlink /sys/devices/platform/goodix_ts.0/chip_info /data/vendor/tp2/ic_ver
-	chown system system /sys/devices/platform/goodix_ts.0/palm
-	symlink /sys/devices/platform/goodix_ts.0/palm /data/vendor/tp2/palm
-	chown system system /sys/devices/platform/goodix_ts.0/gesture/enable
-	symlink /sys/devices/platform/goodix_ts.0/gesture/enable /data/vendor/tp2/gesture_enable
-
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/movable
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/stability
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/precision
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/sensitivity
-	chown system system /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/prevention
-
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/movable 4B
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/stability 0A
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/precision 2A
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/sensitivity 48
-	write /sys/devices/platform/soc/a94000.i2c/i2c-5/5-0020/input/input5/prevention 1
-
-	# TP node
-	mkdir /data/vendor/tp 0775 system system
-	mkdir /data/vendor/tp2 0775 system system
-	mkdir /data/vendor/tp/debug 0775 system system
-	rm /data/vendor/tp/ic_ver
-	rm /data/vendor/tp/rawdata
-	rm /data/vendor/tp/delta
-	rm /data/vendor/tp/ic_detect
-	rm /data/vendor/tp/start_update
-	rm /data/vendor/tp/easy_sleep_palm
-	rm /data/vendor/tp/easy_wakeup_gesture
-	rm /data/vendor/tp/ic_ver1
-	rm /data/vendor/tp/rawdata1
-	rm /data/vendor/tp/delta1
-	rm /data/vendor/tp/ic_detect1
-	rm /data/vendor/tp/start_update1
-	rm /data/vendor/tp/easy_sleep_palm1
-	rm /data/vendor/tp/easy_wakeup_gesture1
-	rm /data/vendor/tp2/ic_ver
-	rm /data/vendor/tp2/palm
-	rm /data/vendor/tp2/gesture_enable
 
 	# Vibrator
 	chown system audio /dev/aw8695_haptic
@@ -187,15 +96,8 @@ on post-fs-data
 	# Fingerprint
 	chmod 0666 /dev/goodix_fp
 	chown system system /dev/goodix_fp
-	chmod 0666 /sys/kernel/lcd_enhance/hbm_mode
-	chown system system /sys/kernel/lcd_enhance/hbm_mode
 	chmod 0666 /sys/class/backlight/panel0-backlight/brightness
 	chown system system /sys/class/backlight/panel0-backlight/brightness
-	chmod 0666 /sys/kernel/tp_node/fp_mode
-	chown system system /sys/kernel/tp_node/fp_mode
-
-	chmod 0777 /persist/goodix
-	chown system system /persist/goodix
 
 	mkdir /data/vendor/goodix 0777 system system
 
@@ -237,15 +139,13 @@ on post-fs-data
 	chmod 664 /sys/class/leds/vibrator/haptic_audio_time
 
 	# Light
-	chown system system /sys/class/leds/red/breath_feature
 	chown system system /sys/class/leds/red/brightness
 	chown system system /sys/class/leds/red/breath
 	chown system system /sys/class/leds/red/delay_off
-	chown system system /sys/class/leds/red/delya_on
+	chown system system /sys/class/leds/red/delay_on
 	chown system system /sys/class/leds/red/device
 	chown system system /sys/class/leds/red/max_brightness
 
-	chown system system /sys/class/leds/green/breath_feature
 	chown system system /sys/class/leds/green/brightness
 	chown system system /sys/class/leds/green/breath
 	chown system system /sys/class/leds/green/delay_off
@@ -253,11 +153,10 @@ on post-fs-data
 	chown system system /sys/class/leds/green/device
 	chown system system /sys/class/leds/green/max_brightness
 
-	chown system system /sys/class/leds/blue/breath_feature
 	chown system system /sys/class/leds/blue/brightness
 	chown system system /sys/class/leds/blue/breath
 	chown system system /sys/class/leds/blue/delay_off
-	chown system system /sys/class/leds/blue/delya_on
+	chown system system /sys/class/leds/blue/delay_on
 	chown system system /sys/class/leds/blue/device
 	chown system system /sys/class/leds/blue/max_brightness
 
@@ -274,27 +173,24 @@ on post-fs-data
 	chown system system /sys/class/light/light/lux
 	chown system system /sys/class/light/light/transmittance
 
-	chmod 664 /sys/class/leds/red/breath_feature
 	chmod 664 /sys/class/leds/red/brightness
-	chmod 664 /sys/class/class/leds/red/breath
+	chmod 664 /sys/class/leds/red/breath
 	chmod 664 /sys/class/leds/red/delay_off
-	chmod 664 /sys/class/leds/red/delya_on
+	chmod 664 /sys/class/leds/red/delay_on
 	chmod 666 /sys/class/leds/red/device
 	chmod 666 /sys/class/leds/red/max_brightness
 
-	chmod 664 /sys/class/leds/blue/breath_feature
 	chmod 664 /sys/class/leds/blue/brightness
 	chmod 664 /sys/class/class/leds/blue/breath
 	chmod 664 /sys/class/leds/blue/delay_off
-	chmod 664 /sys/class/leds/blue/delya_on
+	chmod 664 /sys/class/leds/blue/delay_on
 	chmod 666 /sys/class/leds/blue/device
 	chmod 666 /sys/class/leds/blue/max_brightness
 
-	chmod 664 /sys/class/leds/green/breath_feature
 	chmod 664 /sys/class/leds/green/brightness
 	chmod 664 /sys/class/class/leds/green/breath
 	chmod 664 /sys/class/leds/green/delay_off
-	chmod 664 /sys/class/leds/green/delya_on
+	chmod 664 /sys/class/leds/green/delay_on
 	chmod 666 /sys/class/leds/green/device
 	chmod 666 /sys/class/leds/green/max_brightness
 
