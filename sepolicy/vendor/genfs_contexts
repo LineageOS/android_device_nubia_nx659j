@@ -19,6 +19,10 @@ genfscon sysfs /devices/virtual/proximity/proximity u:object_r:vendor_sysfs_sens
 # Touchscreen
 genfscon sysfs /kernel/tp_node u:object_r:sysfs_tp:s0
 
+# Triggers
+genfscon sysfs /devices/platform/soc/988000.i2c/i2c-1/1-0010/mode u:object_r:sysfs_touchkey:s0
+genfscon sysfs /devices/platform/soc/990000.i2c/i2c-2/2-0010/mode u:object_r:sysfs_touchkey:s0
+
 # Vibrator
 genfscon sysfs /devices/platform/soc/888000.i2c/i2c-7/7-005a/leds/vibrator u:object_r:sysfs_leds:s0
 

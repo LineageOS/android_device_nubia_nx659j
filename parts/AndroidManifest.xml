@@ -66,6 +66,11 @@
             android:label="@string/fan_control_title">
         </activity>
 
+        <activity
+            android:name=".buttons.TriggersActivity"
+            android:label="@string/trigger_buttons_title">
+        </activity>
+
         <activity android:name=".KeyHandler" />
 
     </application>

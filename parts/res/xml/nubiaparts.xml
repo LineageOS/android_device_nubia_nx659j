@@ -25,4 +25,10 @@
         android:summary="@string/fan_control_summary"
         android:title="@string/fan_control_title" />
 
+    <PreferenceScreen
+        android:key="triggers"
+        android:fragment="org.lineageos.settings.buttons.TriggersActivity"
+        android:icon="@drawable/triggers"
+        android:summary="@string/trigger_buttons_summary"
+        android:title="@string/trigger_buttons_title" />
 </PreferenceScreen>

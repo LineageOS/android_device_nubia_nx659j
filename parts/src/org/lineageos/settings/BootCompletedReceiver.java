@@ -25,6 +25,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import org.lineageos.settings.fan.FanFragment;
+import org.lineageos.settings.buttons.TriggersFragment;
 import org.lineageos.settings.utils.FileUtils;
 import org.lineageos.settings.utils.SettingsUtils;
 
@@ -46,6 +47,12 @@ public class BootCompletedReceiver extends BroadcastReceiver {
                 String fanSpeed = String.valueOf(SettingsUtils.getInt(context, FanFragment.KEY_FAN_MANUAL, 1));
                 FileUtils.writeLine(FanFragment.SPEED_LEVEL, fanSpeed);
             }
+        }
+
+        Boolean enabled = sharedPreferences.getBoolean(TriggersFragment.KEY_TRIGGERS_DISABLE, true);
+        if (enabled) {
+            FileUtils.writeLine(TriggersFragment.KEY_TRIGGERS_MODE_FILE1, "0");
+            FileUtils.writeLine(TriggersFragment.KEY_TRIGGERS_MODE_FILE2, "0");
         }
     }
 }

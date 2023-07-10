@@ -28,4 +28,9 @@
     <string name="fan_control_manual_summary">Set fan to a fixed value</string>
     <string name="fan_control_intensity_title">Speed</string>
 
+    <!-- Triggers -->
+    <string name="trigger_buttons_title">Trigger buttons</string>
+    <string name="trigger_buttons_summary">Enable or disable trigger buttons</string>
+    <string name="trigger_buttons_disable_title">Disable trigger buttons</string>
+    <string name="trigger_buttons_disable_summary">Avoid trigger buttons to cause unwanted behavior</string>
 </resources>

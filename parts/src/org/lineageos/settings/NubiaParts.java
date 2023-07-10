@@ -32,6 +32,7 @@ import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 import com.android.settingslib.widget.R;
 
+import org.lineageos.settings.buttons.TriggersActivity;
 import org.lineageos.settings.fan.FanActivity;
 
 public class NubiaParts extends CollapsingToolbarBaseActivity {
@@ -60,6 +61,16 @@ public class NubiaParts extends CollapsingToolbarBaseActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Intent intent = new Intent(getContext(), FanActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+            });
+
+            Preference mTriggersPref = findPreference("triggers");
+            mTriggersPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getContext(), TriggersActivity.class);
                     startActivity(intent);
                     return true;
                 }
