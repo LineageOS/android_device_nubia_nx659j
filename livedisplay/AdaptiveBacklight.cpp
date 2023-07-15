@@ -36,11 +36,11 @@ Return<bool> AdaptiveBacklight::isEnabled() {
         LOG(ERROR) << "Failed to read " << kCabcStatusPath;
         return false;
     }
-    return std::stoi(android::base::Trim(buf)) == 1;
+    return std::stoi(android::base::Trim(buf)) == 3;
 }
 
 Return<bool> AdaptiveBacklight::setEnabled(bool enabled) {
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), kCabcStatusPath)) {
+    if (!android::base::WriteStringToFile((enabled ? "3" : "0"), kCabcStatusPath)) {
         LOG(ERROR) << "Failed to write " << kCabcStatusPath;
         return false;
     }
