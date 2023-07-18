@@ -114,11 +114,9 @@ public class FanFragment extends PreferenceFragment implements
         if (enabled) {
             SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
             if (fanModeValue == FAN_AUTO_VALUE) {
-                FileUtils.writeLine(SPEED_LEVEL, "0");
                 FileUtils.writeLine(SMART_FAN, "1");
             } else if (fanModeValue == FAN_MANUAL_VALUE) {
                 manualFanValue = String.valueOf(SettingsUtils.getInt(getActivity(), KEY_FAN_MANUAL, 1));
-                FileUtils.writeLine(SMART_FAN, "0");
                 FileUtils.writeLine(SPEED_LEVEL, manualFanValue);
             }
         } else {
