@@ -246,6 +246,7 @@ PRODUCT_PACKAGES += \
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
     device/nubia/nx659j \
+    hardware/nubia \
     vendor/qcom/opensource/usb/etc
 
 # NFC
