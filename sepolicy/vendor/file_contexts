@@ -1,6 +1,7 @@
 # Fingerprint
 /dev/goodix_fp                                u:object_r:fingerprint_device:s0
 /data/vendor/goodix(/.*)?                     u:object_r:fingerprint_vendor_data_file:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nubia           u:object_r:hal_fingerprint_default_exec:s0
 
 # Lights
 /(vendor|system/vendor)/bin/hw/android\.hardware\.lights-service\.nx659j                                 u:object_r:hal_light_default_exec:s0

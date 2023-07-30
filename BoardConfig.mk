@@ -107,6 +107,10 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/kernel/tp_node/wake_gesture"
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
+# Fingerprint
+TARGET_SURFACEFLINGER_UDFPS_LIB := //hardware/nubia:libudfps_extension.nubia
+TARGET_USES_FOD_ZPOS := true
+
 # Hals
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := kona
