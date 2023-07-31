@@ -67,8 +67,8 @@ function blob_fixup() {
         ;;
 
     # Change soname for fingerprint.default.so
-    vendor/lib/hw/fingerprint.kona.so | vendor/lib64/hw/fingerprint.kona.so)
-        patchelf --set-soname "fingerprint.kona.so" "${2}"
+    vendor/lib/hw/fingerprint.goodix_fod.default.so | vendor/lib64/hw/fingerprint.goodix_fod.default.so)
+        patchelf --set-soname "fingerprint.goodix_fod.default.so" "${2}"
         ;;
 
     vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so)
