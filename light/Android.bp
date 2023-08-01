@@ -5,10 +5,10 @@
 //
 
 cc_binary {
-    name: "android.hardware.lights-service.NX659J",
+    name: "android.hardware.lights-service.nx659j",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.lights-service.NX659J.rc"],
-    vintf_fragments: ["android.hardware.lights-service.NX659J.xml"],
+    init_rc: ["android.hardware.lights-service.nx659j.rc"],
+    vintf_fragments: ["android.hardware.lights-service.nx659j.xml"],
     vendor: true,
     shared_libs: [
         "libbase",

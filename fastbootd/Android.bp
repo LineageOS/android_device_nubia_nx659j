@@ -1,5 +1,5 @@
 cc_binary {
-    name: "fastbootd.NX659J",
+    name: "fastbootd.nx659j",
     defaults: ["fastboot_defaults"],
 
     recovery: true,

@@ -21,7 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Inherit proprietary libraries
-$(call inherit-product, vendor/nubia/NX659J/NX659J-vendor.mk)
+$(call inherit-product, vendor/nubia/nx659j/nx659j-vendor.mk)
 
 # Inherit display makefiles
 $(call inherit-product, hardware/qcom-caf/sm8250/display/config/display-board.mk)
@@ -145,7 +145,7 @@ PRODUCT_PACKAGES += \
 
 # fastbootd
 PRODUCT_PACKAGES += \
-    fastbootd.NX659J
+    fastbootd.nx659j
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -200,7 +200,7 @@ PRODUCT_PACKAGES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.NX659J
+    android.hardware.lights-service.nx659j
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -248,7 +248,7 @@ PRODUCT_PACKAGES += \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    device/nubia/NX659J \
+    device/nubia/nx659j \
     vendor/qcom/opensource/usb/etc
 
 # NFC
@@ -405,7 +405,7 @@ PRODUCT_COPY_FILES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.NX659J
+    vendor.lineage.touch@1.0-service.nx659j
 
 # Trustzone
 PRODUCT_PACKAGES += \
@@ -426,7 +426,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.NX659J
+    android.hardware.vibrator@1.0-service.nx659j
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/excluded-input-devices.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/excluded-input-devices.xml

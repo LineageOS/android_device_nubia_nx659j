@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.vibrator@1.0-service.NX659J"
+#define LOG_TAG "android.hardware.vibrator@1.0-service.nx659j"
 
 #include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>

@@ -5,9 +5,9 @@
 //
 
 cc_binary {
-    name: "vendor.lineage.touch@1.0-service.NX659J",
-    vintf_fragments: ["vendor.lineage.touch@1.0-service.NX659J.xml"],
-    init_rc: ["vendor.lineage.touch@1.0-service.NX659J.rc"],
+    name: "vendor.lineage.touch@1.0-service.nx659j",
+    vintf_fragments: ["vendor.lineage.touch@1.0-service.nx659j.xml"],
+    init_rc: ["vendor.lineage.touch@1.0-service.nx659j.rc"],
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     proprietary: true,

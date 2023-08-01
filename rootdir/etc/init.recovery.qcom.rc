@@ -37,16 +37,16 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-service fastbootd.NX659J /system/bin/fastbootd.NX659J
+service fastbootd.nx659j /system/bin/fastbootd.nx659j
     disabled
     group system
     seclabel u:r:fastbootd:s0
 
 on property:sys.usb.config=fastboot
-    start fastbootd.NX659J
+    start fastbootd.nx659j
 
 on property:sys.usb.config=none && property:sys.usb.configfs=0
-    stop fastbootd.NX659J
+    stop fastbootd.nx659j
 
 on property:sys.usb.config=none && property:sys.usb.configfs=1
-    stop fastbootd.NX659J
+    stop fastbootd.nx659j

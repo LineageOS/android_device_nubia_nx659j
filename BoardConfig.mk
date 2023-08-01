@@ -26,7 +26,7 @@ BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 TARGET_BOARD_PLATFORM := kona
-DEVICE_PATH := device/nubia/NX659J
+DEVICE_PATH := device/nubia/nx659j
 
 # Architecture
 TARGET_ARCH := arm64

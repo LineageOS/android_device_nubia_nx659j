@@ -16,8 +16,8 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "android.hardware.vibrator@1.0-service.NX659J",
-    init_rc: ["android.hardware.vibrator@1.0-service.NX659J.rc"],
+    name: "android.hardware.vibrator@1.0-service.nx659j",
+    init_rc: ["android.hardware.vibrator@1.0-service.nx659j.rc"],
     srcs: ["service.cpp", "Vibrator.cpp"],
     vendor: true,
     cpp_std: "experimental",
