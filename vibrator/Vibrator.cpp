@@ -29,10 +29,10 @@
 
 // Refer to non existing
 // kernel documentation on the detail usages for ABIs below
-static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator_aw8695/activate";
-static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator_aw8695/duration";
-static constexpr char GAIN_PATH[] = "/sys/class/leds/vibrator_aw8695/gain";
-static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator_aw8695/state";
+static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator/activate";
+static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator/duration";
+static constexpr char GAIN_PATH[] = "/sys/class/leds/vibrator/gain";
+static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator/state";
 
 namespace android {
 namespace hardware {
