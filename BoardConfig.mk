@@ -108,6 +108,7 @@ BOARD_USES_METADATA_PARTITION := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
+    console=null \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
     lpm_levels.sleep_disabled=1 \
