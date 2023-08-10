@@ -312,3 +312,21 @@ service vendor.sensors-hal-2-0-multihal /vendor/bin/hw/android.hardware.sensors@
 	task_profiles ServiceCapacityLow
 	capabilities BLOCK_SUSPEND
 	rlimit rtprio 10 10
+
+service nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service.samsung
+	override
+	class hal
+	user nfc
+	group nfc
+	disabled
+
+service nfc-sku-sh /vendor/bin/init.nfc.sku.sh
+	class core
+	user root
+	oneshot
+
+on property:vendor.qti.nfc.supported=true
+	setprop ro.boot.product.hardware.sku nfc
+
+on property:ro.boot.product.hardware.sku=nfc
+	start nfc_hal_service

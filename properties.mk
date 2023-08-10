@@ -208,8 +208,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.factory.nfc=true \
-    ro.boot.product.hardware.sku=nfc
+    persist.vendor.factory.nfc=true
 
 # OEM unlocking
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
