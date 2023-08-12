@@ -1,1 +1,2 @@
 type fingerprint_device, dev_type;
+type vendor_custom_block_device, dev_type;
