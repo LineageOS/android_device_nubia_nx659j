@@ -22,8 +22,6 @@
 # definition file).
 #
 
-BUILD_BROKEN_DUP_RULES := true
-
 DEVICE_PATH := device/nubia/nx659j
 
 # A/B
