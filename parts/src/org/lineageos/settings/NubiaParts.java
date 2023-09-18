@@ -30,7 +30,6 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
-import com.android.settingslib.widget.R;
 
 import org.lineageos.settings.buttons.TriggersActivity;
 import org.lineageos.settings.fan.FanActivity;
@@ -45,7 +44,7 @@ public class NubiaParts extends CollapsingToolbarBaseActivity {
         if (fragment == null) {
             mNubiaPartsFragment = new NubiaPartsFragment();
             getFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, mNubiaPartsFragment)
+                    .add(com.android.settingslib.collapsingtoolbar.R.id.content_frame, mNubiaPartsFragment)
                     .commit();
         }
     }
