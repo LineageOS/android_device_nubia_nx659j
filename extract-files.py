@@ -46,7 +46,10 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups: blob_fixups_user_type = {
     ('vendor/etc/sensors/hals.conf'): blob_fixup()
         .regex_replace('ffbm.sensors.oem.so\n', ''),
-    ('vendor/lib/hw/fingerprint.goodix_fod.default.so', 'vendor/lib64/hw/fingerprint.goodix_fod.default.so'): blob_fixup()
+    ('vendor/lib/hw/fingerprint.goodix_fod.default.so', 
+    'vendor/lib64/hw/fingerprint.goodix_fod.default.so',
+    'vendor/lib/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so',
+    'vendor/lib64/libvendor.goodix.hardware.biometrics.fingerprint@2.1.so'): blob_fixup()
         .fix_soname()
         .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
     'vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so': blob_fixup()
