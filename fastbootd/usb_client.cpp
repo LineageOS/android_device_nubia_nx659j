@@ -53,6 +53,16 @@ struct SsFuncDesc {
     struct usb_ss_ep_comp_descriptor sink_comp;
 } __attribute__((packed));
 
+struct DescV1 {
+    struct usb_functionfs_descs_head_v1 {
+        __le32 magic;
+        __le32 length;
+        __le32 fs_count;
+        __le32 hs_count;
+    } __attribute__((packed)) header;
+    struct FuncDesc fs_descs, hs_descs;
+} __attribute__((packed));
+
 struct DescV2 {
     struct usb_functionfs_descs_head_v2 header;
     // The rest of the structure depends on the flags in the header.
@@ -146,6 +156,46 @@ static struct SsFuncDesc ss_descriptors = {
                 },
 };
 
+static struct FuncDesc fs_descriptors_v1 = {
+        .intf = fastboot_interface,
+        .source =
+                {
+                        .bLength = sizeof(fs_descriptors_v1.source),
+                        .bDescriptorType = USB_DT_ENDPOINT,
+                        .bEndpointAddress = 1 | USB_DIR_OUT,
+                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
+                        .wMaxPacketSize = kMaxPacketSizeFs,
+                },
+        .sink =
+                {
+                        .bLength = sizeof(fs_descriptors_v1.sink),
+                        .bDescriptorType = USB_DT_ENDPOINT,
+                        .bEndpointAddress = 2 | USB_DIR_IN,
+                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
+                        .wMaxPacketSize = kMaxPacketSizeFs,
+                },
+};
+
+static struct FuncDesc hs_descriptors_v1 = {
+        .intf = fastboot_interface,
+        .source =
+                {
+                        .bLength = sizeof(hs_descriptors_v1.source),
+                        .bDescriptorType = USB_DT_ENDPOINT,
+                        .bEndpointAddress = 1 | USB_DIR_OUT,
+                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
+                        .wMaxPacketSize = kMaxPacketSizeHs,
+                },
+        .sink =
+                {
+                        .bLength = sizeof(hs_descriptors_v1.sink),
+                        .bDescriptorType = USB_DT_ENDPOINT,
+                        .bEndpointAddress = 2 | USB_DIR_IN,
+                        .bmAttributes = USB_ENDPOINT_XFER_BULK,
+                        .wMaxPacketSize = kMaxPacketSizeHs,
+                },
+};
+
 #define STR_INTERFACE_ "fastbootd"
 
 static const struct {
@@ -167,6 +217,17 @@ static const struct {
                         htole16(0x0409), /* en-us */
                         STR_INTERFACE_,
                 },
+};
+
+static struct DescV1 v1_descriptor = {
+        .header = {
+            .magic = htole32(FUNCTIONFS_DESCRIPTORS_MAGIC),
+            .length = htole32(sizeof(v1_descriptor)),
+            .fs_count = 3,
+            .hs_count = 3,
+        },
+        .fs_descs = fs_descriptors_v1,
+        .hs_descs = hs_descriptors_v1,
 };
 
 static struct DescV2 v2_descriptor = {
@@ -205,8 +266,12 @@ static bool InitFunctionFs(usb_handle* h) {
 
         auto ret = write(h->control.get(), &v2_descriptor, sizeof(v2_descriptor));
         if (ret < 0) {
-            PLOG(ERROR) << "cannot write descriptors " << kUsbFfsFastbootEp0;
-            goto err;
+            // fallback to v1 descriptor, with different endpoint addresses for source and sink
+            ret = write(h->control.get(), &v1_descriptor, sizeof(v1_descriptor));
+            if (ret < 0) {
+                PLOG(ERROR) << "cannot write descriptors " << kUsbFfsFastbootEp0;
+                goto err;
+            }
         }
 
         ret = write(h->control.get(), &strings, sizeof(strings));
@@ -232,7 +297,6 @@ static bool InitFunctionFs(usb_handle* h) {
 
     h->read_aiob.fd = h->bulk_out.get();
     h->write_aiob.fd = h->bulk_in.get();
-    h->reads_zero_packets = false;
     return true;
 
 err:

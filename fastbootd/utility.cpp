@@ -36,7 +36,6 @@
 using namespace android::fs_mgr;
 using namespace std::chrono_literals;
 using android::base::unique_fd;
-using android::hardware::boot::V1_0::Slot;
 
 namespace {
 
@@ -137,7 +136,7 @@ bool LogicalPartitionExists(FastbootDevice* device, const std::string& name, boo
     return true;
 }
 
-bool GetSlotNumber(const std::string& slot, Slot* number) {
+bool GetSlotNumber(const std::string& slot, int32_t* number) {
     if (slot.size() != 1) {
         return false;
     }
@@ -196,7 +195,7 @@ std::vector<std::string> ListPartitions(FastbootDevice* device) {
 }
 
 bool GetDeviceLockStatus() {
-    //return android::base::GetProperty("ro.boot.verifiedbootstate", "") != "orange";
+    //return android::base::GetProperty("ro.boot.verifiedbootstate", "") == "green";
     return 0;
 }
 
@@ -205,7 +204,7 @@ bool UpdateAllPartitionMetadata(FastbootDevice* device, const std::string& super
     size_t num_slots = 1;
     auto boot_control_hal = device->boot_control_hal();
     if (boot_control_hal) {
-        num_slots = boot_control_hal->getNumberSlots();
+        num_slots = boot_control_hal->GetNumSlots();
     }
 
     bool ok = true;
