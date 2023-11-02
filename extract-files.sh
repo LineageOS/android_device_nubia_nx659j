@@ -69,6 +69,7 @@ function blob_fixup() {
     # Change soname for fingerprint.default.so
     vendor/lib/hw/fingerprint.goodix_fod.default.so | vendor/lib64/hw/fingerprint.goodix_fod.default.so)
         "${PATCHELF}" --set-soname "fingerprint.goodix_fod.default.so" "${2}"
+        "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
         ;;
 
     vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so)
