@@ -36,17 +36,3 @@ on property:ro.boot.usbcontroller=*
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-
-service fastbootd.nx659j /system/bin/fastbootd.nx659j
-    disabled
-    group system
-    seclabel u:r:fastbootd:s0
-
-on property:sys.usb.config=fastboot
-    start fastbootd.nx659j
-
-on property:sys.usb.config=none && property:sys.usb.configfs=0
-    stop fastbootd.nx659j
-
-on property:sys.usb.config=none && property:sys.usb.configfs=1
-    stop fastbootd.nx659j
