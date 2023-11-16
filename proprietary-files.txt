@@ -375,11 +375,6 @@ vendor/etc/camera/VfbTuningInterface.xml
 vendor/etc/camera/camxoverridesettings.txt
 vendor/etc/camera/vidhance_calibration
 vendor/firmware/CAMERA_ICP.elf
-vendor/lib/camera.device@1.0-impl.so
-vendor/lib/camera.device@3.2-impl.so
-vendor/lib/camera.device@3.3-impl.so
-vendor/lib/camera.device@3.4-impl.so
-vendor/lib/camera.device@3.5-impl.so
 vendor/lib/camera/com.qti.eeprom.irs2381c_polar.so
 vendor/lib/camera/com.qti.eeprom.truly_cmb433.so
 vendor/lib/camera/com.qti.sensor.imx318.so
@@ -540,11 +535,6 @@ vendor/lib/libswregistrationalgo.so
 vendor/lib/libsynx.so
 vendor/lib/libthreadutils.so
 vendor/lib/libvidhance.so
-vendor/lib64/camera.device@1.0-impl.so
-vendor/lib64/camera.device@3.2-impl.so
-vendor/lib64/camera.device@3.3-impl.so
-vendor/lib64/camera.device@3.4-impl.so
-vendor/lib64/camera.device@3.5-impl.so
 vendor/lib64/camera/com.qti.eeprom.irs2381c_polar.so
 vendor/lib64/camera/com.qti.eeprom.truly_cmb433.so
 vendor/lib64/camera/com.qti.sensor.imx318.so
@@ -714,6 +704,24 @@ vendor/lib64/libsynx.so
 vendor/lib64/libthreadutils.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so|9b44bb94ba467961a4b35b79eb3ac927ae27f6ea|0732d10c97e13624b2e52f61411d81c5178d6e5e
+
+# Camera prebuilt
+vendor/lib/android.hardware.camera.provider@2.4-external.so
+vendor/lib/android.hardware.camera.provider@2.4-legacy.so
+vendor/lib/hw/android.hardware.camera.provider@2.4-impl.so
+vendor/lib/camera.device@1.0-impl.so
+vendor/lib/camera.device@3.2-impl.so
+vendor/lib/camera.device@3.3-impl.so
+vendor/lib/camera.device@3.4-impl.so
+vendor/lib/camera.device@3.5-impl.so
+vendor/lib64/android.hardware.camera.provider@2.4-external.so
+vendor/lib64/android.hardware.camera.provider@2.4-legacy.so
+vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so
+vendor/lib64/camera.device@1.0-impl.so
+vendor/lib64/camera.device@3.2-impl.so
+vendor/lib64/camera.device@3.3-impl.so
+vendor/lib64/camera.device@3.4-impl.so
+vendor/lib64/camera.device@3.5-impl.so
 
 # Capability Config Store
 vendor/bin/hw/vendor.qti.hardware.capabilityconfigstore@1.0-service
