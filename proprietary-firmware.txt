@@ -1,0 +1,19 @@
+# All firmware images below are extracted from the release mentioned in proprietary-files.txt
+
+BTFM.bin
+NON-HLOS.bin
+aop.mbn
+cmnlib.mbn
+cmnlib64.mbn
+devcfg.mbn
+dspso.bin
+hyp.mbn
+imagefv.elf
+multi_image.mbn
+parameter.img
+qupv3fw.elf
+splash.img
+tz.mbn
+uefi_sec.mbn
+xbl.elf
+xbl_config.elf
