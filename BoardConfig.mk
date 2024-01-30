@@ -70,9 +70,6 @@ endif
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := kona
 
-# DT2W
-TARGET_TAP_TO_WAKE_NODE := "/sys/kernel/tp_node/wake_gesture"
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
