@@ -23,7 +23,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.widget.Switch;
+import android.widget.CompoundButton;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
@@ -31,7 +31,6 @@ import androidx.preference.SeekBarPreference;
 import androidx.preference.DropDownPreference;
 
 import com.android.settingslib.widget.MainSwitchPreference;
-import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
 import org.lineageos.settings.R;
 
@@ -39,7 +38,7 @@ import org.lineageos.settings.utils.FileUtils;
 import org.lineageos.settings.utils.SettingsUtils;
 
 public class FanFragment extends PreferenceFragment implements
-        Preference.OnPreferenceChangeListener, OnMainSwitchChangeListener,
+        CompoundButton.OnCheckedChangeListener, Preference.OnPreferenceChangeListener,
         SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String KEY_FAN_ENABLE = "fan_control_enable";
     public static final String KEY_FAN_MODE = "fan_control_mode";
@@ -106,7 +105,7 @@ public class FanFragment extends PreferenceFragment implements
     }
 
     @Override
-    public void onSwitchChanged(Switch switchView, boolean enabled) {
+    public void onCheckedChanged(CompoundButton buttonView, boolean enabled) {
         SettingsUtils.setEnabled(getActivity(), KEY_FAN_ENABLE, enabled);
         int fanModeValue = Integer.parseInt((String) mFanControlMode.getValue());
         String manualFanValue;
