@@ -65,8 +65,8 @@
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
      <bool name="config_intrusiveNotificationLed">true</bool>
 
-    <!-- Should the pinner service pin the Home application? -->
-     <bool name="config_pinnerHomeApp">true</bool>
+    <!-- Bytes that the PinnerService will pin for Home app -->
+    <integer name="config_pinnerHomePinBytes">6291456</integer>
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
