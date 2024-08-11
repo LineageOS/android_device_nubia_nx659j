@@ -272,7 +272,6 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_PACKAGES += \
     NubiaCarrierConfig \
-    NubiaCellBroadcastReceiver \
     NubiaFrameworks \
     NubiaLineageAperture \
     NubiaLineageSDK \
