@@ -94,7 +94,6 @@ vendor/lib/liblistensoundmodel2.so
 vendor/lib/libmulawdec.so
 vendor/lib/libqtigef.so
 vendor/lib/libstagefright_soft_dtsdec.so
-vendor/lib/libstagefright_soft_qtiflacdec.so
 vendor/lib/libsurround_3mic_proc.so
 vendor/lib/soundfx/libasphere.so
 vendor/lib/soundfx/libdtsaudio.so
@@ -128,7 +127,6 @@ vendor/lib64/liblistensoundmodel2.so
 vendor/lib64/libmulawdec.so
 vendor/lib64/libqtigef.so
 vendor/lib64/libstagefright_soft_dtsdec.so
-vendor/lib64/libstagefright_soft_qtiflacdec.so
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libdtsaudio.so
 vendor/lib64/soundfx/libhaptic_effect.so
