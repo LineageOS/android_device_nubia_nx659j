@@ -172,6 +172,9 @@ vendor.gatekeeper.disable_spu=true
 # GMS
 ro.com.google.clientidbase=android-zte
 
+# Media
+vendor.media.omx=0
+
 # NFC
 persist.vendor.factory.nfc=true
 
