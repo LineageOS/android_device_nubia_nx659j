@@ -64,6 +64,8 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lock')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
+    ('vendor/lib64/libarcsoft_super_night_raw.so'): blob_fixup()
+        .clear_symbol_version('remote_register_buf'),
 
 }  # fmt: skip
 
