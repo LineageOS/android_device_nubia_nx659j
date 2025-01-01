@@ -73,18 +73,6 @@ endif
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := kona
 
-# Display
-TARGET_USES_COLOR_METADATA := true
-TARGET_USES_DISPLAY_RENDER_INTENTS := true
-TARGET_USES_DRM_PP := true
-TARGET_USES_GRALLOC1 := true
-TARGET_USES_GRALLOC4 := true
-TARGET_USES_HWC2 := true
-TARGET_USES_ION := true
-TARGET_USES_QCOM_DISPLAY_BSP := true
-TARGET_USES_QTI_MAPPER_2_0 := true
-TARGET_USES_QTI_MAPPER_EXTENSIONS_1_1 := true
-
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/kernel/tp_node/wake_gesture"
 
@@ -106,6 +94,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     vendor/lineage/config/device_framework_matrix.xml
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+
+# Media
+TARGET_USES_ION := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
