@@ -58,6 +58,12 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib/mediadrm/libwvdrmengine.so',
     'vendor/lib64/mediadrm/libwvdrmengine.so'): blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    ('vendor/lib64/libFNVfbEngineHAL.so'): blob_fixup()
+        .clear_symbol_version('AHardwareBuffer_allocate')
+        .clear_symbol_version('AHardwareBuffer_describe')
+        .clear_symbol_version('AHardwareBuffer_lock')
+        .clear_symbol_version('AHardwareBuffer_release')
+        .clear_symbol_version('AHardwareBuffer_unlock'),
 
 }  # fmt: skip
 
