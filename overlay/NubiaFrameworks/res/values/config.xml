@@ -232,9 +232,6 @@
     <!-- Slow brightness animation ramp rate in brightness units per second-->
      <integer name="config_brightness_ramp_rate_slow">60</integer>
 
-    <!--  Maximum number of supported users -->
-     <integer name="config_multiuserMaximumUsers">4</integer>
-
     <!-- Default value for led color when battery is fully charged -->
      <integer name="config_notificationsBatteryFullARGB">0xFF00FF00</integer>
 
