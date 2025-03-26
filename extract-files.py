@@ -68,7 +68,10 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_unlock'),
     ('vendor/lib64/libarcsoft_super_night_raw.so'): blob_fixup()
         .clear_symbol_version('remote_register_buf'),
-
+    ('vendor/lib/hw/awinic.haptic.effect.so'): blob_fixup()
+        .clear_symbol_version('__aeabi_memcpy')
+        .clear_symbol_version('__aeabi_memset')
+        .clear_symbol_version('__gnu_Unwind_Find_exidx'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
