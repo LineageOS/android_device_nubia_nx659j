@@ -140,6 +140,8 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.3-service.nubia \
     libudfpshandler
 
+$(call soong_config_set,surfaceflinger,udfps_lib,//hardware/nubia:libudfps_extension.nubia)
+
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
