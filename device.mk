@@ -170,6 +170,9 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder.vendor
 
+# Init
+$(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):libinit.nx659j)
+
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
