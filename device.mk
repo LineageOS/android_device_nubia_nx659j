@@ -29,10 +29,6 @@ $(call inherit-product, hardware/qcom-caf/sm8250/display/config/display-board.mk
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
 
-# ANT+
-PRODUCT_PACKAGES += \
-    com.dsi.ant@1.0.vendor
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
