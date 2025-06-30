@@ -271,7 +271,6 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-    NubiaBluetooth \
     NubiaCarrierConfig \
     NubiaCellBroadcastReceiver \
     NubiaFrameworks \
