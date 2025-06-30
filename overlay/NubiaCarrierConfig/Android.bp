@@ -1,0 +1,5 @@
+runtime_resource_overlay {
+    name: "NubiaCarrierConfig",
+    vendor: true,
+    aaptflags: ["--keep-raw-values"],
+}
