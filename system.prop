@@ -1,0 +1,13 @@
+# CNE
+persist.vendor.cne.feature=1
+
+# DPM
+persist.vendor.dpm.feature=9
+
+# fwk-detect
+ro.vendor.qti.va_aosp.support=1
+
+# Netmgr
+persist.vendor.data.iwlan.enable=true
+persist.vendor.data.mode=concurrent
+ro.vendor.use_data_netmgrd=true
