@@ -1,3 +1,5 @@
+# Unpinned blobs from NX659J-UN-user 11 RKQ1.200826.002 nubia.20221012.201513 release-keys
+
 # ADSPRPC
 vendor/bin/adsprpcd
 vendor/bin/cdsprpcd
