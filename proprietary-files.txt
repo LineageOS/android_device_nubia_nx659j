@@ -1358,8 +1358,6 @@ vendor/etc/init/vendor.qti.rmt_storage.rc
 
 # SecureMSM
 vendor/bin/KmInstallKeybox
-vendor/bin/hdcp1prov
-vendor/bin/hdcp2p2prov
 vendor/bin/tloc_daemon
 vendor/etc/ssg/ta_config.json
 vendor/etc/ssg/tz_whitelist.json
