@@ -221,7 +221,7 @@ PRODUCT_PACKAGES += \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    device/nubia/nx659j \
+    $(LOCAL_PATH) \
     hardware/nubia \
     vendor/qcom/opensource/usb/etc
 
