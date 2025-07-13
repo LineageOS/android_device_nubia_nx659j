@@ -1231,6 +1231,7 @@ vendor/lib/libpdnotifier.so
 vendor/lib/libqcrilFramework.so
 vendor/lib/libqcrildatactl.so
 vendor/lib/libqmi_csvt_srvc.so
+vendor/lib/libqmi_legacy.so
 vendor/lib/libqsap_sdk.so
 vendor/lib/libril-qc-hal-qmi.so
 vendor/lib/libril-qc-logger.so
@@ -1279,6 +1280,7 @@ vendor/lib64/libqcrilFramework.so
 vendor/lib64/libqcrildatactl.so
 vendor/lib64/libqdma_file_agent.so
 vendor/lib64/libqmi_csvt_srvc.so
+vendor/lib64/libqmi_legacy.so
 vendor/lib64/libqmiextservices.so
 vendor/lib64/libqsap_sdk.so
 vendor/lib64/libril-qc-hal-qmi.so
