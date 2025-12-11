@@ -600,7 +600,7 @@ vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so
 vendor/lib/libdisp-aba.so|738e42d8d8eb0de5ac03df750e1f3e17e30365fa
 vendor/lib/libdisplayqos.so|2a9af766b1a82f4a5a685f5dae090ad57850a913
 vendor/lib/libdisplayskuutils.so|c83f1d1ba4c111ea32e4b82d9c5b674d2d68509a
-vendor/lib/libdpps.so|6bca63623a3123e6ea0122c281f92db7fd2fdd91
+vendor/lib/libdpps.so|6bca63623a3123e6ea0122c281f92db7fd2fdd91|62244b005a334403290bf5fdfcf1fa5a51c8142d
 vendor/lib/libhdr_tm.so|dae56d348e81aff13c279dff827dd62850ad79d4
 vendor/lib/libqseed3.so|027a017e4f242055bfd6abfa429e907a4586b23b
 vendor/lib/libsdm-color.so|aeb2d19168403b5d539ae2c7381c32fb68f82a36
@@ -612,7 +612,7 @@ vendor/lib/libtinyxml2_1.so|2e4ee5ab72b1e135cb53d3b1b2af137535ff0ea4
 vendor/lib64/libdisp-aba.so|902839da31464e54bd4756747db2dd7ad867484f
 vendor/lib64/libdisplayqos.so|15701f18257c43be5657bbd867a8acf1f469e373
 vendor/lib64/libdisplayskuutils.so|3ddb2ffe55aa9aef686cf3be00ae5e0d1d8f9d93
-vendor/lib64/libdpps.so|aed0ddf27cae0c0d6fed1e27a7b19b1ffeb22002
+vendor/lib64/libdpps.so|aed0ddf27cae0c0d6fed1e27a7b19b1ffeb22002|9e60dd3ed6a47828a3a8e9cc5f2e391f0d00c1d2
 vendor/lib64/libhdr_tm.so|4be3cfff1ef40cbc6ad329b79c60881263aa6723
 vendor/lib64/libhdrdynamic.so|917095388aaa80685fadcf10e414ff1261350aef
 vendor/lib64/libhdrdynamicootf.so|4bd09dd4a48176b18a64cfa14faacbe22a43366f

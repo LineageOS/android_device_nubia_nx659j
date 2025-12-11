@@ -72,6 +72,20 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('__aeabi_memcpy')
         .clear_symbol_version('__aeabi_memset')
         .clear_symbol_version('__gnu_Unwind_Find_exidx'),
+    ('vendor/lib/camera.device@3.6-external-impl.so',
+    'vendor/lib/camera.device@3.5-external-impl.so',
+    'vendor/lib/camera.device@3.4-external-impl.so',
+    'vendor/lib/libdpps.so',
+    'vendor/lib/hw/android.hardware.camera.provider@2.4-impl.so',
+    'vendor/lib/android.hardware.camera.provider@2.4-external.so',
+    'vendor/bin/thermal-engine',
+    'vendor/lib64/camera.device@3.6-external-impl.so',
+    'vendor/lib64/camera.device@3.5-external-impl.so',
+    'vendor/lib64/libdpps.so',
+    'vendor/lib64/hw/android.hardware.camera.provider@2.4-impl.so',
+    'vendor/lib64/android.hardware.camera.provider@2.4-external.so',
+    'vendor/lib64/camera.device@3.4-external-impl.so'): blob_fixup()
+        .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
