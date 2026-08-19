@@ -1,13 +1,4 @@
 <compatibility-matrix version="2.0" type="framework">
-    <hal format="hidl">
-        <name>android.hardware.vibrator</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IVibrator</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.improvetouch.blobmanager</name>
         <version>1.0</version>
