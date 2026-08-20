@@ -7,7 +7,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.lights-service\.nx659j                                 u:object_r:hal_light_default_exec:s0
 
 # Livedisplay
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.nx659j                         u:object_r:hal_lineage_livedisplay_qti_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay-service\.nx659j                         u:object_r:hal_lineage_livedisplay_qti_exec:s0
 
 # NFC
 /dev/sec-nfc                                  u:object_r:nfc_device:s0
