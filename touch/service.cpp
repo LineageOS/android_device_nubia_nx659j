@@ -1,33 +1,25 @@
 /*
- * Copyright (C) 2023The LineageOS Project
+ * Copyright (C) 2023-2025 The LineageOS Project
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "lineage.touch@1.0-service.nx659j"
-
-#include <android-base/logging.h>
-#include <hidl/HidlTransportSupport.h>
-
 #include "HighTouchPollingRate.h"
 
-using ::vendor::lineage::touch::V1_0::IHighTouchPollingRate;
-using ::vendor::lineage::touch::V1_0::implementation::HighTouchPollingRate;
+#include <android-base/logging.h>
+#include <android/binder_manager.h>
+#include <android/binder_process.h>
+
+using aidl::vendor::lineage::touch::HighTouchPollingRate;
 
 int main() {
-    android::sp<IHighTouchPollingRate> highTouchPollingRate = new HighTouchPollingRate();
+    ABinderProcess_setThreadPoolMaxThreadCount(0);
+    std::shared_ptr<HighTouchPollingRate> htpr = ndk::SharedRefBase::make<HighTouchPollingRate>();
 
-    android::hardware::configureRpcThreadpool(1, true);
+    const std::string instance = std::string(HighTouchPollingRate::descriptor) + "/default";
+    binder_status_t status = AServiceManager_addService(htpr->asBinder().get(), instance.c_str());
+    CHECK_EQ(status, STATUS_OK);
 
-    if (highTouchPollingRate->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register touchscreen high polling rate HAL service.";
-        return 1;
-    }
-
-    LOG(INFO) << "Touchscreen HAL service ready.";
-
-    android::hardware::joinRpcThreadpool();
-
-    LOG(ERROR) << "Touchscreen HAL service failed to join thread pool.";
-    return 1;
+    ABinderProcess_joinThreadPool();
+    return EXIT_FAILURE;  // should not reach
 }

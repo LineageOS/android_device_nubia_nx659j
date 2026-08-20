@@ -293,7 +293,7 @@ PRODUCT_COPY_FILES += \
 
 # Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.nx659j
+    vendor.lineage.touch-service.nx659j
 
 # Trustzone
 PRODUCT_PACKAGES += \
