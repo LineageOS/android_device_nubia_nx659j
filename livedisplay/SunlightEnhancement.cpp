@@ -1,54 +1,49 @@
 /*
- * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2023-2025 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "SunlightEnhancementService"
+
+#include "SunlightEnhancement.h"
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
 
-#include "SunlightEnhancement.h"
-
+namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace livedisplay {
-namespace V2_0 {
-namespace implementation {
 
-static constexpr const char* kHbmStatusPath = "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm";
+using ::android::base::ReadFileToString;
+using ::android::base::Trim;
+using ::android::base::WriteStringToFile;
 
-Return<bool> SunlightEnhancement::isEnabled() {
+static constexpr const char* kHbmStatusPath =
+    "/sys/devices/platform/soc/soc:qcom,dsi-display-primary/hbm";
+
+ndk::ScopedAStatus SunlightEnhancement::getEnabled(bool* _aidl_return) {
     std::string buf;
-    if (!android::base::ReadFileToString(kHbmStatusPath, &buf)) {
+    if (!ReadFileToString(kHbmStatusPath, &buf)) {
         LOG(ERROR) << "Failed to read " << kHbmStatusPath;
-        return false;
+        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
-    return std::stoi(android::base::Trim(buf)) == 1;
+    *_aidl_return = std::stoi(Trim(buf)) == 1;
+    return ndk::ScopedAStatus::ok();
 }
 
-Return<bool> SunlightEnhancement::setEnabled(bool enabled) {
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), kHbmStatusPath)) {
+ndk::ScopedAStatus SunlightEnhancement::setEnabled(bool enabled) {
+    if (!WriteStringToFile(enabled ? "1" : "0", kHbmStatusPath)) {
         LOG(ERROR) << "Failed to write " << kHbmStatusPath;
-        return false;
+        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
     }
-    return true;
+    return ndk::ScopedAStatus::ok();
 }
 
-}  // namespace implementation
-}  // namespace V2_0
 }  // namespace livedisplay
 }  // namespace lineage
 }  // namespace vendor
+}  // namespace aidl
+

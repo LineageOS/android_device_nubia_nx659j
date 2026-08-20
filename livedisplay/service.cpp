@@ -1,53 +1,39 @@
 /*
- * Copyright (C) 2023 The LineageOS Project
+ * Copyright (C) 2023-2025 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
-
-#define LOG_TAG "vendor.lineage.livedisplay@2.0-service.nx659j"
-
-#include <android-base/logging.h>
-#include <binder/ProcessState.h>
-#include <hidl/HidlTransportSupport.h>
 
 #include "AdaptiveBacklight.h"
 #include "SunlightEnhancement.h"
 
-using ::vendor::lineage::livedisplay::V2_0::IAdaptiveBacklight;
-using ::vendor::lineage::livedisplay::V2_0::ISunlightEnhancement;
-using ::vendor::lineage::livedisplay::V2_0::implementation::AdaptiveBacklight;
-using ::vendor::lineage::livedisplay::V2_0::implementation::SunlightEnhancement;
+#include <android-base/logging.h>
+#include <android/binder_manager.h>
+#include <android/binder_process.h>
+
+using aidl::vendor::lineage::livedisplay::AdaptiveBacklight;
+using aidl::vendor::lineage::livedisplay::SunlightEnhancement;
 
 int main() {
-    android::sp<IAdaptiveBacklight> adaptiveBacklight = new AdaptiveBacklight();
-    android::sp<ISunlightEnhancement> sunlightEnhancement = new SunlightEnhancement();
+    ABinderProcess_setThreadPoolMaxThreadCount(0);
 
-    android::hardware::configureRpcThreadpool(1, true /*callerWillJoin*/);
+    std::shared_ptr<AdaptiveBacklight> adaptiveBacklight =
+        ndk::SharedRefBase::make<AdaptiveBacklight>();
+    const std::string abInstance =
+        std::string(AdaptiveBacklight::descriptor) + "/default";
+    binder_status_t status =
+        AServiceManager_addService(adaptiveBacklight->asBinder().get(), abInstance.c_str());
+    CHECK_EQ(status, STATUS_OK);
 
-    if (adaptiveBacklight->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register adaptive backlight HAL service.";
-        return 1;
-    }
+    std::shared_ptr<SunlightEnhancement> sunlightEnhancement =
+        ndk::SharedRefBase::make<SunlightEnhancement>();
+    const std::string seInstance =
+        std::string(SunlightEnhancement::descriptor) + "/default";
+    status =
+        AServiceManager_addService(sunlightEnhancement->asBinder().get(), seInstance.c_str());
+    CHECK_EQ(status, STATUS_OK);
 
-    if (sunlightEnhancement->registerAsService() != android::OK) {
-        LOG(ERROR) << "Cannot register sunlight enhancement HAL service.";
-        return 1;
-    }
-
-    LOG(INFO) << "LiveDisplay HAL service is ready.";
-
-    android::hardware::joinRpcThreadpool();
-
-    LOG(ERROR) << "LiveDisplay HAL service failed to join thread pool.";
-    return 1;
+    ABinderProcess_joinThreadPool();
+    return EXIT_FAILURE;  // should not reach
 }
+
