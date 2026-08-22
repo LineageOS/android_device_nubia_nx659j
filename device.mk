@@ -262,6 +262,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.class_main.sh \
     init.mdm.sh \
     init.nfc.sku.sh \
     init.qcom.post_boot.sh \
