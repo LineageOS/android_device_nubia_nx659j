@@ -302,9 +302,6 @@
         <item>255</item>
     </integer-array>
 
-    <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
-     <integer name="config_shutdownBatteryTemperature">680</integer>
-
     <!-- Integer parameters of the wifi to cellular handover feature
          wifi should not stick to bad networks -->
      <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
